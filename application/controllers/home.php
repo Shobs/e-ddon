@@ -30,21 +30,11 @@ class Home_Controller extends Base_Controller {
 	|
 	*/
 
-	public $restful = true;
+	// public $restful = true;
 
-	public function get_index()
+	public function action_index()
 	{
 		return View::make('home.index');
-	}
-
-	public function get_login()
-	{
-		return View::make('home.login');
-	}
-
-	public function post_login()
-	{
-	
 	}
 
 

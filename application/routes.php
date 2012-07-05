@@ -1,10 +1,6 @@
 <?php
 
-Route::controller('home');
 
-Route::any('login', 'home@login');
-Route::any('dashboard', 'dashboard@index');
-Route::any('test/(:any)', 'home@test');
 
 
 /*
@@ -39,11 +35,14 @@ Route::any('test/(:any)', 'home@test');
 |
 */
 
+Route::controller(Controller::detect());
+Route::get('about', 'home@about');
+/*
 Route::get('/', function()
 {
 	return View::make('home.index');
 });
-
+ */
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
