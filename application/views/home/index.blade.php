@@ -2,41 +2,56 @@
 
 
 @section('content')
-      <div id="catList" class="grid_6 omega">
-        <h2 class="main_title">addon by <span class="colorWord">type</span></h2>
-        <a href="#" title="View addon list in Economy" class="cat_block grid_2 economy alpha ">
-          <h2 class="cat_title">Economy</h2>
-          <p class="cat_desc"></p>
-        </a>
-        <a href="#" title="View tool list in Gathering" class="cat_block grid_2 gathering  ">
-          <h2 class="cat_title">Gathering</h2>
-          <p class="cat_desc"></p>
-        </a>
-        <a href="#" title="View tool list in Interface" class="cat_block grid_2 interface  omega">
-          <h2 class="cat_title">Interface</h2>
-          <p class="cat_desc"></p>
-        </a>
-        <a href="#" title="View tool list in PVP" class="cat_block grid_2 pvp  alpha">
-          <h2 class="cat_title">PVP</h2>
-          <p class="cat_desc"></p>
-        </a>
-        <a href="#" title="View tool list in Raiding" class="cat_block grid_2 raiding  ">
-          <h2 class="cat_title">Raiding</h2>
-          <p class="cat_desc"></p>
-        </a>
-        <a href="#" title="View tool list in Vanity" class="cat_block grid_2 vanity  omega">
-          <h2 class="cat_title">Vanity</h2>
-          <p class="cat_desc"></p>
-        </a>
-      </div>
-      <div class="grid_5 push_1 omega">
+  <div id="catList" class=" row eight columns">
+    <div class="row twelve columns">
+      <h2 class="main_title">addon by <span class="colorWord">type</span></h2>
+    </div>
+    <div class="row four columns">
+      <a href="#" title="View addon list in Economy" class="cat_block grid_2 economy alpha ">
+        <h2 class="cat_title">Economy</h2>
+        <p class="cat_desc"></p>
+      </a>
+    </div>
+    <div class="row four columns">
+      <a href="#" title="View tool list in Gathering" class="cat_block grid_2 gathering  ">
+        <h2 class="cat_title">Gathering</h2>
+        <p class="cat_desc"></p>
+      </a>
+    </div>
+    <div class="row four columns">
+      <a href="#" title="View tool list in Interface" class="cat_block grid_2 interface  omega">
+        <h2 class="cat_title">Interface</h2>
+        <p class="cat_desc"></p>
+      </a>
+    </div>
+    <div class="row four columns">
+      <a href="#" title="View tool list in PVP" class="cat_block grid_2 pvp  alpha">
+        <h2 class="cat_title">PVP</h2>
+        <p class="cat_desc"></p>
+      </a>
+    </div>
+    <div class="row four columns">
+      <a href="#" title="View tool list in Raiding" class="cat_block grid_2 raiding  ">
+        <h2 class="cat_title">Raiding</h2>
+        <p class="cat_desc"></p>
+      </a>
+    </div>
+    <div class="row four columns">
+      <a href="#" title="View tool list in Vanity" class="cat_block grid_2 vanity  omega">
+        <h2 class="cat_title">Vanity</h2>
+        <p class="cat_desc"></p>
+      </a>
+    </div>
+  </div>
+
+      <div class="row four columns">
         <div id="search">
           <form name="" action="#" method="get" role="search" class="clearfix">
             <input type="search" placeholder="search an addon" id="s" name="s">
             <input type="submit" value="search">
           </form>
         </div>
-        <div class="tagList"><h2 class="main_title">addon by <span class="colorWord">tags</span></h2>
+        <div class="row twelve columns"><h2 class="main_title">addon by <span class="colorWord">tags</span></h2>
           <div class="widget widget_tag_cloud">
             <h2 class="widgettitle"></h2>
             <div class="tagcloud">
@@ -67,9 +82,10 @@
           </div>
         </div>
       </div>
-      <div id="featuredPost" class="clearfix">
+
+      <div id="featuredPost" class="row twelve columns">
         <h2 class="section_title"><span>featured</span></h2>
-        <div class="grid_4 alpha">
+        <div class="row four columns">
           <h3 class="featured_section_title">last <span class="colorWord">added</span></h3>
           <a href="#" class="linkPage btColor2" title="see all the last added addons">see all »</a>
           <article id="post_659" class="post-659 post type_post status_publish format_standard hentry category_graphics tag_code_snippet tag_css3">
@@ -98,7 +114,7 @@
             </div>
           </article>
         </div>
-        <div class="grid_4">
+        <div class="row four columns">
           <h3 class="featured_section_title">highest <span class="colorWord">rated</span></h3>
           <a href="#" class="linkPage btColor2" title="see all the highest rated tools">see all »</a>
           <article id="post-169" class="post_169 post type_post status_publish format_standard hentry category_css tag_code_snippet">
@@ -124,7 +140,7 @@
             </div>
           </article>
         </div>
-        <div class="grid_4 omega">
+        <div class="row four columns">
           <h3 class="featured_section_title">eddon <span class="colorWord">selected</span></h3>
           <article id="post_633" class="post_633 post type_post status_publish format_standard sticky hentry category_graphics tag_css3 tag_text">
             <a href="#" class="imgHolder">
@@ -153,7 +169,7 @@
           </article>
         </div>
       </div>
-      <div class="scrollToTop" style="display: block; ">
+      <div class="row twelve columns" style="display: block; ">
         <a href="#">ScrollTotop</a>
       </div>
 @endsection

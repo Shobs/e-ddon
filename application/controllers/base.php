@@ -5,14 +5,17 @@ class Base_Controller extends Controller {
 	public function __construct()
 	{
 	    //Assets
-	    Asset::add('modernizr', 'js/libs/modernizr-2.5.3.min.js');
-	    Asset::container('footer')->add('jquery', 'js/libs/jquery-1.7.1.min.js');
-	    Asset::container('footer')->add('bootstrap-js', 'js/libs/bootstrap.min.js', 'jquery');
-	    Asset::container('footer')->add('plugins', 'js/plugins.js', 'jquery');
+	    Asset::add('modernizr', 'js/libs/modernizr.foundation.js');
+	    Asset::container('footer')->add('jquery', 'js/libs/jquery.min.js');
+	    Asset::container('footer')->add('reveal-js', 'js/libs/jquery.reveal.js', 'jquery');
+	    Asset::container('footer')->add('orbit-js', 'js/jquery.orbit-1.4.0.js', 'jquery');
+	    Asset::container('footer')->add('customforms-js', 'js/jquery.customforms.js', 'jquery');
+	    Asset::container('footer')->add('placeholder-js', 'js/jquery.placeholder.min.js', 'jquery');
+	    Asset::container('footer')->add('tooltips-js', 'js/jquery.tooltips.js', 'jquery');
+	    Asset::container('footer')->add('app-js', 'js/app.js', 'jquery');
 	    Asset::container('footer')->add('script', 'js/script.js', 'jquery');
-	    Asset::add('bootstrap-css', 'css/libs/bootstrap.min.css');
-	    Asset::add('bootstrap-css-responsive', 'css/libs/bootstrap-responsive.min.css', 'bootstrap-css');
-	    Asset::add('style', 'css/style.css');
+	    Asset::add('foundation-css', 'css/libs/foundation.css');
+	    Asset::add('foundation-app-css', 'css/libs/app.css', 'foundation-css');
 	    parent::__construct();
 	}
 

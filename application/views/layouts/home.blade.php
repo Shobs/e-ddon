@@ -13,6 +13,7 @@ More info: h5bp.com/i/378 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <title>Eddon</title>
+
 <meta name="description" content="">
 
 <!-- Mobile viewport optimized: h5bp.com/viewport -->
@@ -44,25 +45,38 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
 
 <header id="banner">
-  <div id="banner_content" class="container_12 clearfix">
-    <div id="logo">
-      <h1>E<span>ddon</span></h1>
+  <div class="row">
+    <div class="twelve columns">
+      <hgroup id="logo" class="row five columns">
+        <h1 id="site_title">
+          <a href="http://eddon.com/" title="eddon" rel="home"><span class="colorWord">e</span>ddon<span class="smaller">.com</span>
+          </a>
+        </h1>
+        <h2 id="site_description" class="grid_3"> The edden of addons</h2>
+      </hgroup>
+      <div class="row three columns" id="userHeader">
+        <a href="#" title="log in you or register" class="btColor" id="btLogin">Login / Register</a>
+      </div>
+      <div class="row four columns">
+      <a href="#" title="Submit an Addon" id="submitAddon">Submit an <span>addon</span></a>
+      </div>
     </div>
   </div>
 </header>
 
 <content>
-  <div id="content" class="container_12 clearfix">
-    <div id="main" class="grid_12">
+  <div class="row">
+    <div id="main" class="twelve columns">
       @yield('content')
     </div>
   </div>
-
 </content>
 
 
-  <footer id="footer" role="contentinfo" class="clearfix">
-       <div id="footer_content" class="container_12 clearfix">
+<footer id="footer" role="contentinfo">
+  <div class="row">
+    <div class="twelve columns">
+    <div id="footer_content" class="four columns">
       <div id="fb" class="grid_3">
         <h4>You like eddon ?</h4>
         <h5><span class="colorWord">Say-it</span> to Facebook !</h5>
@@ -72,12 +86,12 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </span>
       </fb:fan>
     </div>
-    <div id="feedback" class="grid_3 push_1">
+    <div id="feedback" class="four columns">
       <h4>Help us to <span class="colorWord">improve</span></h4>
       <h5>eddon.com</h5>
       <a href="#" title="Give us your feedback">Give us your <br><span>feedback !</span></a>
     </div>
-    <div id="footer_ads" class="grid_4 push_2 omega">
+    <div id="footer_ads" class="four columns ">
       <div style="margin: 0px; padding: 0px; background: none; border: none">
         <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
           <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
@@ -102,8 +116,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       </div>
     </div>
   </div>
-  <div id="mentions">
-    <div class="container_12 clearfix">
+  </div>
+</div>
+
+  <div id="mentions" class="row">
+    <div class="twelve columns">
       <p class="copyright grid_6">© eddon 2012 - <a href="#" title="about eddon" class="colorWord">about</a></p>
       <p class="extraLinks grid_6">
         <a href="http://www.toolmarklets.com/legales/" title="legales" class="colorWord">legales</a>
@@ -111,6 +128,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </p>
       </div>
     </div>
+
   </footer>
 
 
