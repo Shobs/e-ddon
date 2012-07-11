@@ -16,6 +16,7 @@ class Base_Controller extends Controller {
 	    Asset::container('footer')->add('script', 'js/script.js', 'jquery');
 	    Asset::add('foundation-css', 'css/libs/foundation.css');
 	    Asset::add('foundation-app-css', 'css/libs/app.css', 'foundation-css');
+	    Asset::add('style', 'css/style.css');
 	    parent::__construct();
 	}
 
