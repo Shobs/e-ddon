@@ -8,42 +8,42 @@
       <h2 class="mainTitle">addon by <span class="colorWord">type</span></h2>
     </div>
     <div class="four columns">
-      <a href="#" title="View addon list in Economy">
+      <a href="category" title="View addon list in Economy">
         <img src="http://placehold.it/180x180" alt="placeholder+image">
         <h2 class="catTitle">Economy</h2> <!-- category name -->
         <p></p> <!-- category description -->
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View addon list in Gathering">
+      <a href="category" title="View addon list in Gathering">
         <img src="http://placehold.it/180x180" alt="placeholder+image">
         <h2 class="catTitle">Gathering</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View addon list in Interface" >
+      <a href="category" title="View addon list in Interface" >
         <img src="http://placehold.it/180x180" alt="placeholder+image">
         <h2 class="catTitle">Interface</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View addon list in PVP" >
+      <a href="category" title="View addon list in PVP" >
         <img src="http://placehold.it/180x180" alt="placeholder+image">
         <h2 class="catTitle">PVP</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View addon list in Raiding" >
+      <a href="category" title="View addon list in Raiding" >
         <img src="http://placehold.it/180x180" alt="placeholder+image">
         <h2 class="catTitle">Raiding</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View addon list in Vanity" >
+      <a href="category" title="View addon list in Vanity" >
         <img src="http://placehold.it/180x180" alt="placeholder+image">
         <h2 class="catTitle">Vanity</h2>
         <p></p>

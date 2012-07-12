@@ -49,18 +49,18 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="twelve columns">
         <hgroup class="five columns">
           <h1 id="siteLogo">
-            <a href="http://eddon.com/" title="eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>
+            <a href="home" title="eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>
             </a>
           </h1>
         </hgroup>
         <div class="three columns">
           <div id="btLogin">
-          <a href="#" class="small radius nice blue button" title="log in or register">Login / Register</a>
+          <a href="#" class="small radius nice blue button" title="log in or register" data-reveal-id="loginForm">Login / Register</a>
         </div>
         </div>
         <div class="four columns">
           <div id="btUpload">
-          <a href="#" class="large radius nice blue button" title="Submit an Addon">Submit an <span>addon</span></a>
+          <a href="#" class="large radius nice blue button" title="Submit an Addon" data-reveal-id="uploadForm">Submit an <span>addon</span></a>
           </div>
         </div>
     </div>
@@ -139,6 +139,97 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
   </div>
 
 </footer>
+
+<div id="loginForm" class="reveal-modal">
+<div id="main" class="row">
+  <div id="content" role="main" class="twelve columns">
+    <hgroup class="mainTitle ">
+      <h3>my <span class="colorWord">eddons</span>
+        <span class="sep"></span>
+      </h3>
+      <h2>Log In</h2>
+    </hgroup>
+    <div class="row">
+        <div class="twelve columns">
+          <div id="loginForm" class="">
+            <h5 class="entryTitle">You have already an account?</h5>
+            <p>Please log in to access to your addon collection</p><br>
+            <div class="login" id="theme-my-login">
+              <form name="loginform" id="loginform" action="/login/?action=login" method="post" class="clearfix">
+                <p>
+                  <label class="label" for="user_login">Username</label>
+                  <input type="text" name="log" id="user_login" class="input" value="" size="20">
+                </p>
+                <p>
+                  <label class="label" for="user_pass">Password</label>
+                  <input type="password" name="pwd" id="user_pass" class="input" value="" size="20">
+                </p>
+                <input type="hidden" name="_wp_original_http_referer" value="http://www.toolmarklets.com/">
+                <p class="forgetmenot"><span class="fakeCheckbox"></span>
+                  <input name="rememberme" type="checkbox" id="rememberme" value="forever" style="display: none; "> <span class="wpcf7-list-item-label">Remember Me</span>
+                </p>
+                <div class="submit clearfix">
+                  <input class="small radius nice blue button" type="submit" name="wp-submit" id="wp-submit" value="Log in">
+                  <input type="hidden" name="redirect_to" value="http://www.toolmarklets.com/wp-admin/">
+                  <input type="hidden" name="testcookie" value="1">
+                  <input type="hidden" name="instance" value="">
+                </div>
+                <p class="formExtraLnk">
+                  <a class="sliderLink" href="#" title="Click here if you have forget your password">Lost Password ?</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+          <div id="forgetForm" class="grid_5 omega">
+            <h4 class="entry-title">Forget Password ?</h4>
+            <p>Please enter your username or email address.<br>You will receive a link to create a new password via email.</p>
+            <br> <span class="btClose">close</span>
+            <div class="login pwdlost" id="theme-my-login1">
+              <form name="lostpasswordform" id="lostpasswordform1" action="http://www.toolmarklets.com/login/?action=lostpassword" method="post" class="clearfix">
+                <p>
+                  <label for="user_login1">Username or E-mail:</label>
+                  <input type="text" name="user_login" id="user_login1" class="input" value="" size="20"></p>
+                  <div class="submit clearfix">
+                    <input class="small radius nice blue button" type="submit" name="wp-submit" id="wp-submit1" value="Get a new password">
+                    <input type="hidden" name="redirect_to" value="/login/?checkemail=confirm">
+                    <input type="hidden" name="instance" value="1">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="">
+          <div id="goCreate" class="clearfix">
+            <div class="left">
+              <h4 class="entry-title">You don't have an account yet?</h4>
+              <p>Sign up to make your's tools collection</p>
+            </div>
+            <a class="btColor" href="/register" id="btSwitchForm">Create an account</a>
+            <br>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <p class="scrollToTop" style="display: none; ">
+      <a href="#">ScrollTotop</a>
+    </p>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="uploadForm" class="reveal-modal">
+  <h2>Awesome. I have it.</h2>
+  <p class="lead">Your couch.  I it's mine.</p>
+  <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
 
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
