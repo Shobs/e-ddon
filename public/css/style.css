@@ -3,9 +3,9 @@ body, #loginForm{
 	font-family: "Arial", "Helvetica", "sans-serif";
 }
 
-.row {
-	width: 1180px;
-}
+.label {background-color: transparent;}
+
+.row { width: 1180px;}
 
 #header {
 	background:	#34312C;
@@ -31,7 +31,9 @@ body, #loginForm{
 #btUpload { float: right; width: 200px;	margin-top: 40px;}
 
 .button.large { font-size: 20px; padding: 14px 10px 14px; }
+
 .button.medium { font-size: 14px; }
+
 .button.small { font-size: 15px; padding: 7px 10px 8px; }
 
 .mainTitle {
@@ -41,10 +43,7 @@ body, #loginForm{
 	margin-bottom: 20px;
 }
 
-.colorWord{
-	font-weight: bold;
-	color: #ed581f;
-}
+.colorWord{ font-weight: bold; color: #ed581f;}
 
 .catBlock {
 	-webkit-box-shadow: inset 0px 0px 0px 0px #fff;
@@ -112,11 +111,7 @@ body, #loginForm{
 
 .tagList {text-align: center;}
 
-#featuredPost {
-	clear: both;
-	padding-top: 50px;
-	margin-bottom: 80px;
-}
+#featuredPost {clear: both; padding-top: 50px; margin-bottom: 80px;}
 
 .sectionTitle {
 	color: #D2C9BB;
@@ -127,14 +122,9 @@ body, #loginForm{
 	margin-bottom: 30px;
 }
 
-.sectionTitle span {
-	background: url(../img/bg.png);
-	padding-right: 10px;
-}
+.sectionTitle span { background: url(../img/bg.png); padding-right: 10px; }
 
-#featuredPost p, #featuredPost h2{
-	margin: 0px;
-}
+#featuredPost p, #featuredPost h2{ margin: 0px; }
 
 
 #featuredPost .featuredSectionTitle {
@@ -145,11 +135,7 @@ body, #loginForm{
 	margin-bottom: 10px;
 }
 
-#featuredPost .linkPage {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-}
+#featuredPost .linkPage { position: absolute; top: 20px; right: 20px; }
 
 #featuredPost .btColor2 {
 	background: #D2C9BB;
@@ -160,37 +146,19 @@ body, #loginForm{
 	font-weight: bold;
 }
 
-#featuredPost .entryTitle {
-	font-size: 24px;
-}
+#featuredPost .entryTitle {	font-size: 24px; }
 
-.entryTitle, .entryTitle a {
-	color: #92897C;
-	font-weight: bold;
-	white-space: nowrap;
-}
+.entryTitle, .entryTitle a { color: #92897C; font-weight: bold;	white-space: nowrap;}
 
-.entryDetails{
-	margin: none;
-	padding: none;
-}
+.entryDetails{ margin: none; padding: none; }
 
-.entryDetails p.info {
-	color: #B1A590;
-	font-size: 12px;
-}
+.entryDetails p.info { color: #B1A590; font-size: 12px; }
 
-.entryDetails p.info a {
-	text-decoration: underline;
-}
+.entryDetails p.info a { text-decoration: underline; }
 
-.entryDetails .entryTag {
-	padding-top: 5px;
-}
+.entryDetails .entryTag { padding-top: 5px; }
 
-.entryDetails .entryTag ul li {
-	display: inline;
-}
+.entryDetails .entryTag ul li {	display: inline; }
 
 .entryDetails .entryTag li, .entryDetails .entryTag a, .entryTag .catTag {
 	float: left;
@@ -260,12 +228,7 @@ body, #loginForm{
 	border-color: transparent #ED581F transparent transparent;
 }
 
-.scrollToTop {
-	position: absolute;
-	bottom: 2px;
-	width: 100%;
-	/*display: none;*/
-}
+.scrollToTop { position: absolute; bottom: 2px;	width: 100%; }
 
 .scrollToTop a {
 	display: block;
@@ -286,10 +249,7 @@ body, #loginForm{
 	box-shadow: 0px -2px 2px 0px rgba(0,0,0,0.3);
 }
 
-#addArea {
-	float: right;
-	margin-top: 30px;
-}
+#addArea { float: right; margin-top: 30px; }
 
 #mentions {
 	font-weight: normal;
@@ -299,32 +259,106 @@ body, #loginForm{
 	font-family: Georgia,"Times New Roman",Times,serif;
 }
 
-#mentions .colorWord {
-	text-decoration: underline;
-	font-weight: normal;
-}
+#mentions .colorWord { text-decoration: underline; font-weight: normal; }
 
-#mentions p {
-	margin: 0px;
-	font-size: 16px;
-	color: #7E7E7B;
-}
+#mentions p { margin: 0px; font-size: 16px; color: #7E7E7B; }
 
-#mentionRight{
-	float: right;
-}
+#mentionRight{ float: right; }
 
-.mainTitle h2, .mainTitle h3 {
-float: left;
-}
+.mainTitle h2, .mainTitle h3 { margin-top: 20px; float: left; }
+
+.mainTitle h3{ font-weight: normal; }
 
 .mainTitle .sep {
-border-color: transparent transparent transparent #CEC0A6;
-border-style: solid;
-border-width: 15px 0px 15px 15px;
-display: block;
-float: right;
-margin: 12px 15px 0px 15px;
+	border-color: transparent transparent transparent #CEC0A6;
+	border-style: solid;
+	border-width: 15px 0px 15px 15px;
+	margin: 12px 15px 5px 15px;
+	display: inline-block;
 }
 
+.underTitle { margin-top: 20px; }
+
+.reveal-modal :last-child, .reveal-modal :first-child {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+form .label, form label {
+	font-weight: bold;
+	color: #92897C;
+	padding-left: 15px;
+}
+
+form input[type="text"], form input[type="password"], form textarea, form .select {
+	margin-bottom: 20px;
+	position: relative;
+	background: #F5F0E6;
+	height: 40px;
+	border-radius: 20px;
+	padding: 0px 10px;
+	-webkit-box-shadow: inset 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: inset 0px 2px 0px 0px rgba(0,0,0,0.1);
+	box-shadow: inset 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+	border: 0;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 24px;
+}
+
+
+
+form input[type="checkbox"] {
+	font-weight: bold;
+}
+
+form .select {
+	background: #F5F0E6 url(../img/ico_select.png) no-repeat 97% 18px;
+	overflow: hidden;
+}
+
+form .select select {
+	background: none;
+	width: 111%;
+	height: 40px;
+	border: none;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 24px;
+	padding-top: 5px;
+}
+
+.fakeCheckbox.checked {
+	background: #F5F0E6 url(../img/checked.png) no-repeat 50% 70%;
+}
+
+.fakeCheckbox {
+	margin-bottom: 20px;
+	position: relative;
+	background:
+	#F5F0E6;
+	height: 20px;
+	width: 20px;
+	border-radius: 5px;
+	display: block;
+	float: left;
+	margin-right: 5px;
+	-webkit-box-shadow: inset 0px 2px 0px 0px
+	rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: inset 0px 2px 0px 0px rgba(0,0,0,0.1);
+	box-shadow: inset 0px 2px 0px 0px
+	rgba(0, 0, 0, 0.1);
+	border: 0;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+
+
+.clear {
+	float: both;
+}
+
+.btRight {
+	float: right;
+}
 

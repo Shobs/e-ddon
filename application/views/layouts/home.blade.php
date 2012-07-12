@@ -36,8 +36,8 @@ More info: h5bp.com/i/378 -->
      Modernizr enables HTML5 elements & feature detects for optimal performance.
      Create your own custom Modernizr build: www.modernizr.com/download/ -->
 
-   </head>
-   <body>
+</head>
+<body>
 
 <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 chromium.org/developers/how-tos/chrome-frame-getting-started -->
@@ -47,53 +47,53 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <header id="header" >
   <div class="row">
     <div class="twelve columns">
-        <hgroup class="five columns">
-          <h1 id="siteLogo">
-            <a href="home" title="eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>
-            </a>
-          </h1>
-        </hgroup>
-        <div class="three columns">
-          <div id="btLogin">
+      <hgroup class="five columns">
+        <h1 id="siteLogo">
+          <a href="home" title="eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>
+          </a>
+        </h1>
+      </hgroup>
+      <div class="three columns">
+        <div id="btLogin">
           <a href="#" class="small radius nice blue button" title="log in or register" data-reveal-id="loginForm">Login / Register</a>
         </div>
-        </div>
-        <div class="four columns">
-          <div id="btUpload">
+      </div>
+      <div class="four columns">
+        <div id="btUpload">
           <a href="#" class="large radius nice blue button" title="Submit an Addon" data-reveal-id="uploadForm">Submit an <span>addon</span></a>
-          </div>
         </div>
+      </div>
     </div>
-</header>
+  </header>
 
-<content>
-  <div class="row">
-    <div class="twelve columns">
-      @yield('content')
+  <content>
+    <div class="row">
+      <div class="twelve columns">
+        @yield('content')
+      </div>
     </div>
-  </div>
-</content>
+  </content>
 
 
-<footer id="footer" role="contentinfo">
-  <div class="row">
-    <div class="twelve columns">
+  <footer id="footer" role="contentinfo">
+    <div class="row">
+      <div class="twelve columns">
         <div class="four columns">
           <h4>You like eddon ?</h4>
           <h5><span class="colorWord">Say-it</span> to Facebook !</h5>
           <fb:fan profile_id="262740907103776" stream="false" connections="10" width="280" height="230" css="http://www.toolmarklets.com/wp-content/themes/toolmarklets/style-fb.css?120" class="  fb_iframe_widget ">
-            <span style="height: 230px; width: 280px; ">
-              <iframe id="f17fd77954" name="f2bd986348" scrolling="no" style="border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; overflow-x: hidden; overflow-y: hidden; height: 230px; width: 280px; " class="fb_ltr" src="http://www.facebook.com/plugins/fan.php?connections=10&amp;css=http%3A%2F%2Fwww.toolmarklets.com%2Fwp-content%2Fthemes%2Ftoolmarklets%2Fstyle-fb.css%3F120&amp;height=230&amp;id=262740907103776&amp;locale=en_US&amp;sdk=joey&amp;stream=false&amp;width=280"></iframe>
-            </span>
-          </fb:fan>
-        </div>
-        <div class="three columns">
-          <h4>Help us to <span class="colorWord">improve</span></h4>
-          <h5>eddon.com</h5>
-          <a href="#" title="Give us your feedback">Give us your <br><span>feedback !</span></a>
-        </div>
-        <div class="five columns ">
-          <div id="addArea">
+          <span style="height: 230px; width: 280px; ">
+            <iframe id="f17fd77954" name="f2bd986348" scrolling="no" style="border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; overflow-x: hidden; overflow-y: hidden; height: 230px; width: 280px; " class="fb_ltr" src="http://www.facebook.com/plugins/fan.php?connections=10&amp;css=http%3A%2F%2Fwww.toolmarklets.com%2Fwp-content%2Fthemes%2Ftoolmarklets%2Fstyle-fb.css%3F120&amp;height=230&amp;id=262740907103776&amp;locale=en_US&amp;sdk=joey&amp;stream=false&amp;width=280"></iframe>
+          </span>
+        </fb:fan>
+      </div>
+      <div class="three columns">
+        <h4>Help us to <span class="colorWord">improve</span></h4>
+        <h5>eddon.com</h5>
+        <a href="#" title="Give us your feedback">Give us your <br><span>feedback !</span></a>
+      </div>
+      <div class="five columns ">
+        <div id="addArea">
           <div style="margin: 0px; padding: 0px; background: none; border: none">
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
               <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
@@ -104,8 +104,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
               <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
             </div>
-            </div>
-            <div style="margin: 0px; padding: 0px; background: none; border: none">
+          </div>
+          <div style="margin: 0px; padding: 0px; background: none; border: none">
 
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
               <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
@@ -117,119 +117,291 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
             </div>
           </div>
-          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div id="mentions">
-  <div class="row">
-    <div  class="twelve columns">
-      <div class="six columns">
-      <p id="mentionLeft" >© eddon 2012 - <a href="#" title="about eddon" class="colorWord">about</a></p>
-      </div>
-      <div class="six columns">
-      <p id="mentionRight">
-        <a href="http://www.toolmarklets.com/legales/" title="legales" class="colorWord">legales</a>
-        - ico by <a href="http://thenounproject.com/" title="The Noun Project" class="colorWord" target="_blank">The Noun Project</a>
-      </p>
+    <div class="row">
+      <div  class="twelve columns">
+        <div class="six columns">
+          <p id="mentionLeft" >© eddon 2012 - <a href="#" title="about eddon" class="colorWord">about</a></p>
+        </div>
+        <div class="six columns">
+          <p id="mentionRight">
+            <a href="http://www.toolmarklets.com/legales/" title="legales" class="colorWord">legales</a>
+            - ico by <a href="http://thenounproject.com/" title="The Noun Project" class="colorWord" target="_blank">The Noun Project</a>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 
 </footer>
 
 <div id="loginForm" class="reveal-modal">
-<div id="main" class="row">
-  <div id="content" role="main" class="twelve columns">
-    <hgroup class="mainTitle ">
-      <h3>my <span class="colorWord">eddons</span>
-        <span class="sep"></span>
-      </h3>
-      <h2>Log In</h2>
-    </hgroup>
-    <div class="row">
+  <div id="main" class="row">
+    <div id="content" role="main" class="twelve columns">
+      <hgroup class="mainTitle ">
+        <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
+        <h2 class="inlined">Log In</h2>
+      </hgroup>
+      <div class="row">
         <div class="twelve columns">
           <div id="loginForm" class="">
-            <h5 class="entryTitle">You have already an account?</h5>
-            <p>Please log in to access to your addon collection</p><br>
+            <br>
+            <p class="underTitle">Please log in to access to your addon collection</p>
+            <br>
             <div class="login" id="theme-my-login">
               <form name="loginform" id="loginform" action="/login/?action=login" method="post" class="clearfix">
                 <p>
-                  <label class="label" for="user_login">Username</label>
-                  <input type="text" name="log" id="user_login" class="input" value="" size="20">
+                  <label class="label" for="userLogin">Username</label>
+                  <input type="text" name="log" id="userLogin" class="input" value="" size="20">
                 </p>
+                <br>
                 <p>
-                  <label class="label" for="user_pass">Password</label>
-                  <input type="password" name="pwd" id="user_pass" class="input" value="" size="20">
+                  <label class="label" for="userPass">Password</label>
+                  <input type="password" name="pwd" id="userPass" class="input" value="" size="20">
                 </p>
                 <input type="hidden" name="_wp_original_http_referer" value="http://www.toolmarklets.com/">
-                <p class="forgetmenot"><span class="fakeCheckbox"></span>
-                  <input name="rememberme" type="checkbox" id="rememberme" value="forever" style="display: none; "> <span class="wpcf7-list-item-label">Remember Me</span>
-                </p>
-                <div class="submit clearfix">
-                  <input class="small radius nice blue button" type="submit" name="wp-submit" id="wp-submit" value="Log in">
-                  <input type="hidden" name="redirect_to" value="http://www.toolmarklets.com/wp-admin/">
-                  <input type="hidden" name="testcookie" value="1">
-                  <input type="hidden" name="instance" value="">
+                <div class=" nine columns">
+                  <p class="forgetMeNot"><span class="fakeCheckbox"></span>
+                    <input name="rememberme" type="checkbox" id="rememberMe" value="forever" style="display: none; "> <span class="wpcf7-list-item-label">Remember Me</span>
+                  </p>
                 </div>
-                <p class="formExtraLnk">
-                  <a class="sliderLink" href="#" title="Click here if you have forget your password">Lost Password ?</a>
-                </p>
+                <div class="three columns">
+                  <div class="submit">
+                    <input class="small radius nice blue button btRight" type="submit" name="wp-submit" id="wp-submit" value="Log in">
+                    <input type="hidden" name="redirect_to" value="http://www.toolmarklets.com/wp-admin/">
+                    <input type="hidden" name="testcookie" value="1">
+                    <input type="hidden" name="instance" value="">
+                  </div>
+                </div>
+                <div class="clear">
+                  <div class="twelve columns ">
+                    <p class="formExtraLnk">
+                      <h4 class="entryTitle">Forgot Password ?</h4>
+                      <a class="sliderLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
+                    </p>
+                    <p class="formExtraLnk">
+                      <h4 class="entryTitle">You don't have an account yet ?</h4>
+                      <a class="sliderLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                    </p>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
+      <hgroup class="mainTitle ">
+        <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
+        <h2 class="inlined">Recovery</h2>
+      </hgroup>
+      <div class="row">
+        <div id="forgetForm" class=" twelve columns" >
+          <br>
+          <p>Please enter your username or email address.<br>You will receive a link to create a new password via email.</p>
 
-          <div id="forgetForm" class="grid_5 omega">
-            <h4 class="entry-title">Forget Password ?</h4>
-            <p>Please enter your username or email address.<br>You will receive a link to create a new password via email.</p>
-            <br> <span class="btClose">close</span>
-            <div class="login pwdlost" id="theme-my-login1">
-              <form name="lostpasswordform" id="lostpasswordform1" action="http://www.toolmarklets.com/login/?action=lostpassword" method="post" class="clearfix">
-                <p>
-                  <label for="user_login1">Username or E-mail:</label>
-                  <input type="text" name="user_login" id="user_login1" class="input" value="" size="20"></p>
-                  <div class="submit clearfix">
-                    <input class="small radius nice blue button" type="submit" name="wp-submit" id="wp-submit1" value="Get a new password">
+          <div class="login pwdlost" id="theme-my-login1">
+            <form name="lostpasswordform" id="lostpasswordform1" action="http://www.toolmarklets.com/login/?action=lostpassword" method="post" class="">
+              <p>
+                <label for="user_login1">Username or E-mail:</label>
+                <input type="text" name="user_login" id="user_login1" class="input" value="" size="20"></p>
+                <br>
+                <div class="six columns"></div>
+                <div class="six columns ">
+                  <div class="submit">
+                    <input class="small radius nice blue button btRight" type="submit" name="wp-submit" id="wp-submit1" value="Get a new password">
                     <input type="hidden" name="redirect_to" value="/login/?checkemail=confirm">
                     <input type="hidden" name="instance" value="1">
                   </div>
-                </form>
-              </div>
+                </div>
+                <div class="clear">
+                  <div class="twelve columns ">
+                    <p class="formExtraLnk">
+                      <h4 class="entryTitle">Remember your password ?</h4>
+                      <a class="sliderLink clear" href="#" title="Click here if you forgot your password">Log in</a>
+                    </p>
+                    <p class="formExtraLnk">
+                      <h4 class="entryTitle">You don't have an account yet ?</h4>
+                      <a class="sliderLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                    </p>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-        </div>
-
-        <div class="">
-          <div id="goCreate" class="clearfix">
-            <div class="left">
-              <h4 class="entry-title">You don't have an account yet?</h4>
-              <p>Sign up to make your's tools collection</p>
+        <hgroup class="mainTitle ">
+          <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
+          <h2 class="inlined">Sign up</h2>
+        </hgroup>
+        <div class="row">
+          <div id="goCreate" class="twelve columns">
+            <div>
+              <br>
+              <p>Sign up to make your addons collection</p>
+              <br>
             </div>
-            <a class="btColor" href="/register" id="btSwitchForm">Create an account</a>
+            <div>
+              <form name="registerform" id="registerform1" action="?action=register" method="post" class="clearfix">
+                <p>
+                  <label for="user_login1">Username</label>
+                  <input type="text" name="user_login" id="user_login1" class="input" value="" size="20">
+                </p>
+                <br>
+                <p>
+                  <label for="user_email1">E-mail</label>
+                  <input type="text" name="user_email" id="user_email1" class="input" value="" size="20">
+                </p>
+                <p>
+                  <label for="user_job1">Job</label>
+                  <input type="text" name="user_job" id="user_job1" class="input" value="" size="20">
+                </p>
+                <div>
+                  <label for="user_country">Country</label>
+                  <div class="select">
+                    <select name="user_country" id="user_country"></select>
+                  </div>
+                </div>
+                <br>
+                <p>
+                  <label for="pass11">Password:</label>
+                  <input autocomplete="off" name="pass1" id="pass11" class="input" size="20" value="" type="password">
+                </p>
+                <p>
+                  <label for="pass21">Confirm Password:</label>
+                  <input autocomplete="off" name="pass2" id="pass21" class="input" size="20" value="" type="password">
+                </p>
+                <p id="reg_passmail1"></p>
+                <div class="twelve columns submit clearfix">
+                  <input class="small radius nice blue button btRight" type="submit" name="wp-submit" id="wp-submit1" value="Register">
+                  <input type="hidden" name="redirect_to" value="/register/?checkemail=registered"> <input type="hidden" name="instance" value="1">
+                </div>
+                <div class="clear">
+                  <div class="twelve columns ">
+                    <p class="formExtraLnk">
+                      <h4 class="entryTitle">Forgot Password ?</h4>
+                      <a class="sliderLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
+                    </p>
+                    <p class="formExtraLnk">
+                      <h4 class="entryTitle">You have an account ?</h4>
+                      <a class="sliderLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
             <br>
           </div>
         </div>
-        </div>
+        <a class="close-reveal-modal">&#215;</a>
       </div>
-    </div>
-    <p class="scrollToTop" style="display: none; ">
-      <a href="#">ScrollTotop</a>
-    </p>
-  </div>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
 
-<div id="uploadForm" class="reveal-modal">
-  <h2>Awesome. I have it.</h2>
-  <p class="lead">Your couch.  I it's mine.</p>
-  <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+      <div id="uploadForm" class="reveal-modal">
+        <div class="row">
+          <div class="twelve column">
+        <div id="content" role="main" class="submitPage clearfix">
+          <h1 class="main-title">submit a <span class="colorWord">tool</span></h1>
+          <div class="entry-content grid_11 alpha omega clearfix">
+            <div class="wpcf7" id="wpcf7-f30-p27-o1">
+              <form action="/submit-a-tool/#wpcf7-f30-p27-o1" method="post" class="wpcf7-form clearfix" enctype="multipart/form-data">
+                <div style="display: none;">
+                  <input type="hidden" name="_wpcf7" value="30">
+                  <input type="hidden" name="_wpcf7_version" value="3.1.2">
+                  <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f30-p27-o1">
+                  <input type="hidden" name="_wpnonce" value="e984417028">
+                </div>
+                <div class="grid_5 suffix_1 alpha clearfix">
+                  <span class="wpcf7-form-control-wrap honeypot-1982">
+                    <div style="display:none;" class="hidden">
+                      <label for="email-wpcf7-hp"><small>Leave this field empty.</small></label>
+                      <input class="wpcf7-text" type="text" name="email-wpcf7-hp" id="email-wpcf7-hp" value="" size="40" tabindex="3">
+                    </div>
+                  </span>
+                  <p></p>
+                  <p>
+                    <span class="label">Tool's name <em>(required)</em></span>
+                    <br>
+                    <span class="wpcf7-form-control-wrap tool-name">
+                      <input type="text" name="tool-name" value="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" size="40">
+                    </span>
+                  </p>
+                  <p>
+                    <span class="label">Tool's author</span>
+                    <br>
+                    <span class="wpcf7-form-control-wrap tool-author">
+                      <input type="text" name="tool-author" value="" class="wpcf7-form-control wpcf7-text" size="40">
+                    </span>
+                  </p>
+                  <p>
+                    <span class="label">Tool's url <em>(required)</em></span>
+                    <br>
+                    <span class="wpcf7-form-control-wrap tool-url">
+                      <input type="text" name="tool-url" value="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" size="40">
+                    </span>
+                  </p>
+                  <p class="fileFaker">
+                    <span class="label">Tool's image <em>(.jpg, .gif, .png - 470 x 354px - 300ko.max)</em></span>
+                    <br>
+                    <input id="fileFake" type="text" value="">
+                    <span class="bt">Parcourir</span>
+                    <span class="wpcf7-form-control-wrap tool-image">
+                      <input type="file" name="tool-image" class="wpcf7-form-control  wpcf7-file fileBrowser" size="40" value="1">
+                    </span>
+                  </p>
+                  <p>
+                    <span class="label">Tool's description <em>(required)</em></span>
+                    <br>
+                    <span class="wpcf7-form-control-wrap tool-description">
+                      <textarea name="tool-description" class="wpcf7-form-control  wpcf7-textarea wpcf7-validates-as-required" cols="40" rows="10">
+                      </textarea>
+                    </span>
+                  </p>
+                </div>
+                <div class="grid_5 omega clearfix">
+                  <p>
+                    <span class="label">Your Name <em>(required)</em></span>
+                    <br>
+                    <span class="wpcf7-form-control-wrap your-name">
+                      <input type="text" name="your-name" value="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" size="40">
+                    </span>
+                  </p>
+                  <p>
+                    <span class="label">Your Email <em>(required)</em></span>
+                    <br>
+                    <span class="wpcf7-form-control-wrap your-email">
+                      <input type="text" name="your-email" value="" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" size="40">
+                    </span>
+                  </p>
+                  <p>
+                    <span class="wpcf7-form-control-wrap is-author">
+                      <span class="wpcf7-form-control  wpcf7-checkbox">
+                        <span class="wpcf7-list-item">
+                          <span class="fakeCheckbox"></span>
+                          <input type="checkbox" name="is-author[]" value="i'm the author of this tool" style="display: none; ">&nbsp;
+                          <span class="wpcf7-list-item-label">i'm the author of this tool</span>
+                        </span>
+                      </span>
+                    </span>
+                  </p>
+                </div>
+                <p class="submit grid_5 push_6">
+                  <input type="submit" value="Submit the tool" class="wpcf7-form-control  wpcf7-submit btColor">
+                  <img class="ajax-loader" src="http://www.toolmarklets.com/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Sending ..." style="visibility: hidden; ">
+                </p>
+                <div class="wpcf7-response-output wpcf7-display-none">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
 
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
