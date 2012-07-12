@@ -48,19 +48,19 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <div class="row">
     <div class="twelve columns">
         <hgroup class="five columns">
-          <h1 id="site_logo">
+          <h1 id="siteLogo">
             <a href="http://eddon.com/" title="eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>
             </a>
           </h1>
         </hgroup>
         <div class="three columns">
           <div id="btLogin">
-          <a href="#" class="small radius nice blue button btColor" title="log in or register">Login / Register</a>
+          <a href="#" class="small radius nice blue button" title="log in or register">Login / Register</a>
         </div>
         </div>
         <div class="four columns">
           <div id="btUpload">
-          <a href="#" class="large radius nice blue button btColor" title="Submit an Addon">Submit an <span>addon</span></a>
+          <a href="#" class="large radius nice blue button" title="Submit an Addon">Submit an <span>addon</span></a>
           </div>
         </div>
     </div>
@@ -75,7 +75,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 </content>
 
 
-<footer role="contentinfo">
+<footer id="footer" role="contentinfo">
   <div class="row">
     <div class="twelve columns">
         <div class="four columns">
@@ -87,16 +87,26 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             </span>
           </fb:fan>
         </div>
-        <div class="four columns">
+        <div class="three columns">
           <h4>Help us to <span class="colorWord">improve</span></h4>
           <h5>eddon.com</h5>
           <a href="#" title="Give us your feedback">Give us your <br><span>feedback !</span></a>
         </div>
-        <div class="four columns ">
+        <div class="five columns ">
+          <div id="addArea">
           <div style="margin: 0px; padding: 0px; background: none; border: none">
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
               <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
             </div>
+            <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
+              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
+            </div>
+            <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
+              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
+            </div>
+            </div>
+            <div style="margin: 0px; padding: 0px; background: none; border: none">
+
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
               <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
             </div>
@@ -107,27 +117,25 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
             </div>
           </div>
-          <div style="margin: 0px; padding: 0px; background: none; border: none">
-
-            <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
-              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
-            </div>
-            <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
-              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
-            </div>
           </div>
       </div>
     </div>
   </div>
 
+  <div id="mentions">
   <div class="row">
-    <div class="twelve columns">
-      <p>© eddon 2012 - <a href="#" title="about eddon" class="colorWord">about</a></p>
-      <p>
+    <div  class="twelve columns">
+      <div class="six columns">
+      <p id="mentionLeft" >© eddon 2012 - <a href="#" title="about eddon" class="colorWord">about</a></p>
+      </div>
+      <div class="six columns">
+      <p id="mentionRight">
         <a href="http://www.toolmarklets.com/legales/" title="legales" class="colorWord">legales</a>
         - ico by <a href="http://thenounproject.com/" title="The Noun Project" class="colorWord" target="_blank">The Noun Project</a>
       </p>
+      </div>
     </div>
+  </div>
   </div>
 
 </footer>

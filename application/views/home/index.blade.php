@@ -3,66 +3,67 @@
 
 @section('content')
 <div class="row">
-  <div class="eight columns">
+  <div class="seven columns">
     <div class="twelve columns">
-      <h2>addon by <span class="colorWord">type</span></h2>
+      <h2 class="mainTitle">addon by <span class="colorWord">type</span></h2>
     </div>
     <div class="four columns">
       <a href="#" title="View addon list in Economy">
         <img src="http://placehold.it/180x180" alt="placeholder+image">
-        <h2>Economy</h2> <!-- category name -->
+        <h2 class="catTitle">Economy</h2> <!-- category name -->
         <p></p> <!-- category description -->
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View tool list in Gathering">
+      <a href="#" title="View addon list in Gathering">
         <img src="http://placehold.it/180x180" alt="placeholder+image">
-        <h2>Gathering</h2>
+        <h2 class="catTitle">Gathering</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View tool list in Interface" >
+      <a href="#" title="View addon list in Interface" >
         <img src="http://placehold.it/180x180" alt="placeholder+image">
-        <h2>Interface</h2>
+        <h2 class="catTitle">Interface</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View tool list in PVP" >
+      <a href="#" title="View addon list in PVP" >
         <img src="http://placehold.it/180x180" alt="placeholder+image">
-        <h2>PVP</h2>
+        <h2 class="catTitle">PVP</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View tool list in Raiding" >
+      <a href="#" title="View addon list in Raiding" >
         <img src="http://placehold.it/180x180" alt="placeholder+image">
-        <h2>Raiding</h2>
+        <h2 class="catTitle">Raiding</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="#" title="View tool list in Vanity" >
+      <a href="#" title="View addon list in Vanity" >
         <img src="http://placehold.it/180x180" alt="placeholder+image">
-        <h2>Vanity</h2>
+        <h2 class="catTitle">Vanity</h2>
         <p></p>
       </a>
     </div>
   </div>
 
 
-      <div class="four columns">
+      <div class="five columns">
         <div id="search">
           <form name="" action="#" method="get" role="search" >
             <input type="search" placeholder="search an addon" id="s" name="s">
             <input type="submit" class="small radius nice blue button" value="search">
           </form>
         </div>
-        <div class="twelve columns"><h2>addon by <span class="colorWord">tags</span></h2>
+        <div class="twelve columns">
+          <h2 class="mainTitle">addon by <span class="colorWord">tags</span></h2>
           <div> <!-- World cloud division -->
             <h2></h2> <!-- title -->
-            <div >
+            <div class="tagList">
               <a href="#" class="tag-link-13" title="2 topics" style="font-size: 10.1176470588pt;">achievements</a>
               <a href="#" class="tag-link-20" title="1 topic" style="font-size: 8pt;">action bars</a>
               <a href="#" class="tag-link-12" title="30 topics" style="font-size: 22pt;">artwork</a>
@@ -92,96 +93,102 @@
       </div>
   </div>
   <div class="row">
-      <div class="twelve columns"> <!-- Featured addons -->
-        <h2><span>featured</span></h2>
+      <div id="featuredPost"class="twelve columns"> <!-- Featured addons -->
+        <h2 class="sectionTitle"><span>featured</span></h2>
         <div class="four columns">
-          <h3>last <span class="colorWord">added</span></h3>
-          <a href="#" title="see all the last added addons">see all »</a>
-          <article id="post_659">
-            <a href="#">
+          <h3 class="featuredSectionTitle">last <span class="colorWord">added</span></h3>
+          <a href="#" class="linkPage btColor2" title="see all the last added addons">see all »</a>
+          <article id="#"> <!-- post number -->
+            <a href="#" class="imgHolder">
               <img src="http://placehold.it/370x278"  alt="placeholder" title="placeholder">
             </a>
-            <div> <!-- entry details -->
-              <header>
-                <h2> <!-- entry title -->
-                  <a href="#" title="#" rel="bookmark">placeholder</a>
+            <div class="entryDetails">
+              <header class="entryHeader">
+                <h2 class="entryTitle">
+                  <a href="#" title="#" rel="bookmark">"addon's name"</a>
                 </h2>
               </header>
-              <p class="info">by Seiji Uchiyama, in
-                <a href="#" title="#">#</a>
+              <p class="info">by "author's name", in
+                <a href="#" title="#">"section"</a>
               </p>
-              <div class="entry_tag">
+              <div class="entryTag">
                 <ul>
                   <li>
-                    <a href="#" rel="tag">code snippet</a>
+                    <a href="#" rel="tag"> "tag"</a>
                   </li>
                   <li>
-                    <a href="#" rel="tag">css3</a>
+                    <a href="#" rel="tag">"tag"</a>
                   </li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-        <div class="four columns">
-          <h3 class="featured_section_title">highest <span class="colorWord">rated</span></h3>
-          <a href="#" title="see all the highest rated tools">see all »</a>
-          <article id="post-169">
+         <div class="four columns">
+          <h3 class="featuredSectionTitle">highest <span class="colorWord">rated</span></h3>
+          <a href="#" class="linkPage btColor2" title="see all the highest rated addons">see all »</a>
+          <article id="post_659">
             <a href="#" class="imgHolder">
-              <img src="http://placehold.it/370x278" alt="placeholder" title="placeholder">
+              <img src="http://placehold.it/370x278"  alt="placeholder" title="placeholder">
             </a>
-            <div class="entry_details">
-              <header class="entry_header">
-                <h2 class="entry_title">
-                  <a href="#" title="See Sprite Cow detail's" rel="bookmark">placeholder</a>
+            <div class="entryDetails"> <!-- entry details -->
+              <header class="entryHeader">
+                <h2 class="entryTitle"> <!-- entry title -->
+                  <a href="#" title="#" rel="bookmark">"addon's name"</a>
                 </h2>
               </header>
-              <p class="info">by theTeam, in
-                <a href="#" title="View all posts in CSS">CSS</a>
+              <p class="info">by "author's name", in
+                <a href="#" title="#">"section"</a>
               </p>
-              <div class="entry_tag">
+              <div class="entryTag">
                 <ul>
                   <li>
-                    <a href="#" rel="tag">code snippet</a>
+                    <a href="#" rel="tag">"tag"</a>
+                  </li>
+                  <li>
+                    <a href="#" rel="tag">"tag"</a>
                   </li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
-        <div class="four columns">
-          <h3>eddon <span class="colorWord">selected</span></h3>
-          <article id="post_633">
+         <div class="four columns">
+          <h3 class="featuredSectionTitle">eddon <span class="colorWord">selected</span></h3>
+          <article id="post_659">
             <a href="#" class="imgHolder">
-              <img src="http://placehold.it/370x278" alt="placeholder" title="placeholder">
+              <img src="http://placehold.it/370x278"  alt="placeholder" title="placeholder">
             </a>
-            <div class="entry_details">
-              <header class="entry_header">
-                <h2 class="entry_title">
-                  <a href="#" title="See IcoMoon detail's" rel="bookmark">placeholder</a>
+            <div class="entryDetails"> <!-- entry details -->
+              <header class="entryHeader">
+                <h2 class="entryTitle"> <!-- entry title -->
+                  <a href="#" title="#" rel="bookmark">"addon's name"</a>
                 </h2>
               </header>
-              <p class="info">by keyamoon, in
-                <a href="#" title="View all posts in Graphics">Graphics</a>
+              <p class="info">by "author's name", in
+                <a href="#" title="#">"section"</a>
               </p>
-              <div class="entry_tag">
+              <div class="entryTag">
                 <ul>
                   <li>
-                    <a href="#" rel="tag">css3</a>
+                    <a href="#" rel="tag">"tag"</a>
                   </li>
                   <li>
-                    <a href="#" rel="tag">text</a>
+                    <a href="#" rel="tag">"tag"</a>
                   </li>
                 </ul>
               </div>
             </div>
           </article>
         </div>
+
       </div>
     </div>
     <div class="row">
       <div class="twelve columns" style="display: block; ">
-        <a href="#" class="centered">ScrollTotop</a>
+        <div class="scrollToTop">
+        <a href="#">ScrollTotop</a>
+        </div>
       </div>
     </div>
 @endsection
