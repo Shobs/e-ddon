@@ -326,6 +326,8 @@ form .select select {
 	padding-top: 5px;
 }
 
+
+
 .fakeCheckbox.checked {
 	background: #F5F0E6 url(../img/checked.png) no-repeat 50% 70%;
 }

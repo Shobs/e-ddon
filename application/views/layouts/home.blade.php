@@ -70,6 +70,13 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="row">
       <div class="twelve columns">
         @yield('content')
+        <div class="row">
+          <div class="twelve columns" style="display: block; ">
+            <div class="scrollToTop">
+              <a href="#">ScrollTotop</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </content>
@@ -81,7 +88,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <div class="four columns">
           <h4>You like eddon ?</h4>
           <h5><span class="colorWord">Say-it</span> to Facebook !</h5>
-          <fb:fan profile_id="262740907103776" stream="false" connections="10" width="280" height="230" css="http://www.toolmarklets.com/wp-content/themes/toolmarklets/style-fb.css?120" class="  fb_iframe_widget ">
+          <fb:fan profile_id="262740907103776" stream="false" connections="10" width="280" height="230" css="../css/fb.css" class="  fb_iframe_widget ">
           <span style="height: 230px; width: 280px; ">
             <iframe id="f17fd77954" name="f2bd986348" scrolling="no" style="border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; overflow-x: hidden; overflow-y: hidden; height: 230px; width: 280px; " class="fb_ltr" src="http://www.facebook.com/plugins/fan.php?connections=10&amp;css=http%3A%2F%2Fwww.toolmarklets.com%2Fwp-content%2Fthemes%2Ftoolmarklets%2Fstyle-fb.css%3F120&amp;height=230&amp;id=262740907103776&amp;locale=en_US&amp;sdk=joey&amp;stream=false&amp;width=280"></iframe>
           </span>
@@ -164,7 +171,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                   <label class="label" for="userPass">Password</label>
                   <input type="password" name="pwd" id="userPass" class="input" value="" size="20">
                 </p>
-                <input type="hidden" name="_wp_original_http_referer" value="http://www.toolmarklets.com/">
+                <input type="hidden" name="_wp_original_http_referer" value="http://www.eddon.com/">
                 <div class=" nine columns">
                   <p class="forgetMeNot"><span class="fakeCheckbox"></span>
                     <input name="rememberme" type="checkbox" id="rememberMe" value="forever" style="display: none; "> <span class="wpcf7-list-item-label">Remember Me</span>
@@ -205,7 +212,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
           <p>Please enter your username or email address.<br>You will receive a link to create a new password via email.</p>
 
           <div class="login pwdlost" id="theme-my-login1">
-            <form name="lostpasswordform" id="lostpasswordform1" action="http://www.toolmarklets.com/login/?action=lostpassword" method="post" class="">
+            <form name="lostpasswordform" id="lostpasswordform1" action="#" method="post" class="">
               <p>
                 <label for="user_login1">Username or E-mail:</label>
                 <input type="text" name="user_login" id="user_login1" class="input" value="" size="20"></p>
@@ -297,17 +304,19 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <br>
           </div>
         </div>
-        <a class="close-reveal-modal">&#215;</a>
       </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 
       <div id="uploadForm" class="reveal-modal">
         <div class="row">
           <div class="twelve column">
         <div id="content" role="main" class="submitPage clearfix">
-          <h1 class="main-title">submit a <span class="colorWord">tool</span></h1>
+          <h1 class="main-title">submit a <span class="colorWord">addon</span></h1>
           <div class="entry-content grid_11 alpha omega clearfix">
             <div class="wpcf7" id="wpcf7-f30-p27-o1">
-              <form action="/submit-a-tool/#wpcf7-f30-p27-o1" method="post" class="wpcf7-form clearfix" enctype="multipart/form-data">
+              <form action="#" method="post" class="#" enctype="multipart/form-data">
                 <div style="display: none;">
                   <input type="hidden" name="_wpcf7" value="30">
                   <input type="hidden" name="_wpcf7_version" value="3.1.2">
@@ -323,40 +332,40 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                   </span>
                   <p></p>
                   <p>
-                    <span class="label">Tool's name <em>(required)</em></span>
+                    <span class="label">Addon's name <em>(required)</em></span>
                     <br>
-                    <span class="wpcf7-form-control-wrap tool-name">
-                      <input type="text" name="tool-name" value="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" size="40">
+                    <span class="#">
+                      <input type="text" name="addon-name" value="" class="#" size="40">
                     </span>
                   </p>
                   <p>
-                    <span class="label">Tool's author</span>
+                    <span class="label">Addon's author</span>
                     <br>
-                    <span class="wpcf7-form-control-wrap tool-author">
-                      <input type="text" name="tool-author" value="" class="wpcf7-form-control wpcf7-text" size="40">
+                    <span class="#">
+                      <input type="text" name="addon-author" value="" class="#" size="40">
                     </span>
                   </p>
                   <p>
-                    <span class="label">Tool's url <em>(required)</em></span>
+                    <span class="label">Addon's url <em>(required)</em></span>
                     <br>
-                    <span class="wpcf7-form-control-wrap tool-url">
-                      <input type="text" name="tool-url" value="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" size="40">
+                    <span class="#">
+                      <input type="text" name="addon-url" value="" class="#" size="40">
                     </span>
                   </p>
                   <p class="fileFaker">
-                    <span class="label">Tool's image <em>(.jpg, .gif, .png - 470 x 354px - 300ko.max)</em></span>
+                    <span class="label">Addon's image <em>(.jpg, .gif, .png - 470 x 354px - 300ko.max)</em></span>
                     <br>
                     <input id="fileFake" type="text" value="">
-                    <span class="bt">Parcourir</span>
-                    <span class="wpcf7-form-control-wrap tool-image">
-                      <input type="file" name="tool-image" class="wpcf7-form-control  wpcf7-file fileBrowser" size="40" value="1">
+                    <span class="small radius nice blue button btRight">Parcourir</span>
+                    <span class="formControlWrap">
+                      <input type="file" name="addon-image" class="formControlWrap" size="40" value="1">
                     </span>
                   </p>
                   <p>
-                    <span class="label">Tool's description <em>(required)</em></span>
+                    <span class="label">Addon's description <em>(required)</em></span>
                     <br>
-                    <span class="wpcf7-form-control-wrap tool-description">
-                      <textarea name="tool-description" class="wpcf7-form-control  wpcf7-textarea wpcf7-validates-as-required" cols="40" rows="10">
+                    <span class="#">
+                      <textarea name="addon-description" class="#" cols="40" rows="10">
                       </textarea>
                     </span>
                   </p>
@@ -377,19 +386,19 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                     </span>
                   </p>
                   <p>
-                    <span class="wpcf7-form-control-wrap is-author">
-                      <span class="wpcf7-form-control  wpcf7-checkbox">
-                        <span class="wpcf7-list-item">
+                    <span class="#">
+                      <span class="#">
+                        <span class="#">
                           <span class="fakeCheckbox"></span>
-                          <input type="checkbox" name="is-author[]" value="i'm the author of this tool" style="display: none; ">&nbsp;
-                          <span class="wpcf7-list-item-label">i'm the author of this tool</span>
+                          <input type="checkbox" name="is-author[]" value="i'm the author of this addon" style="display: none; ">&nbsp;
+                          <span class="#">i'm the author of this addon</span>
                         </span>
                       </span>
                     </span>
                   </p>
                 </div>
                 <p class="submit grid_5 push_6">
-                  <input type="submit" value="Submit the tool" class="wpcf7-form-control  wpcf7-submit btColor">
+                  <input type="submit" value="Submit the addon" class="small radius nice blue button btRight">
                   <img class="ajax-loader" src="http://www.toolmarklets.com/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Sending ..." style="visibility: hidden; ">
                 </p>
                 <div class="wpcf7-response-output wpcf7-display-none">

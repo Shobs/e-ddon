@@ -1,0 +1,103 @@
+/*/FB*/
+.FB_Loader{
+	margin-top:50px !important;
+	padding-top:100% !important;
+	background:none !important;}
+
+.fan_box .full_widget{
+	height: 230px;
+	border: 0 !important;
+	background: none !important;
+	position: relative;
+}
+
+.fan_box a:hover{
+  text-decoration: none;
+}
+
+.fan_box .connect_top{
+	background: none !important;
+	padding: 0 !important;
+}
+.fan_box .profileimage, .fan_box .name_block{
+	display: none;
+}
+
+
+/*/like total*/
+span.total{
+	position:absolute;
+	bottom:0;
+	color:#e8e0d2;
+	font-size:18px;
+	font-weight:normal !impotant;
+}
+
+span.total b{
+	color:#fc661c;
+	font-weight: bold;
+}
+
+/*/like buttonHolder*/
+.fan_box .connect_action{
+	padding-bottom: 30px !important;
+}
+
+.fan_box .connect_widget{
+	position: absolute;
+	top: 0;
+	left: 233px;
+	margin: 0 !important;
+}
+
+.fan_box .connect_widget .connect_widget_interactive_area {
+	margin: 0 !important;
+}
+
+.fan_box .connect_widget td.connect_widget_vertical_center {
+	padding: 0 !important;
+}
+
+/*/Button*/
+.fan_box .connect_widget .like_button_like, .fan_box .connect_widget .like_button_like .piece{
+	background:#fc661c !important;
+	border-color: #fc7a39 !important;
+	color:#fff !important;
+}
+
+.fan_box .connect_widget .like_button_no_like .piece, .fan_box .connect_widget .like_button_no_like {
+	background-color: #FC661C;
+	border-color: #fc7a39 !important;
+}
+
+.connect_widget_like_button .liketext{
+	color:#fff !important;
+}
+
+
+/*/total + face holder*/
+.fan_box .connections{
+	padding: 0px 0px 30px !important;
+	border: 0 !important;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;color: #666;
+	position:relative;
+}
+
+/*/Face holder*/
+.fan_box .connections .connections_grid{
+	padding-top: 20px !important;
+	width: 120% !important;
+}
+
+/*face*/
+.fan_box .connections_grid .grid_item{
+	padding: 0 7px 7px 0 !important;
+}
+
+.fan_box .connections_grid .grid_item .name{
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	font-weight: normal;
+	color: #666 !important;
+	padding-top: 1px !important;
+}
