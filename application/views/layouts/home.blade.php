@@ -55,12 +55,12 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       </hgroup>
       <div class="three columns">
         <div id="btLogin">
-          <a href="#" class="small radius nice blue button" title="log in or register" data-reveal-id="loginForm">Login / Register</a>
+          <a href="#" class="small radius nice blue button" title="log in or register" data-reveal-id="loginModal">Login / Register</a>
         </div>
       </div>
       <div class="four columns">
         <div id="btUpload">
-          <a href="#" class="large radius nice blue button" title="Submit an Addon" data-reveal-id="uploadForm">Submit an <span>addon</span></a>
+          <a href="#" class="large radius nice blue button" title="Submit an Addon" data-reveal-id="uploadModal">Submit an <span>addon</span></a>
         </div>
       </div>
     </div>
@@ -147,7 +147,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
 </footer>
 
-<div id="loginForm" class="reveal-modal">
+<div id="loginModal" class="reveal-modal">
   <div id="main" class="row">
     <div id="content" role="main" class="twelve columns">
       <hgroup class="mainTitle ">
@@ -156,7 +156,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       </hgroup>
       <div class="row">
         <div class="twelve columns">
-          <div id="loginForm" class="">
+          <div id="loginform" class="">
             <br>
             <p class="underTitle">Please log in to access to your addon collection</p>
             <br>
@@ -309,7 +309,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
-      <div id="uploadForm" class="reveal-modal">
+      <div id="uploadModal" class="reveal-modal">
         <div class="row">
           <div class="twelve column">
         <div id="content" role="main" class="submitPage clearfix">

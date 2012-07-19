@@ -1,13 +1,16 @@
-/* Author:
+$(document).ready(function () {
 
-*/
-// <script type="text/javascript">
-//   $(document).ready(function() {
-//     $('#btLogin').click(function() {
-//       $('#myModal').reveal();
-//     });
-//   });
-// </script>
+	function hide (element) {
+		$(element).css("display", "none");
+	}
+
+	function show (element) {
+		$(element).css("display", "block");
+	}
+
+
+}
+
 
 
 
