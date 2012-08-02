@@ -150,6 +150,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <div id="loginModal" class="reveal-modal">
   <div id="main" class="row">
     <div id="content" role="main" class="twelve columns">
+      <div id="loginArea">
       <hgroup class="mainTitle ">
         <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
         <h2 class="inlined">Log In</h2>
@@ -189,11 +190,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                   <div class="twelve columns ">
                     <p class="formExtraLnk">
                       <h4 class="entryTitle">Forgot Password ?</h4>
-                      <a class="sliderLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
+                      <a class="forgotPassLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
                     </p>
                     <p class="formExtraLnk">
                       <h4 class="entryTitle">You don't have an account yet ?</h4>
-                      <a class="sliderLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                      <a class="registerLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
                     </p>
                   </div>
                 </div>
@@ -202,6 +203,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
           </div>
         </div>
       </div>
+      </div>
+      <div id="forgetArea">
       <hgroup class="mainTitle ">
         <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
         <h2 class="inlined">Recovery</h2>
@@ -221,7 +224,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                 <div class="six columns ">
                   <div class="submit">
                     <input class="small radius nice blue button btRight" type="submit" name="wp-submit" id="wp-submit1" value="Get a new password">
-                    <input type="hidden" name="redirect_to" value="/login/?checkemail=confirm">
+                    <input type="hidden" name="redirect_to" value="/login/?checkemail=c.onfirm">
                     <input type="hidden" name="instance" value="1">
                   </div>
                 </div>
@@ -229,11 +232,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                   <div class="twelve columns ">
                     <p class="formExtraLnk">
                       <h4 class="entryTitle">Remember your password ?</h4>
-                      <a class="sliderLink clear" href="#" title="Click here if you forgot your password">Log in</a>
+                      <a class="loginLink clear" href="#" title="Click here if you want to log-in.">Log in</a>
                     </p>
                     <p class="formExtraLnk">
                       <h4 class="entryTitle">You don't have an account yet ?</h4>
-                      <a class="sliderLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                      <a class="registerLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
                     </p>
                   </div>
                 </div>
@@ -241,6 +244,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             </div>
           </div>
         </div>
+      </div>
+      <div id="registerArea">
         <hgroup class="mainTitle ">
           <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
           <h2 class="inlined">Sign up</h2>
@@ -291,11 +296,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                   <div class="twelve columns ">
                     <p class="formExtraLnk">
                       <h4 class="entryTitle">Forgot Password ?</h4>
-                      <a class="sliderLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
+                      <a class="forgotPassLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
                     </p>
                     <p class="formExtraLnk">
                       <h4 class="entryTitle">You have an account ?</h4>
-                      <a class="sliderLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                      <a class="loginLink clear" href="#" title="Click here if you already have an account">Log in</a>
                     </p>
                   </div>
                 </div>
@@ -304,6 +309,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <br>
           </div>
         </div>
+      </div>
       </div>
     </div>
     <a class="close-reveal-modal">&#215;</a>

@@ -1,15 +1,24 @@
 $(document).ready(function () {
 
-	function hide (element) {
-		$(element).css("display", "none");
-	}
+	$(".forgotPassLink").click(function() {
+		$('#loginArea').hide();
+		$('#registerArea').hide();
+		$('#forgetArea').fadeIn(500);
+	});
 
-	function show (element) {
-		$(element).css("display", "block");
-	}
+	$(".loginLink").click(function() {
+		$('#registerArea').hide();
+		$('#forgetArea').hide();
+		$('#loginArea').fadeIn(500);
+	});
 
+	$(".registerLink").click(function() {
+		$('#loginArea').hide();
+		$('#forgetArea').hide();
+		$('#registerArea').fadeIn(500);
+	});
 
-}
+});
 
 
 

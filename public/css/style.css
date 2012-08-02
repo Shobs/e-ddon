@@ -354,8 +354,16 @@ form .select select {
 	cursor: pointer;
 }
 
-#loginform {
+#loginArea {
 	display: block;
+}
+
+#forgetArea {
+	display: none;
+}
+
+#registerArea {
+	display: none;
 }
 
 .clear {
