@@ -151,41 +151,43 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <div id="main" class="row">
     <div id="content" role="main" class="twelve columns">
       <div id="loginArea">
-      <hgroup class="mainTitle ">
-        <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
-        <h2 class="inlined">Log In</h2>
-      </hgroup>
-      <div class="row">
-        <div class="twelve columns">
-          <div id="loginform" class="">
-            <br>
-            <p class="underTitle">Please log in to access to your addon collection</p>
-            <br>
-            <div class="login" id="theme-my-login">
-              <form name="loginform" id="loginform" action="/login/?action=login" method="post" class="clearfix">
+        <hgroup class="mainTitle ">
+          <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
+          <h2 class="inlined">Log In</h2>
+        </hgroup>
+        <div class="row">
+          <div class="twelve columns">
+            <div id="loginForm" class="">
+              <br>
+              <p class="underTitle">Please log in to access to your addon collection</p>
+              <br>
+              <div class="login" id="theme-my-login">
+                {{Form::open('user/authenticate', 'post');}}
                 <p>
-                  <label class="label" for="userLogin">Username</label>
-                  <input type="text" name="log" id="userLogin" class="input" value="" size="20">
+                  {{Form::label('email', 'Email', array('class' => 'label'));}}
                 </p>
-                <br>
                 <p>
-                  <label class="label" for="userPass">Password</label>
-                  <input type="password" name="pwd" id="userPass" class="input" value="" size="20">
+                  {{Form::text('email', '', array('class' => 'input','placeholder' => 'Enter your email'));}}
+                  {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email'));}}
                 </p>
-                <input type="hidden" name="_wp_original_http_referer" value="http://www.eddon.com/">
+                <p>
+                  {{Form::label('password', 'Password', array('class' => 'label'));}}
+                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password'));}}
+                </p>
                 <div class=" nine columns">
-                  <p class="forgetMeNot"><span class="fakeCheckbox"></span>
-                    <input name="rememberme" type="checkbox" id="rememberMe" value="forever" style="display: none; "> <span class="wpcf7-list-item-label">Remember Me</span>
+                  <p class="forgetMeNot">
+                    <span class="fakeCheckbox"></span>
+                    {{Form::checkbox('rememberme', 'forever', '', array('id' => 'rememberme', 'style' => 'display: none'));}}
+                    <span class="wpcf7-list-item-label">Remember Me</span>
                   </p>
                 </div>
                 <div class="three columns">
                   <div class="submit">
-                    <input class="small radius nice blue button btRight" type="submit" name="wp-submit" id="wp-submit" value="Log in">
-                    <input type="hidden" name="redirect_to" value="http://www.toolmarklets.com/wp-admin/">
-                    <input type="hidden" name="testcookie" value="1">
-                    <input type="hidden" name="instance" value="">
+                    {{Form::submit('Log in', array('class' => 'small radius nice blue button btright', 'name' => 'submit', 'id' => 'submit'));}}
                   </div>
                 </div>
+                {{Form::close();}}
+
                 <div class="clear">
                   <div class="twelve columns ">
                     <p class="formExtraLnk">
@@ -198,49 +200,44 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                     </p>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
       <div id="forgetArea">
-      <hgroup class="mainTitle ">
-        <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
-        <h2 class="inlined">Recovery</h2>
-      </hgroup>
-      <div class="row">
-        <div id="forgetForm" class=" twelve columns" >
-          <br>
-          <p>Please enter your username or email address.<br>You will receive a link to create a new password via email.</p>
-
-          <div class="login pwdlost" id="theme-my-login1">
-            <form name="lostpasswordform" id="lostpasswordform1" action="#" method="post" class="">
-              <p>
-                <label for="user_login1">Username or E-mail:</label>
-                <input type="text" name="user_login" id="user_login1" class="input" value="" size="20"></p>
-                <br>
-                <div class="six columns"></div>
-                <div class="six columns ">
-                  <div class="submit">
-                    <input class="small radius nice blue button btRight" type="submit" name="wp-submit" id="wp-submit1" value="Get a new password">
-                    <input type="hidden" name="redirect_to" value="/login/?checkemail=c.onfirm">
-                    <input type="hidden" name="instance" value="1">
-                  </div>
-                </div>
-                <div class="clear">
-                  <div class="twelve columns ">
-                    <p class="formExtraLnk">
-                      <h4 class="entryTitle">Remember your password ?</h4>
-                      <a class="loginLink clear" href="#" title="Click here if you want to log-in.">Log in</a>
-                    </p>
-                    <p class="formExtraLnk">
-                      <h4 class="entryTitle">You don't have an account yet ?</h4>
-                      <a class="registerLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
-                    </p>
-                  </div>
-                </div>
-              </form>
+        <hgroup class="mainTitle ">
+          <h3>my <span class="colorWord">eddons</span><span class="sep"></span></h3>
+          <h2 class="inlined">Recovery</h2>
+        </hgroup>
+        <div class="row">
+          <div id="forgetForm" class=" twelve columns" >
+            <br>
+            <p>Please enter your email address.<br>You will receive a link to create a new password via email.</p>
+            {{Form::open('user/authenticate', 'post');}}
+            <p>
+              {{Form::label('email', 'E-mail', array('class' => 'label'));}}
+              {{Form::input('text', 'email', '', array('class' => 'input', 'placeholder' => 'Enter your email'));}}
+            </p>
+            <br>
+            <div class="nine columns"></div>
+            <div class="three columns ">
+              <div class="submit">
+                {{Form::submit('submit', array('class' => 'small radius nice blue button btright', 'name' => 'submit', 'id' => 'submit', 'value' => 'Get a new password'));}}
+              </div>
+            </div>
+            {{Form::close();}}
+            <div class="clear">
+              <div class="twelve columns ">
+                <p class="formExtraLnk">
+                  <h4 class="entryTitle">Remember your password ?</h4>
+                  <a class="loginLink clear" href="#" title="Click here if you want to log-in.">Log in</a>
+                </p>
+                <p class="formExtraLnk">
+                  <h4 class="entryTitle">You don't have an account yet ?</h4>
+                  <a class="registerLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -254,169 +251,148 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
           <div id="goCreate" class="twelve columns">
             <div>
               <br>
-              <p>Sign up to make your addons collection</p>
+              <p>Sign up to upload your addons</p>
               <br>
             </div>
             <div>
-              <form name="registerform" id="registerform1" action="?action=register" method="post" class="clearfix">
+              {{Form::open('user/authenticate', 'post')}};
+              <form name="newUser" id="newUser" action="user/authenticate" method="post" class="clearfix">
                 <p>
-                  <label for="user_login1">Username</label>
-                  <input type="text" name="user_login" id="user_login1" class="input" value="" size="20">
+                  {{Form::label('email', 'E-mail', array('class' => 'label'));}}
+                  {{Form::input('text', 'email', '', array('class' => 'input', 'placeholder' => 'Enter your email', 'id' => 'email'));}}
                 </p>
                 <br>
                 <p>
-                  <label for="user_email1">E-mail</label>
-                  <input type="text" name="user_email" id="user_email1" class="input" value="" size="20">
+                  {{Form::label('lastname', 'Lastname', array('class' => 'label'));}}
+                  {{Form::input('text', 'lastname', '', array('class' => 'input', 'placeholder' => 'Enter your lastname', 'id' => 'lastname'));}}
                 </p>
                 <p>
-                  <label for="user_job1">Job</label>
-                  <input type="text" name="user_job" id="user_job1" class="input" value="" size="20">
+                  {{Form::label('firstname', 'Firstname', array('class' => 'label'));}}
+                  {{Form::input('text', 'firstname', '', array('class' => 'input', 'placeholder' => 'Enter your firstname', 'id' => 'firstname'));}}
+                </p>
+                <p>
+                  {{Form::label('birthday', 'Birthday', array('class' => 'label'));}}
+                  {{Form::input('text', 'birthday', '', array('class' => 'input', 'placeholder' => 'Enter your birthday', 'id' => 'birthday'));}}
                 </p>
                 <div>
-                  <label for="user_country">Country</label>
+                  {{Form::label('country', 'Country', array('class' => 'label'));}}
                   <div class="select">
-                    <select name="user_country" id="user_country"></select>
+                    {{Form::select('country', array(), '');}}
                   </div>
                 </div>
                 <br>
                 <p>
-                  <label for="pass11">Password:</label>
-                  <input autocomplete="off" name="pass1" id="pass11" class="input" size="20" value="" type="password">
+                  {{Form::label('password', 'Password', array('class' => 'label'));}}
+                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password'));}}
                 </p>
                 <p>
-                  <label for="pass21">Confirm Password:</label>
-                  <input autocomplete="off" name="pass2" id="pass21" class="input" size="20" value="" type="password">
+                  {{Form::label('password2', 'Confirm Password', array('class' => 'label'));}}
+                  {{Form::password('password2', array('id' => 'password2','class' => 'input','placeholder' => 'Enter your password'));}}
                 </p>
-                <p id="reg_passmail1"></p>
-                <div class="twelve columns submit clearfix">
-                  <input class="small radius nice blue button btRight" type="submit" name="wp-submit" id="wp-submit1" value="Register">
-                  <input type="hidden" name="redirect_to" value="/register/?checkemail=registered"> <input type="hidden" name="instance" value="1">
-                </div>
-                <div class="clear">
-                  <div class="twelve columns ">
-                    <p class="formExtraLnk">
-                      <h4 class="entryTitle">Forgot Password ?</h4>
-                      <a class="forgotPassLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
-                    </p>
-                    <p class="formExtraLnk">
-                      <h4 class="entryTitle">You have an account ?</h4>
-                      <a class="loginLink clear" href="#" title="Click here if you already have an account">Log in</a>
-                    </p>
-                  </div>
+                {{Form::input('hidden', 'newUser', 'on', array('id' => 'newUser'));}}
+                <div class="nine columns"></div>
+                <div class="three columns submit clearfix">
+                  {{Form::submit('Register', array('class' => 'small radius nice blue button btright', 'name' => 'submit', 'id' => 'submit'));}}
                 </div>
               </form>
+              {{Form::close();}}
+              <div class="clear">
+                <div class="twelve columns ">
+                  <p class="formExtraLnk">
+                    <h4 class="entryTitle">Forgot Password ?</h4>
+                    <a class="forgotPassLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
+                  </p>
+                  <p class="formExtraLnk">
+                    <h4 class="entryTitle">You have an account ?</h4>
+                    <a class="loginLink clear" href="#" title="Click here if you already have an account">Log in</a>
+                  </p>
+                </div>
+              </div>
             </div>
             <br>
           </div>
         </div>
       </div>
-      </div>
     </div>
-    <a class="close-reveal-modal">&#215;</a>
   </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
 
-      <div id="uploadModal" class="reveal-modal">
-        <div class="row">
-          <div class="twelve column">
-        <div id="content" role="main" class="submitPage clearfix">
-          <h1 class="main-title">submit a <span class="colorWord">addon</span></h1>
-          <div class="entry-content grid_11 alpha omega clearfix">
-            <div class="wpcf7" id="wpcf7-f30-p27-o1">
-              <form action="#" method="post" class="#" enctype="multipart/form-data">
-                <div style="display: none;">
-                  <input type="hidden" name="_wpcf7" value="30">
-                  <input type="hidden" name="_wpcf7_version" value="3.1.2">
-                  <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f30-p27-o1">
-                  <input type="hidden" name="_wpnonce" value="e984417028">
-                </div>
-                <div class="grid_5 suffix_1 alpha clearfix">
-                  <span class="wpcf7-form-control-wrap honeypot-1982">
-                    <div style="display:none;" class="hidden">
-                      <label for="email-wpcf7-hp"><small>Leave this field empty.</small></label>
-                      <input class="wpcf7-text" type="text" name="email-wpcf7-hp" id="email-wpcf7-hp" value="" size="40" tabindex="3">
-                    </div>
-                  </span>
-                  <p></p>
-                  <p>
-                    <span class="label">Addon's name <em>(required)</em></span>
-                    <br>
-                    <span class="#">
-                      <input type="text" name="addon-name" value="" class="#" size="40">
-                    </span>
-                  </p>
-                  <p>
-                    <span class="label">Addon's author</span>
-                    <br>
-                    <span class="#">
-                      <input type="text" name="addon-author" value="" class="#" size="40">
-                    </span>
-                  </p>
-                  <p>
-                    <span class="label">Addon's url <em>(required)</em></span>
-                    <br>
-                    <span class="#">
-                      <input type="text" name="addon-url" value="" class="#" size="40">
-                    </span>
-                  </p>
-                  <p class="fileFaker">
-                    <span class="label">Addon's image <em>(.jpg, .gif, .png - 470 x 354px - 300ko.max)</em></span>
-                    <br>
-                    <input id="fileFake" type="text" value="">
-                    <span class="small radius nice blue button btRight">Parcourir</span>
-                    <span class="formControlWrap">
-                      <input type="file" name="addon-image" class="formControlWrap" size="40" value="1">
-                    </span>
-                  </p>
-                  <p>
-                    <span class="label">Addon's description <em>(required)</em></span>
-                    <br>
-                    <span class="#">
-                      <textarea name="addon-description" class="#" cols="40" rows="10">
-                      </textarea>
-                    </span>
-                  </p>
-                </div>
-                <div class="grid_5 omega clearfix">
-                  <p>
-                    <span class="label">Your Name <em>(required)</em></span>
-                    <br>
-                    <span class="wpcf7-form-control-wrap your-name">
-                      <input type="text" name="your-name" value="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" size="40">
-                    </span>
-                  </p>
-                  <p>
-                    <span class="label">Your Email <em>(required)</em></span>
-                    <br>
-                    <span class="wpcf7-form-control-wrap your-email">
-                      <input type="text" name="your-email" value="" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" size="40">
-                    </span>
-                  </p>
-                  <p>
-                    <span class="#">
-                      <span class="#">
-                        <span class="#">
-                          <span class="fakeCheckbox"></span>
-                          <input type="checkbox" name="is-author[]" value="i'm the author of this addon" style="display: none; ">&nbsp;
-                          <span class="#">i'm the author of this addon</span>
-                        </span>
-                      </span>
-                    </span>
-                  </p>
-                </div>
-                <p class="submit grid_5 push_6">
-                  <input type="submit" value="Submit the addon" class="small radius nice blue button btRight">
-                  <img class="ajax-loader" src="http://www.toolmarklets.com/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Sending ..." style="visibility: hidden; ">
-                </p>
-                <div class="wpcf7-response-output wpcf7-display-none">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        </div>
-        </div>
-        <a class="close-reveal-modal">&#215;</a>
+<div id="uploadModal" class="reveal-modal">
+  <div class="row">
+    <div id="content" role="main" class="twelve column clearfix">
+      {{Form::open('user/upload', 'post');}}
+      <div class="twelve column">
+        <h1 class="mainTitle">submit an <span class="colorWord">addon</span></h1>
+        <p>
+          {{Form::label('addonName', "Addon's name (required)", array('class' => 'label'));}}
+          {{Form::input('text', 'addonName', '', array('size' => '40'));}}
+        </p>
+        <p>
+          {{Form::label('addonAuthor', "Addon's author (required)", array('class' => 'label'));}}
+          {{Form::input('text', 'addonAuthor', '', array('size' => '40'));}}
+        </p>
       </div>
+      <div class="nine columns">
+        <br>
+        {{Form::label('addon', 'Addon (.zip format only)', array('class' => 'label'));}}
+        {{Form::input('text', 'fakeFile');}}
+      </div>
+      <div class="three columns">
+        <br>
+        <span class="small radius nice blue button btRight">Select</span>
+        {{Form::open_for_files('user/profile', 'post', array('name' => 'addon', 'class' => 'formControlWrap', 'size' => '40', 'value' => '1'));}}
+        <!-- <input type="file" name="addon-image" class="formControlWrap" size="40" value="1"> -->
+      </div>
+      <div class="nine columns">
+        <br>
+        {{Form::label('addon', 'Addon (.zip format only)', array('class' => 'label'));}}
+        {{Form::input('text', 'fakeFile');}}
+      </div>
+      <div class="three columns">
+        <br>
+        <span class="small radius nice blue button btRight">Select</span>
+        {{Form::open_for_files('user/profile', 'post', array('name' => 'addon', 'class' => 'formControlWrap', 'size' => '40', 'value' => '1'));}}
+        <!-- <input type="file" name="addon-image" class="formControlWrap" size="40" value="1"> -->
+      </div>
+      <div class="twelve columns">
+        <br>
+        <p>
+          {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label'));}}
+          {{Form::textarea('addonDescription', '', array('cols' => '40', 'rows' => '10', 'style' => 'font-size: "10"'));}}
+        </p>
+        <p>
+          {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label'));}}
+        </p>
+        <p>
+          <span class="label">Your Name <em>(required)</em></span>
+          <br>
+          <span class="wpcf7-form-control-wrap your-name">
+            <input type="text" name="your-name" value="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" size="40">
+          </span>
+        </p>
+        <p>
+          <span class="label">Your Email <em>(required)</em></span>
+          <br>
+          <span class="wpcf7-form-control-wrap your-email">
+            <input type="text" name="your-email" value="" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" size="40">
+          </span>
+        </p>
+      </div>
+      <div class="eight columns">
+        <span class="fakeCheckbox"></span>
+        <input type="checkbox" name="is-author[]" value="i'm the author of this addon" style="display: none; ">&nbsp;
+        <span class="#">i'm the author of this addon</span>
+      </div>
+      <div class="four columns">
+        <input type="submit" value="Submit the addon" class="small radius nice blue button btRight">
+      </div>
+      {{Form::close();}}
+    </div>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
 
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
@@ -425,7 +401,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 
 
 <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
-mathiasbynens.be/notes/async-analytics-snippet -->
+  mathiasbynens.be/notes/async-analytics-snippet -->
 <!--<script>
   var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
