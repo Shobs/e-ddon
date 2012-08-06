@@ -1,4 +1,4 @@
-@layout('layouts/home')
+@layout('layouts/frame')
 
 
 @section('content')

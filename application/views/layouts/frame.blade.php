@@ -162,17 +162,16 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <p class="underTitle">Please log in to access to your addon collection</p>
               <br>
               <div class="login" id="theme-my-login">
-                {{Form::open('user/authenticate', 'post');}}
+                {{Form::open('dashboard/index', 'post');}}
                 <p>
                   {{Form::label('email', 'Email', array('class' => 'label'));}}
                 </p>
                 <p>
-                  {{Form::text('email', '', array('class' => 'input','placeholder' => 'Enter your email'));}}
-                  {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email'));}}
+                  {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
                 </p>
                 <p>
                   {{Form::label('password', 'Password', array('class' => 'label'));}}
-                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password'));}}
+                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required', 'pattern' => '(?=^.{8,}$)^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'));}}
                 </p>
                 <div class=" nine columns">
                   <p class="forgetMeNot">
@@ -217,7 +216,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             {{Form::open('user/authenticate', 'post');}}
             <p>
               {{Form::label('email', 'E-mail', array('class' => 'label'));}}
-              {{Form::input('text', 'email', '', array('class' => 'input', 'placeholder' => 'Enter your email'));}}
+              {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
             </p>
             <br>
             <div class="nine columns"></div>
@@ -259,35 +258,37 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <form name="newUser" id="newUser" action="user/authenticate" method="post" class="clearfix">
                 <p>
                   {{Form::label('email', 'E-mail', array('class' => 'label'));}}
-                  {{Form::input('text', 'email', '', array('class' => 'input', 'placeholder' => 'Enter your email', 'id' => 'email'));}}
+                  {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'id' => 'email', 'required' => 'required'));}}
                 </p>
                 <br>
                 <p>
                   {{Form::label('lastname', 'Lastname', array('class' => 'label'));}}
-                  {{Form::input('text', 'lastname', '', array('class' => 'input', 'placeholder' => 'Enter your lastname', 'id' => 'lastname'));}}
+                  {{Form::input('text', 'lastname', '', array('class' => 'input', 'placeholder' => 'Enter your lastname', 'id' => 'lastname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
                 </p>
                 <p>
                   {{Form::label('firstname', 'Firstname', array('class' => 'label'));}}
-                  {{Form::input('text', 'firstname', '', array('class' => 'input', 'placeholder' => 'Enter your firstname', 'id' => 'firstname'));}}
+                  {{Form::input('text', 'firstname', '', array('class' => 'input', 'placeholder' => 'Enter your firstname', 'id' => 'firstname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
                 </p>
                 <p>
-                  {{Form::label('birthday', 'Birthday', array('class' => 'label'));}}
-                  {{Form::input('text', 'birthday', '', array('class' => 'input', 'placeholder' => 'Enter your birthday', 'id' => 'birthday'));}}
+                  {{Form::label('birthdate', 'Birthdate', array('class' => 'label'));}}
+                  {{Form::input('text', 'birthdate', '', array('class' => 'input', 'placeholder' => 'MM/DD/YYYY', 'id' => 'birthdate', 'required' => 'required', 'pattern' => '(?:(?:0[1-9]|1[0-2])[\/\\-. ]?(?:0[1-9]|[12][0-9])|(?:(?:0[13-9]|1[0-2])[\/\\-. ]?30)|(?:(?:0[13578]|1[02])[\/\\-. ]?31))[\/\\-. ]?(?:19|20)[0-9]{2}'));}}
                 </p>
                 <div>
                   {{Form::label('country', 'Country', array('class' => 'label'));}}
                   <div class="select">
                     {{Form::select('country', array(), '');}}
+                    {{ $errors->first('country') }}
                   </div>
                 </div>
                 <br>
                 <p>
                   {{Form::label('password', 'Password', array('class' => 'label'));}}
-                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password'));}}
+                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required', 'pattern' => '(?=^.{8,}$)^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'));}}
+                  UpperCase, LowerCase, Number and 8 chars min.
                 </p>
                 <p>
                   {{Form::label('password2', 'Confirm Password', array('class' => 'label'));}}
-                  {{Form::password('password2', array('id' => 'password2','class' => 'input','placeholder' => 'Enter your password'));}}
+                  {{Form::password('password2', array('id' => 'password2','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required', 'pattern' => '(?=^.{8,}$)^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'));}}
                 </p>
                 {{Form::input('hidden', 'newUser', 'on', array('id' => 'newUser'));}}
                 <div class="nine columns"></div>
@@ -326,11 +327,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <h1 class="mainTitle">submit an <span class="colorWord">addon</span></h1>
         <p>
           {{Form::label('addonName', "Addon's name (required)", array('class' => 'label'));}}
-          {{Form::input('text', 'addonName', '', array('size' => '40'));}}
+          {{Form::input('text', 'addonName', '', array('size' => '40', 'required' => 'required'));}}
         </p>
         <p>
           {{Form::label('addonAuthor', "Addon's author (required)", array('class' => 'label'));}}
-          {{Form::input('text', 'addonAuthor', '', array('size' => '40'));}}
+          {{Form::input('text', 'addonAuthor', '', array('size' => '40', 'required' => 'required'));}}
         </p>
       </div>
       <div class="nine columns">
@@ -358,7 +359,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       <div class="twelve columns">
         <br>
         <p>
-          {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label'));}}
+          {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label', 'required' => 'required'));}}
           {{Form::textarea('addonDescription', '', array('cols' => '40', 'rows' => '10', 'style' => 'font-size: "10"'));}}
         </p>
         <p>

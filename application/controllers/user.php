@@ -35,29 +35,42 @@ class User_Controller extends Base_Controller{
 	public function action_authenticate(){
 
 		$email = Input::get('email');
-		$lastname = Input::get('lastname');
-		$firstname = Input::get('firstname');
-		$birthday = Input::get('birthday');
-		$country = Input::get('country');
 		$password = Input::get('password');
 		$newUser = Input::get('newUser', 'off');
 
-		$input = array(
-			'email' => $email,
-			'password' => $password
-		);
+
 
 		if ($newUser == 'on') {
 
+			$lastname = Input::get('lastname');
+			$firstname = Input::get('firstname');
+			$birthdate = Input::get('birthdate');
+			$country = Input::get('country');
+			$password2 = Input::get('password2');
+
+			$input = array(
+			'email' => $email,
+			'lasname' => $lastname,
+			'firstname' => $firstname,
+			'birthdate' => $birthdate,
+			'country' => $country,
+			'password' => $password
+			);
+
 			$rules = array(
 				'email' => 'required|email|unique:users,email',
-				'password' => 'required'
+				'lastname' => 'required|alpha|max:50',
+				'firstname' => 'required|alpha|max:50',
+				'birthdate' => 'required',
+				'country' => 'required',
+				'password' => 'required|same:password2',
+				'password2' => 'required|same:password'
 			);
 
 			$validation = Validator::make($input, $rules);
 
 			if ($validation->fails()) {
-				return Redirect::to('home')->with_errors($validation);
+				return Redirect::to('index')->with_errors($validation);
 			}
 
 			try{
@@ -69,13 +82,18 @@ class User_Controller extends Base_Controller{
 				// $user->country = $country;
 				$user->password = Hash::make($password);
 				$user->save();
-				// Auth::login($user);
+				Auth::attempt($user);
 
 				return Redirect::to('home/index');
 			}catch(Exception $e){
 				Session::flash('status_error', 'An error occurred while creating a new account - please try again.');
 			}
 		}else{
+
+			$input = array(
+			'email' => $email,
+			'password' => $password
+			);
 
 			$rules = array(
 				'email' => 'required|email|unique:users',

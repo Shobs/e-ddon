@@ -34,7 +34,7 @@ class Dashboard_Controller extends Base_Controller{
 
 	public function action_index(){
 		// $addons = Auth::user()->addons()->order_by('updated_at', 'desc')->order_by('id', 'desc')->get();
-		return View::make('category');
+		return View::make('home.dashboard');
 	}
 }
 
