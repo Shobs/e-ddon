@@ -34,8 +34,9 @@ class User_Controller extends Base_Controller{
 
 	public function action_authenticate(){
 
-		$email = Input::get('email');
+		$username = Input::get('email');
 		$password = Input::get('password');
+		// $password = Hash::make($password);
 		$newUser = Input::get('newUser', 'off');
 
 
@@ -49,7 +50,7 @@ class User_Controller extends Base_Controller{
 			$password2 = Input::get('password2');
 
 			$input = array(
-			'email' => $email,
+			'username' => $username,
 			'lasname' => $lastname,
 			'firstname' => $firstname,
 			'birthdate' => $birthdate,
@@ -58,11 +59,11 @@ class User_Controller extends Base_Controller{
 			);
 
 			$rules = array(
-				'email' => 'required|email|unique:users,email',
+				'username' => 'required|email|unique:users,username',
 				'lastname' => 'required|alpha|max:50',
 				'firstname' => 'required|alpha|max:50',
 				'birthdate' => 'required',
-				'country' => 'required',
+				// 'country' => 'required',
 				'password' => 'required|same:password2',
 				'password2' => 'required|same:password'
 			);
@@ -70,12 +71,15 @@ class User_Controller extends Base_Controller{
 			$validation = Validator::make($input, $rules);
 
 			if ($validation->fails()) {
-				return Redirect::to('index')->with_errors($validation);
+				// return Redirect::to('index')->with_errors($validation);
+				var_dump($input);
+				echo 'newuser validation fail';
+
 			}
 
 			try{
 				$user = new User();
-				$user->email = $email;
+				$user->username = $username;
 				$user->lastname = $lastname;
 				$user->firstname = $firstname;
 				// $user->birthday = $birthday;
@@ -84,37 +88,48 @@ class User_Controller extends Base_Controller{
 				$user->save();
 				Auth::attempt($user);
 
-				return Redirect::to('home/index');
+				// return Redirect::to('home/index');
+
+				var_dump($input);
+				echo 'newuser ok!';
+
 			}catch(Exception $e){
 				Session::flash('status_error', 'An error occurred while creating a new account - please try again.');
+				echo 'newuser flash fail!';
 			}
 		}else{
 
 			$input = array(
-			'email' => $email,
+			'username' => $username,
 			'password' => $password
 			);
 
-			$rules = array(
-				'email' => 'required|email|unique:users',
-				'password' => 'required'
-			);
+			// $rules = array(
+			// 	'username' => 'required|email|unique:users',
+			// 	'password' => 'required'
+			// );
 
-			$validation = Validator::make($input, $rules);
+			// $validation = Validator::make($input, $rules);
 
-			if ($validation->fails()) {
-				return Redirect::to('home')->with_errors($validation);
-			}
+			// if ($validation->fails()) {
+			// 	// return Redirect::to('home')->with_errors($validation);
+			// 	var_dump($input);
+			// 	echo 'validation fail!';
+			// }
 
 			$credentials = array(
-				'username' => $email,
+				'username' => $username,
 				'password' => $password
 			);
 			if (Auth::attempt($credentials)) {
-				return Redirect::to('dashboard/index');
+				// return Redirect::to('dashboard/index');
+				var_dump($input);
+				echo 'user ok!';
 			}else{
 				Session::flash('status_error', 'Your email or password is invalid - please try again.');
-				return Redirect::to('home');
+				// return Redirect::to('home');
+				var_dump($input);
+				echo 'user flash fail!';
 			}
 		}
 	}

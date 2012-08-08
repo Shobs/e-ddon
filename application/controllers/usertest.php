@@ -30,11 +30,11 @@ class Usertest_Controller extends Base_Controller{
 	|
 	*/
 
-	// public $restful = true;
+	//public $restful = true;
 
 	public function action_authenticate(){
 
-		$email = Input::get('email');
+		$username = Input::get('email');
 		$lastname = Input::get('lastname');
 		$firstname = Input::get('firstname');
 		$birthday = Input::get('birthday');
@@ -45,12 +45,12 @@ class Usertest_Controller extends Base_Controller{
 		if ($newUser == 'on') {
 			try{
 				$user = new User();
-				$user->email = 'psycko8@yahoo';
-				$user->lastname = 'Marcellin';
-				$user->firstname = 'Jean';
+				$user->username = $username;
+				$user->lastname = $lastname;
+				$user->firstname = $firstname;
 				// $user->birthday = $birthday;
 				// $user->country = $country;
-				$user->password = '2468';
+				$user->password = $password;
 				$user->save();
 
 
@@ -61,7 +61,7 @@ class Usertest_Controller extends Base_Controller{
 			}
 		}else{
 			$credentials = array(
-				'username' => $email,
+				'username' => $username,
 				'password' => $password
 			);
 			if (Auth::attempt($credentials)) {

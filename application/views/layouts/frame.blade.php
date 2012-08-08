@@ -49,8 +49,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="twelve columns">
       <hgroup class="five columns">
         <h1 id="siteLogo">
-          <a href="home" title="eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>
-          </a>
+          @yield('logo')
         </h1>
       </hgroup>
       <div class="three columns">
@@ -162,7 +161,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <p class="underTitle">Please log in to access to your addon collection</p>
               <br>
               <div class="login" id="theme-my-login">
-                {{Form::open('dashboard/index', 'post');}}
+                {{Form::open('usertest/authenticate', 'post');}}
                 <p>
                   {{Form::label('email', 'Email', array('class' => 'label'));}}
                 </p>
@@ -254,7 +253,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <br>
             </div>
             <div>
-              {{Form::open('user/authenticate', 'post')}};
+              {{Form::open('usertest/authenticate', 'post')}};
               <form name="newUser" id="newUser" action="user/authenticate" method="post" class="clearfix">
                 <p>
                   {{Form::label('email', 'E-mail', array('class' => 'label'));}}
