@@ -290,7 +290,7 @@ form .label, form label {
 	padding-left: 15px;
 }
 
-form input[type="text"], form input[type="password"], form input[type="email"],form textarea, form .select {
+form input[type="text"], form input[type="password"], form input[type="email"],form input[type="file"], form input[type="date"], form textarea, form .select {
 	margin-bottom: 20px;
 	position: relative;
 	background: #F5F0E6;
@@ -352,6 +352,44 @@ form .select select {
 	font-family: Georgia,"Times New Roman",Times,serif;
 	font-size: 24px;
 	cursor: pointer;
+}
+
+#fakeAddonUpload{
+	position: absolute;
+	top: 28px;
+	left: 17px;
+	z-index: 1;
+}
+
+#fakePictureUpload{
+	position: absolute;
+	top: 14px;
+	left: 17px;
+	z-index: 1;
+}
+
+#addonUpload, #pictureUpload{
+	width:400px;
+	position: relative;
+	text-align: right;
+	-moz-opacity: 0;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+}
+
+#fakeAddUpBtn{
+	position: absolute;
+	top: 33px;
+	right: 22px;
+	z-index: 1;
+}
+
+#fakePicUpBtn{
+	position: absolute;
+	top: 19px;
+	right: 22px;
+	z-index: 1;
 }
 
 

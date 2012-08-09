@@ -56,21 +56,21 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <div id="btLogin">
 
           <!-- if user is logged shows logout button, if not login button -->
-          @if (Auth::check())
-          {{HTML::link('user/logout', 'Logout', array('class'=>'small radius nice blue button', 'title'=>'Logout'));}}
-          @else
+          @if (Auth::guest())
           {{HTML::link('#', 'Login / Register', array('class'=>'small radius nice blue button', 'title'=>'log in or register', 'data-reveal-id'=>'loginModal'));}}
+          @else
+          {{HTML::link('user/logout', 'Logout', array('class'=>'small radius nice blue button', 'title'=>'Logout'));}}
           @endif
         </div>
       </div>
       <div class="four columns">
         <div id="btUpload">
 
-          <!-- if user is logged shows upload button, if not login button -->
-          @if (Auth::check())
-          {{HTML::link('#', 'Submit an addon', array('id'=>'upload', 'class'=>'large radius nice blue button', 'title'=>'Submit an Addon', 'data-reveal-id'=>'uploadModal'));}}
-          @else
+          <!-- if user is logged links to upload form, if not login form -->
+          @if (Auth::guest())
           {{HTML::link('#', 'Submit an addon', array('id'=>'upload', 'class'=>'large radius nice blue button', 'title'=>'Submit an Addon', 'data-reveal-id'=>'loginModal'));}}
+          @else
+          {{HTML::link('#', 'Submit an addon', array('id'=>'upload', 'class'=>'large radius nice blue button', 'title'=>'Submit an Addon', 'data-reveal-id'=>'uploadModal'));}}
           @endif
         </div>
       </div>
@@ -108,7 +108,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       <div class="three columns">
         <h4>Help us to <span class="colorWord">improve</span></h4>
         <h5>eddon.com</h5>
-        <a href="#" title="Give us your feedback">Give us your <br><span>feedback !</span></a>
+        <a href="#" title="Give us your feedback">Give us your <br/><span>feedback !</span></a>
       </div>
       <div class="five columns ">
         <div id="addArea">
@@ -169,9 +169,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <div class="row">
           <div class="twelve columns">
             <div id="loginForm" class="">
-              <br>
+              <br/>
               <p class="underTitle">Please log in to access to your addon collection</p>
-              <br>
+              <br/>
               <div class="login" id="theme-my-login">
                 {{Form::open('user/authenticate', 'post');}}
                 <p>
@@ -222,14 +222,14 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </hgroup>
         <div class="row">
           <div id="forgetForm" class=" twelve columns" >
-            <br>
-            <p>Please enter your email address.<br>You will receive a link to create a new password via email.</p>
+            <br/>
+            <p>Please enter your email address.<br/>You will receive a link to create a new password via email.</p>
             {{Form::open('user/resetPassword', 'post');}}
             <p>
               {{Form::label('email', 'E-mail', array('class' => 'label'));}}
               {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
             </p>
-            <br>
+            <br/>
             <div class="nine columns"></div>
             <div class="three columns ">
               <div class="submit">
@@ -260,9 +260,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <div class="row">
           <div id="goCreate" class="twelve columns">
             <div>
-              <br>
+              <br/>
               <p>Sign up to upload your addons</p>
-              <br>
+              <br/>
             </div>
             <div>
               {{Form::open('user/authenticate', 'post')}};
@@ -270,7 +270,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                   {{Form::label('email', 'E-mail', array('class' => 'label'));}}
                   {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'id' => 'email', 'required' => 'required'));}}
                 </p>
-                <br>
+                <br/>
                 <p>
                   {{Form::label('lastname', 'Lastname', array('class' => 'label'));}}
                   {{Form::input('text', 'lastname', '', array('class' => 'input', 'placeholder' => 'Enter your lastname', 'id' => 'lastname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
@@ -281,24 +281,12 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                 </p>
                 <p>
                   {{Form::label('birthdate', 'Birthdate', array('class' => 'label'));}}
-                  {{Form::input('text', 'birthdate', '', array('class' => 'input', 'placeholder' => 'YYYY-MM-DD', 'id' => 'birthdate', 'required' => 'required', 'pattern' => '(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))'));}}
+                  {{Form::date('birthdate', '', array('class' => 'input', 'placeholder' => 'YYYY-MM-DD', 'id' => 'birthdate', 'required' => 'required', 'pattern' => '(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))'));}}
                 </p>
-                <div>
-                  {{Form::label('country', 'Country', array('class' => 'label'));}}
-                  <div class="select">
-                    {{Form::select('country', array(), '');}}
-                    {{ $errors->first('country') }}
-                  </div>
-                </div>
-                <br>
                 <p>
                   {{Form::label('password', 'Password', array('class' => 'label'));}}
                   {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required', 'pattern' => '(?=^.{8,}$)^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'));}}
                   UpperCase, LowerCase, Number and 8 chars min.
-                </p>
-                <p>
-                  {{Form::label('password2', 'Confirm Password', array('class' => 'label'));}}
-                  {{Form::password('password2', array('id' => 'password2','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required', 'pattern' => '(?=^.{8,}$)^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'));}}
                 </p>
                 {{Form::input('hidden', 'newUser', 'on', array('id' => 'newUser'));}}
                 <div class="nine columns"></div>
@@ -320,7 +308,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                 </div>
               </div>
             </div>
-            <br>
+            <br/>
           </div>
         </div>
       </div>
@@ -332,7 +320,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <div id="uploadModal" class="reveal-modal">
   <div class="row">
     <div id="content" role="main" class="twelve column clearfix">
-      {{Form::open('user/upload', 'post');}}
+      {{Form::open_for_files('user/upload', 'post');}}
       <div class="twelve column">
         <h1 class="mainTitle">submit an <span class="colorWord">addon</span></h1>
         <p>
@@ -345,51 +333,36 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         </p>
       </div>
       <div class="nine columns">
-        <br>
-        {{Form::label('addon', 'Addon (.zip format only)', array('class' => 'label'));}}
-        {{Form::input('text', 'fakeFile');}}
+        <br/>
+        {{Form::label('addonUpload', 'Addon (.zip format only)', array('class' => 'label'));}}
+        {{Form::file('addonUpload', array('id'=>'addonUpload'));}}
+        <div id="fakeAddonUpload">
+          {{Form::input('text', 'fakeAddonUpload', '', array('size' => '40'));}}
+        </div>
       </div>
       <div class="three columns">
-        <br>
-        <span class="small radius nice blue button btRight">Select</span>
-        {{Form::open_for_files('user/profile', 'post', array('name' => 'addon', 'class' => 'formControlWrap', 'size' => '40', 'value' => '1'));}}
-        <!-- <input type="file" name="addon-image" class="formControlWrap" size="40" value="1"> -->
+        <br/>
+        {{Form::button('Select', array('class'=>'small radius nice blue button btRight', 'id'=>'fakeAddUpBtn'));}}
       </div>
       <div class="nine columns">
-        <br>
-        {{Form::label('addon', 'Addon (.zip format only)', array('class' => 'label'));}}
-        {{Form::input('text', 'fakeFile');}}
+        {{Form::label('pictureUpload', 'Picture (.jpg format only)', array('class' => 'label'));}}
+        {{Form::file('pictureUpload', array('id'=>'pictureUpload'));}}
+        <div id="fakePictureUpload">
+          {{Form::input('text', 'fakePictureUpload', '', array('size' => '40'));}}
+        </div>
       </div>
       <div class="three columns">
-        <br>
-        <span class="small radius nice blue button btRight">Select</span>
+        {{Form::button('Select', array('class'=>'small radius nice blue button btRight', 'id'=>'fakePicUpBtn'));}}
         {{Form::open_for_files('user/profile', 'post', array('name' => 'addon', 'class' => 'formControlWrap', 'size' => '40', 'value' => '1'));}}
-        <!-- <input type="file" name="addon-image" class="formControlWrap" size="40" value="1"> -->
       </div>
       <div class="twelve columns">
-        <br>
+        <br/>
         <p>
           {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label', 'required' => 'required'));}}
-          {{Form::textarea('addonDescription', '', array('cols' => '40', 'rows' => '10', 'style' => 'font-size: "10"'));}}
+          {{Form::textarea('addonDescription', '', array('cols' => '40', 'rows' => '10', 'style' => 'font-size: "10px"'));}}
         </p>
-        <p>
-          {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label'));}}
-        </p>
-        <p>
-          <span class="label">Your Name <em>(required)</em></span>
-          <br>
-          <span class="wpcf7-form-control-wrap your-name">
-            <input type="text" name="your-name" value="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" size="40">
-          </span>
-        </p>
-        <p>
-          <span class="label">Your Email <em>(required)</em></span>
-          <br>
-          <span class="wpcf7-form-control-wrap your-email">
-            <input type="text" name="your-email" value="" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" size="40">
-          </span>
-        </p>
-      </div>
+        <br/>
+       </div>
       <div class="eight columns">
         <span class="fakeCheckbox"></span>
         <input type="checkbox" name="is-author[]" value="i'm the author of this addon" style="display: none; ">&nbsp;

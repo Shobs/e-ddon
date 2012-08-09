@@ -54,7 +54,7 @@
       <div class="five columns">
         <div id="search">
           {{Form::open('#', 'get', array('role'=>'search'));}}
-          {{Form::input('search', 's', '', array('id'=>'s', 'placeholder'=>'search an addon'));}}
+          {{Form::search('search', '', array('id'=>'s', 'placeholder'=>'search an addon'));}}
           {{Form::input('submit', '', 'search', array('class'=>'small radius nice blue button'));}}
           {{Form::close();}}
         </div>

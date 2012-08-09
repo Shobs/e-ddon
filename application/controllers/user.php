@@ -2,95 +2,45 @@
 
 class User_Controller extends Base_Controller{
 
-	/*
-	|--------------------------------------------------------------------------
-	| The Default Controller
-	|--------------------------------------------------------------------------
-	|
-	| Instead of using RESTful routes and anonymous functions, you might wish
-	| to use controllers to organize your application API. You'll love them.
-	|
-	| This controller responds to URIs beginning with "home", and it also
-	| serves as the default controller for the application, meaning it
-	| handles requests to the root of the application.
-	|
-	| You can respond to GET requests to "/home/profile" like so:
-	|
-	|		public function action_profile()
-	|		{
-	|			return "This is your profile!";
-	|		}
-	|
-	| Any extra segments are passed to the method as parameters:
-	|
-	|		public function action_profile($id)
-	|		{
-	|			return "This is the profile for user {$id}.";
-	|		}
-	|
-	*/
-
 	// public $restful = true;
 
 	public function action_authenticate(){
 
+		// Aquiring data from all forms
 		$username = Input::get('email');
 		$password = Input::get('password');
 		$newUser = Input::get('newUser', 'off');
 
 
-
+		// Registration of new user
 		if ($newUser == 'on') {
 
+			// Aquiring data from registration forms
 			$lastname = Input::get('lastname');
 			$firstname = Input::get('firstname');
 			$birthdate = Input::get('birthdate');
-			$country = Input::get('country');
 			$password2 = Input::get('password2');
 
-			//php form validation commented out - now using HTML5 pattern validation
-			// $input = array(
-			// 'username' => $username,
-			// 'lasname' => $lastname,
-			// 'firstname' => $firstname,
-			// 'birthdate' => $birthdate,
-			// 'country' => $country,
-			// 'password' => $password
-			// );
-
-			// $rules = array(
-			// 	'username' => 'required|email|unique:users,username',
-			// 	'lastname' => 'required|alpha|max:50',
-			// 	'firstname' => 'required|alpha|max:50',
-			// 	'birthdate' => 'required',
-			// 	// 'country' => 'required',
-			// 	'password' => 'required|same:password2',
-			// 	'password2' => 'required|same:password'
-			// );
-
-			// $validation = Validator::make($input, $rules);
-
-			// if ($validation->fails()) {
-			// 	// return Redirect::to('index')->with_errors($validation);
-			// 	var_dump($input);
-			// 	echo 'newuser validation fail';
-
-			// }
-
+			// Adding new user to the DB
 			try{
 				$user = new User();
 				$user->username = $username;
 				$user->lastname = $lastname;
 				$user->firstname = $firstname;
 				$user->birthdate = $birthdate;
-				// $user->country = $country;
 				$user->password = Hash::make($password);
 				$user->save();
 
 				//automatic login of user after signup
-				// Auth::login($user);
+				$credentials = array(
+				'username' => $username,
+				'password' => $password
+				);
 
-				return Redirect::to('home/index');
+				// Authentication of new user
+				if (Auth::attempt($credentials)) {
+					return Redirect::to('home/index');
+				}
 
 				// Testing inputs
 				// var_dump($input);
@@ -104,29 +54,13 @@ class User_Controller extends Base_Controller{
 			}
 		}else{
 
-			//php form validation commented out - now using HTML5 pattern validation
-			// $input = array(
-			// 'username' => $username,
-			// 'password' => $password
-			// );
-
-			// $rules = array(
-			// 	'username' => 'required|email|unique:users',
-			// 	'password' => 'required'
-			// );
-
-			// $validation = Validator::make($input, $rules);
-
-			// if ($validation->fails()) {
-			// 	// return Redirect::to('home')->with_errors($validation);
-			// 	var_dump($input);
-			// 	echo 'validation fail!';
-			// }
-
+			// Adding user data
 			$credentials = array(
 				'username' => $username,
 				'password' => $password
 			);
+
+			// Authentication of existing user
 			if (Auth::attempt($credentials)) {
 
 				return Redirect::to('dashboard/index');
@@ -149,22 +83,52 @@ class User_Controller extends Base_Controller{
 
 	public function action_resetPassword(){
 
+
+		// Aquiring email from form and corresponding user information from DB
 		$email = Input::get('email');
+		$user = User::where('username', '=', $email)->first();
 
-		// Get the Swift Mailer instance
-		$mailer = IoC::resolve('mailer');
+		// Reformating text for proper display
+		$lastname = $user->lastname;
+		$lastname = Str::title(Str::lower($lastname));
+		$firstname = $user->firstname;
+		$firstname = Str::title(Str::lower($firstname));
+		$name = $lastname.', '.$firstname;
 
-		// Construct the message
-		$message = Swift_Message::newInstance('Message From Eddon')
-		    ->setFrom(array('Admin@eddon.com'=>"Eddon's Admin"))
-		    ->setTo(array($email=>''))
-		    ->addPart('My Plain Text Message','text/plain')
-		    ->setBody('My HTML Message','text/html');
+		// Starts swiftmailer bundle
+		// Bundle::start('swiftmailer');
 
-		// Send the email
-		$mailer->send($message);
+		// // Get the Swift Mailer instance
+		// $mailer = IoC::resolve('mailer');
 
-		var_dump ($message);
+		// // // Construct the message
+		// $message = Swift_Message::newInstance('Message From Eddon')
+		//     ->setFrom(array('psycko8@yahoo.com'=>"Jean Marcellin"))
+		//     ->setTo(array($email=>$name))
+		//     ->addPart('My Plain Text Message','text/plain')
+		//     ->setBody('My HTML Message','text/html');
+
+		// $mailer->send($message);
+
+		// var_dump ($lastname);
+
+	}
+
+	public function action_upload(){
+		$addonName = Input::get('addonName');
+		$addonAuthor = Input::get('addonAuthor');
+		$addonUpload = Input::get('addonUpload');
+		$addonPicture = Input::get('addonPicture');
+		$addonDesc = Input::get('addonDescription');
+
+		$addon = new Addon();
+		$addon->name() = $addonName;
+		$addon->description() = $addonDescription;
+		$addon->save();
+
+		$picture = new Picture();
+		$picture->picture() = $addonPicture;
+		$picture->save();
 
 	}
 

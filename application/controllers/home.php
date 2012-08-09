@@ -34,6 +34,8 @@ class Home_Controller extends Base_Controller {
 
 	public function action_index()
 	{
+		$countries = File::get('inc/countries.txt');
+
 		return View::make('home.index');
 	}
 
