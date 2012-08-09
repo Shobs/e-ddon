@@ -1,9 +1,5 @@
 @layout('layouts/frame')
 
-@section('logo')
-<a href="../home" title="Eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>
-@endsection
-
 @section('content')
 
 <div id="page" class="">

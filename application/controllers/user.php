@@ -36,7 +36,6 @@ class User_Controller extends Base_Controller{
 
 		$username = Input::get('email');
 		$password = Input::get('password');
-		// $password = Hash::make($password);
 		$newUser = Input::get('newUser', 'off');
 
 
@@ -49,60 +48,67 @@ class User_Controller extends Base_Controller{
 			$country = Input::get('country');
 			$password2 = Input::get('password2');
 
-			$input = array(
-			'username' => $username,
-			'lasname' => $lastname,
-			'firstname' => $firstname,
-			'birthdate' => $birthdate,
-			'country' => $country,
-			'password' => $password
-			);
+			//php form validation commented out - now using HTML5 pattern validation
+			// $input = array(
+			// 'username' => $username,
+			// 'lasname' => $lastname,
+			// 'firstname' => $firstname,
+			// 'birthdate' => $birthdate,
+			// 'country' => $country,
+			// 'password' => $password
+			// );
 
-			$rules = array(
-				'username' => 'required|email|unique:users,username',
-				'lastname' => 'required|alpha|max:50',
-				'firstname' => 'required|alpha|max:50',
-				'birthdate' => 'required',
-				// 'country' => 'required',
-				'password' => 'required|same:password2',
-				'password2' => 'required|same:password'
-			);
+			// $rules = array(
+			// 	'username' => 'required|email|unique:users,username',
+			// 	'lastname' => 'required|alpha|max:50',
+			// 	'firstname' => 'required|alpha|max:50',
+			// 	'birthdate' => 'required',
+			// 	// 'country' => 'required',
+			// 	'password' => 'required|same:password2',
+			// 	'password2' => 'required|same:password'
+			// );
 
-			$validation = Validator::make($input, $rules);
+			// $validation = Validator::make($input, $rules);
 
-			if ($validation->fails()) {
-				// return Redirect::to('index')->with_errors($validation);
-				var_dump($input);
-				echo 'newuser validation fail';
+			// if ($validation->fails()) {
+			// 	// return Redirect::to('index')->with_errors($validation);
+			// 	var_dump($input);
+			// 	echo 'newuser validation fail';
 
-			}
+			// }
 
 			try{
 				$user = new User();
 				$user->username = $username;
 				$user->lastname = $lastname;
 				$user->firstname = $firstname;
-				// $user->birthday = $birthday;
+				$user->birthdate = $birthdate;
 				// $user->country = $country;
 				$user->password = Hash::make($password);
 				$user->save();
-				Auth::attempt($user);
 
-				// return Redirect::to('home/index');
+				//automatic login of user after signup
+				// Auth::login($user);
 
-				var_dump($input);
-				echo 'newuser ok!';
+				return Redirect::to('home/index');
+
+				// Testing inputs
+				// var_dump($input);
+				// echo 'newuser ok!';
 
 			}catch(Exception $e){
 				Session::flash('status_error', 'An error occurred while creating a new account - please try again.');
-				echo 'newuser flash fail!';
+
+				// Testing inputs
+				// echo 'newuser flash fail!';
 			}
 		}else{
 
-			$input = array(
-			'username' => $username,
-			'password' => $password
-			);
+			//php form validation commented out - now using HTML5 pattern validation
+			// $input = array(
+			// 'username' => $username,
+			// 'password' => $password
+			// );
 
 			// $rules = array(
 			// 	'username' => 'required|email|unique:users',
@@ -122,16 +128,49 @@ class User_Controller extends Base_Controller{
 				'password' => $password
 			);
 			if (Auth::attempt($credentials)) {
-				// return Redirect::to('dashboard/index');
-				var_dump($input);
-				echo 'user ok!';
+
+				return Redirect::to('dashboard/index');
+
+				// Testing inputs
+				// var_dump($credentials);
+				// echo 'user ok!';
+
 			}else{
 				Session::flash('status_error', 'Your email or password is invalid - please try again.');
-				// return Redirect::to('home');
-				var_dump($input);
-				echo 'user flash fail!';
+				return Redirect::to('home');
+
+				// Testing inputs
+				// var_dump($credentials);
+				// echo 'user flash fail!';
+
 			}
 		}
+	}
+
+	public function action_resetPassword(){
+
+		$email = Input::get('email');
+
+		// Get the Swift Mailer instance
+		$mailer = IoC::resolve('mailer');
+
+		// Construct the message
+		$message = Swift_Message::newInstance('Message From Eddon')
+		    ->setFrom(array('Admin@eddon.com'=>"Eddon's Admin"))
+		    ->setTo(array($email=>''))
+		    ->addPart('My Plain Text Message','text/plain')
+		    ->setBody('My HTML Message','text/html');
+
+		// Send the email
+		$mailer->send($message);
+
+		var_dump ($message);
+
+	}
+
+	public function action_logout(){
+		Auth::logout();
+		return Redirect::to('home');
 	}
 }
 

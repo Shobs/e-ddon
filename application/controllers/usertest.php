@@ -50,7 +50,7 @@ class Usertest_Controller extends Base_Controller{
 				$user->firstname = $firstname;
 				// $user->birthday = $birthday;
 				// $user->country = $country;
-				$user->password = $password;
+				$user->password = Hash::make($password);
 				$user->save();
 
 
@@ -65,9 +65,10 @@ class Usertest_Controller extends Base_Controller{
 				'password' => $password
 			);
 			if (Auth::attempt($credentials)) {
-				return Redirect::to('dashboard/index');
+				echo "ca marche";
+				// return Redirect::to('dashboard/index');
 			}else{
-				var_dump($password);
+				var_dump($credentials);
 				echo "Failed to login!";
 			}
 		}

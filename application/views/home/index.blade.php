@@ -1,9 +1,5 @@
 @layout('layouts/frame')
 
-@section('logo')
-<a href="home" title="Eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>
-@endsection
-
 @section('content')
 <div class="row">
   <div class="seven columns">
@@ -57,10 +53,10 @@
 
       <div class="five columns">
         <div id="search">
-          <form name="" action="#" method="get" role="search" >
-            <input type="search" placeholder="search an addon" id="s" name="s">
-            <input type="submit" class="small radius nice blue button" value="search">
-          </form>
+          {{Form::open('#', 'get', array('role'=>'search'));}}
+          {{Form::input('search', 's', '', array('id'=>'s', 'placeholder'=>'search an addon'));}}
+          {{Form::input('submit', '', 'search', array('class'=>'small radius nice blue button'));}}
+          {{Form::close();}}
         </div>
         <div class="twelve columns">
           <h2 class="mainTitle">addon by <span class="colorWord">tags</span></h2>
@@ -100,7 +96,7 @@
         <h2 class="sectionTitle"><span>featured</span></h2>
         <div class="four columns">
           <h3 class="featuredSectionTitle">last <span class="colorWord">added</span></h3>
-          <a href="#" class="linkPage btColor2" title="see all the last added addons">see all »</a>
+          {{HTML::link('#', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the last added addons'));}}
           <article id="#"> <!-- post number -->
             <a href="#" class="imgHolder">
               <img src="http://placehold.it/370x278"  alt="placeholder" title="placeholder">
@@ -108,7 +104,7 @@
             <div class="entryDetails">
               <header class="entryHeader">
                 <h2 class="entryTitle">
-                  <a href="#" title="#" rel="bookmark">"addon's name"</a>
+                  {{HTML::link('#', "addon's name", array('rel'=>'bookmark'));}}
                 </h2>
               </header>
               <p class="info">by "author's name", in
@@ -129,7 +125,7 @@
         </div>
          <div class="four columns">
           <h3 class="featuredSectionTitle">highest <span class="colorWord">rated</span></h3>
-          <a href="#" class="linkPage btColor2" title="see all the highest rated addons">see all »</a>
+          {{HTML::link('#', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the highest rated addons'));}}
           <article id="post_659">
             <a href="#" class="imgHolder">
               <img src="http://placehold.it/370x278"  alt="placeholder" title="placeholder">
@@ -137,7 +133,7 @@
             <div class="entryDetails"> <!-- entry details -->
               <header class="entryHeader">
                 <h2 class="entryTitle"> <!-- entry title -->
-                  <a href="#" title="#" rel="bookmark">"addon's name"</a>
+                  {{HTML::link('#', "addon's name", array('rel'=>'bookmark'));}}
                 </h2>
               </header>
               <p class="info">by "author's name", in

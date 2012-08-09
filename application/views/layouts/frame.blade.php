@@ -49,17 +49,29 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
     <div class="twelve columns">
       <hgroup class="five columns">
         <h1 id="siteLogo">
-          @yield('logo')
+          {{HTML::link('home', '', array('title'=>'Eddon', 'rel'=>'home'));}}
         </h1>
       </hgroup>
       <div class="three columns">
         <div id="btLogin">
-          <a href="#" class="small radius nice blue button" title="log in or register" data-reveal-id="loginModal">Login / Register</a>
+
+          <!-- if user is logged shows logout button, if not login button -->
+          @if (Auth::check())
+          {{HTML::link('user/logout', 'Logout', array('class'=>'small radius nice blue button', 'title'=>'Logout'));}}
+          @else
+          {{HTML::link('#', 'Login / Register', array('class'=>'small radius nice blue button', 'title'=>'log in or register', 'data-reveal-id'=>'loginModal'));}}
+          @endif
         </div>
       </div>
       <div class="four columns">
         <div id="btUpload">
-          <a href="#" class="large radius nice blue button" title="Submit an Addon" data-reveal-id="uploadModal">Submit an <span>addon</span></a>
+
+          <!-- if user is logged shows upload button, if not login button -->
+          @if (Auth::check())
+          {{HTML::link('#', 'Submit an addon', array('id'=>'upload', 'class'=>'large radius nice blue button', 'title'=>'Submit an Addon', 'data-reveal-id'=>'uploadModal'));}}
+          @else
+          {{HTML::link('#', 'Submit an addon', array('id'=>'upload', 'class'=>'large radius nice blue button', 'title'=>'Submit an Addon', 'data-reveal-id'=>'loginModal'));}}
+          @endif
         </div>
       </div>
     </div>
@@ -72,7 +84,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <div class="row">
           <div class="twelve columns" style="display: block; ">
             <div class="scrollToTop">
-              <a href="#">ScrollTotop</a>
+              {{HTML::link('#', 'ScrollTotop');}}
             </div>
           </div>
         </div>
@@ -161,7 +173,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <p class="underTitle">Please log in to access to your addon collection</p>
               <br>
               <div class="login" id="theme-my-login">
-                {{Form::open('usertest/authenticate', 'post');}}
+                {{Form::open('user/authenticate', 'post');}}
                 <p>
                   {{Form::label('email', 'Email', array('class' => 'label'));}}
                 </p>
@@ -190,11 +202,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                   <div class="twelve columns ">
                     <p class="formExtraLnk">
                       <h4 class="entryTitle">Forgot Password ?</h4>
-                      <a class="forgotPassLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
+                      {{HTML::link('#', 'Reset Password', array('class'=>'forgotPassLink clear', 'title'=>'Click here if you forgot your password'));}}
                     </p>
                     <p class="formExtraLnk">
                       <h4 class="entryTitle">You don't have an account yet ?</h4>
-                      <a class="registerLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                      {{HTML::link('#', 'Create Account', array('class'=>'registerLink clear', 'title'=>'Click here if you have do not have an account'));}}
                     </p>
                   </div>
                 </div>
@@ -212,7 +224,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
           <div id="forgetForm" class=" twelve columns" >
             <br>
             <p>Please enter your email address.<br>You will receive a link to create a new password via email.</p>
-            {{Form::open('user/authenticate', 'post');}}
+            {{Form::open('user/resetPassword', 'post');}}
             <p>
               {{Form::label('email', 'E-mail', array('class' => 'label'));}}
               {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
@@ -229,11 +241,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <div class="twelve columns ">
                 <p class="formExtraLnk">
                   <h4 class="entryTitle">Remember your password ?</h4>
-                  <a class="loginLink clear" href="#" title="Click here if you want to log-in.">Log in</a>
+                  {{HTML::link('#', 'Log in', array('class'=>'loginLink clear', 'title'=>'Click here if you want to log-in'));}}
                 </p>
                 <p class="formExtraLnk">
                   <h4 class="entryTitle">You don't have an account yet ?</h4>
-                  <a class="registerLink clear" href="#" title="Click here if you have do not have an account">Create Account</a>
+                  {{HTML::link('#', 'Create Account', array('class'=>'registerLink clear', 'title'=>'Click here if you have do not have an account'));}}
                 </p>
               </div>
             </div>
@@ -253,8 +265,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
               <br>
             </div>
             <div>
-              {{Form::open('usertest/authenticate', 'post')}};
-              <form name="newUser" id="newUser" action="user/authenticate" method="post" class="clearfix">
+              {{Form::open('user/authenticate', 'post')}};
                 <p>
                   {{Form::label('email', 'E-mail', array('class' => 'label'));}}
                   {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'id' => 'email', 'required' => 'required'));}}
@@ -270,7 +281,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                 </p>
                 <p>
                   {{Form::label('birthdate', 'Birthdate', array('class' => 'label'));}}
-                  {{Form::input('text', 'birthdate', '', array('class' => 'input', 'placeholder' => 'MM/DD/YYYY', 'id' => 'birthdate', 'required' => 'required', 'pattern' => '(?:(?:0[1-9]|1[0-2])[\/\\-. ]?(?:0[1-9]|[12][0-9])|(?:(?:0[13-9]|1[0-2])[\/\\-. ]?30)|(?:(?:0[13578]|1[02])[\/\\-. ]?31))[\/\\-. ]?(?:19|20)[0-9]{2}'));}}
+                  {{Form::input('text', 'birthdate', '', array('class' => 'input', 'placeholder' => 'YYYY-MM-DD', 'id' => 'birthdate', 'required' => 'required', 'pattern' => '(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))'));}}
                 </p>
                 <div>
                   {{Form::label('country', 'Country', array('class' => 'label'));}}
@@ -300,11 +311,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                 <div class="twelve columns ">
                   <p class="formExtraLnk">
                     <h4 class="entryTitle">Forgot Password ?</h4>
-                    <a class="forgotPassLink clear" href="#" title="Click here if you forgot your password">Reset Password</a>
+                    {{HTML::link('#', 'Reset Password', array('class'=>'forgotPassLink', 'title'=>'Click here if you forgot your password'));}}
                   </p>
                   <p class="formExtraLnk">
                     <h4 class="entryTitle">You have an account ?</h4>
-                    <a class="loginLink clear" href="#" title="Click here if you already have an account">Log in</a>
+                    {{HTML::link('#', 'Log in', array('class'=>'loginLink', 'title'=>'Click here if you already have an account'));}}
                   </p>
                 </div>
               </div>
