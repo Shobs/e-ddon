@@ -115,20 +115,20 @@ class User_Controller extends Base_Controller{
 	}
 
 	public function action_upload(){
-		$addonName = Input::get('addonName');
-		$addonAuthor = Input::get('addonAuthor');
-		$addonUpload = Input::get('addonUpload');
-		$addonPicture = Input::get('addonPicture');
-		$addonDesc = Input::get('addonDescription');
+		// $addonName = Input::get('addonName');
+		// $addonAuthor = Input::get('addonAuthor');
+		// $addonUpload = Input::get('addonUpload');
+		// $addonPicture = Input::get('addonPicture');
+		// $addonDesc = Input::get('addonDescription');
 
-		$addon = new Addon();
-		$addon->name() = $addonName;
-		$addon->description() = $addonDescription;
-		$addon->save();
+		// $addon = new Addon();
+		// $addon->name() = $addonName;
+		// $addon->description() = $addonDescription;
+		// $addon->save();
 
-		$picture = new Picture();
-		$picture->picture() = $addonPicture;
-		$picture->save();
+		// $picture = new Picture();
+		// $picture->picture() = $addonPicture;
+		// $picture->save();
 
 	}
 

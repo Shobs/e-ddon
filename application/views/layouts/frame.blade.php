@@ -336,9 +336,8 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <br/>
         {{Form::label('addonUpload', 'Addon (.zip format only)', array('class' => 'label'));}}
         {{Form::file('addonUpload', array('id'=>'addonUpload'));}}
-        <div id="fakeAddonUpload">
-          {{Form::input('text', 'fakeAddonUpload', '', array('size' => '40'));}}
-        </div>
+        <div id="fakeAddonUpload"></div>
+
       </div>
       <div class="three columns">
         <br/>
@@ -347,9 +346,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       <div class="nine columns">
         {{Form::label('pictureUpload', 'Picture (.jpg format only)', array('class' => 'label'));}}
         {{Form::file('pictureUpload', array('id'=>'pictureUpload'));}}
-        <div id="fakePictureUpload">
-          {{Form::input('text', 'fakePictureUpload', '', array('size' => '40'));}}
-        </div>
+        <div id="fakePictureUpload"></div>
       </div>
       <div class="three columns">
         {{Form::button('Select', array('class'=>'small radius nice blue button btRight', 'id'=>'fakePicUpBtn'));}}
