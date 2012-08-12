@@ -3,6 +3,31 @@ body, #loginModal, #uploadModal{
 	font-family: "Arial", "Helvetica", "sans-serif";
 }
 
+
+
+ol, ul {
+list-style: none;
+}
+
+p {
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+
+}
+
+h2 {
+	display: block;
+	font-size: 1.5em;
+	-webkit-margin-before: 0.83em;
+	-webkit-margin-after: 0.83em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+}
+
 .label {background-color: transparent;}
 
 .row { width: 1180px;}
@@ -418,24 +443,120 @@ form .select select {
 	z-index: 1;
 }
 
+.pageHeader .entryTag {
+	float: left;
+	margin-top: 30px;
+	position: relative;
+}
 
-#loginArea {
+#sortButton {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	margin-bottom: 30px;
+	margin-top: 28px;
+}
+
+#sortButton p {
+	color: #92897C;
+	font-size: 18px;
+	padding-right: 5px;
+}
+
+#sortButton li {
+	float: left;
+	padding-left: 5px;
+}
+
+#sortButton a.date {background-position: 0 0;}
+
+#sortButton a.date:hover, #sortButton .current a.date {background-position: 0 -22px;}
+
+#sortButton a.name {background-position: -22px 0;}
+
+#sortButton a.name:hover, #sortButton .current a.name {background-position: -22px -22px;}
+
+#sortButton a.rate {background-position: -44px 0;}
+
+#sortButton a.rate:hover, #sortButton .current a.rate {background-position: -44px -22px;}
+
+#sortButton a {
 	display: block;
+	float: left;
+	text-indent: -9999px;
+	overflow: hidden;
+	background: url(../img/ico_sort.png) no-repeat;
+	width: 22px;
+	height: 22px;
 }
 
-#forgetArea {
-	display: none;
+.postImage {
+	border: 5px solid white;
+	-webkit-box-shadow: 1px 1px 1px 0px
+	rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 1px 1px 0px
+	rgba(0, 0, 0, 0.1);
 }
 
-#registerArea {
-	display: none;
+.entryDetails {
+	-webkit-text-size-adjust: none;
 }
 
-.clear {
-	float: both;
+.entryDetails p.info {
+	color: #B1A590;
+	font-size: 12px;
 }
 
-.btRight {
+.list .entryTitle {
+	font-size: 18px;
+	padding-right: 32px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.entryTitle, .entryTitle a {
+	color: #92897C;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.rateIt {
 	float: right;
+	padding: 3px 3px 3px;
+	color: #92897C;
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: -18px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background: #DDD1BE;
+	margin-bottom: 15px;
 }
+
+.rateIt span {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: url(../img/ico_rate.png) no-repeat 2px 1px;
+	float: left;
+	margin-top: -2px;
+	margin-right: 2px;
+}
+
+.entryDetails .entryTag {padding-top: 3px;}
+
+#addonLeft{float: left;}
+
+#loginArea {display: block;}
+
+#forgetArea {display: none;}
+
+#registerArea {	display: none;}
+
+.clear {float: both;}
+
+.btRight {float: right;}
 

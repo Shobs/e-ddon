@@ -29,43 +29,31 @@
 @if(Session::has('addons'))
 <?php $addons = Session::get('addons');?>
 <content class="row">
-  @foreach($addons as $addon)
-  <?php
-  $id = $addon->id;
-  $name = $addon->name;
-  $author = $addon->author;
-  $rating = $addon->rating;
-  $category = $addon->category;
-  $visible = $addon->visible;
-  ?>
-  @if($visible == 1)
-  <div id="addonLeft" class="addonCat three column">
-    <a href="<?php echo 'adddon/'.$id?>" class="imgHolder" title="<?php echo $name?>">
-      <img class="attachment-post-thumbnail postImage" title="Japonizer" src="http://www.toolmarklets.com/wp-content/uploads/2012/01/japonizer-286x211.jpg" width="260" height="200" style="display: inline; ">
+@foreach($addons as $addon)
+  <div id="addonLeft" class="three column">
+    <a href="http://www.toolmarklets.com/japonizer/" class="imgHolder" title="See Japonizer detail's">
+      <img class="attachment-post-thumbnail wp-post-image" title="Japonizer" alt="background pattern in japan style" src="http://www.toolmarklets.com/wp-content/uploads/2012/01/japonizer-286x211.jpg" width="260" height="200" style="display: inline; ">
     </a>
-    <div class="entryDetails">
-      <header class="entryHeader">
-        <h2 class="entryTitle">
-          <a href="<?php echo 'adddon/'.$id ?>" title="See <?php echo $name?> detail's" rel="bookmark"><?php echo $name?></a>
+    <div class="entry-details">
+      <header class="entry-header">
+        <h2 class="entry-title">
+          <a href="http://www.toolmarklets.com/japonizer/" title="See Japonizer detail's" rel="bookmark">Japonizer </a>
         </h2>
-        <div class="rateIt"><span></span><?php echo $rating?></div>
+        <div class="rate-it"><span></span>4</div>
       </header>
-      <p class="info">by <?php echo $author?></p>
-      <div class="entryTag">
+      <p class="info">by ワノコト</p>
+      <div class="entry-tag">
         <ul>
           <li>
-            <a href="#" rel="tag">tag</a>
+            <a href="http://www.toolmarklets.com/tag/image-generator/" rel="tag">image generator</a>
           </li>
         </ul>
       </div>
-    </div>
-    <br/>
   </div>
-  @endif
-  @endforeach
+</div>
+@endforeach
 </content>
 @endif
-
 </content>
 
 @endsection

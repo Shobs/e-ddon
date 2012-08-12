@@ -1,6 +1,6 @@
 <?php
 
-class Category_Controller extends Base_Controller {
+class Dashboard_Controller extends Base_Controller{
 
 	/*
 	|--------------------------------------------------------------------------
@@ -32,40 +32,10 @@ class Category_Controller extends Base_Controller {
 
 	// public $restful = true;
 
-	public function action_index()
-	{
-
-		$category = Input::get('id');
-		$addons = Addon::where('category_id', '=', $category)->get();
-		// $pictureId = Addon::where('')
-		// $pictures = Picture::where('addon_id', '=', $pictureId)->get();
-
-
-		Session::put('addons', $addons);
-
-		// if (Session::has('addons')) {
-		// 	var_dump(Session::get('addons'));
-		// }
-
-		// $pictures = Picture::get();
-
-		// var_dump($category);
-		// var_dump($addons);
-		// var_dump($pictures);
-
-		// foreach ($addons as $addon) {
-
-
-
-		// }
-
-		return View::make('home.category');
-
-
-
-		// $addons = Addon::get()
-
+	public function action_index(){
+		// $addons = Auth::user()->addons()->order_by('updated_at', 'desc')->order_by('id', 'desc')->get();
+		return View::make('home.addon');
 	}
-
-
 }
+
+?>

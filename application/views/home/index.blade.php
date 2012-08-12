@@ -7,43 +7,43 @@
       <h2 class="mainTitle">addon by <span class="colorWord">type</span></h2>
     </div>
     <div class="four columns">
-      <a href="category" title="View addon list in Economy">
-        <img src="http://placehold.it/180x180" alt="placeholder+image">
+      <a href="category?id=1" title="View addon list in Economy">
+        {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Economy</h2> <!-- category name -->
         <p></p> <!-- category description -->
       </a>
     </div>
     <div class="four columns">
-      <a href="category" title="View addon list in Gathering">
-        <img src="http://placehold.it/180x180" alt="placeholder+image">
+      <a href="category?id=2" title="View addon list in Gathering">
+        {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Gathering</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="category" title="View addon list in Interface" >
-        <img src="http://placehold.it/180x180" alt="placeholder+image">
+      <a href="category?id=3" title="View addon list in Interface" >
+        {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Interface</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="category" title="View addon list in PVP" >
-        <img src="http://placehold.it/180x180" alt="placeholder+image">
+      <a href="category?id=4" title="View addon list in PVP" >
+        {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">PVP</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="category" title="View addon list in Raiding" >
-        <img src="http://placehold.it/180x180" alt="placeholder+image">
+      <a href="category?id=5" title="View addon list in Raiding" >
+        {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Raiding</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="category" title="View addon list in Vanity" >
-        <img src="http://placehold.it/180x180" alt="placeholder+image">
+      <a href="category?id=6" title="View addon list in Vanity" >
+        {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Vanity</h2>
         <p></p>
       </a>
@@ -99,7 +99,7 @@
           {{HTML::link('#', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the last added addons'));}}
           <article id="#"> <!-- post number -->
             <a href="#" class="imgHolder">
-              <img src="http://placehold.it/370x278"  alt="placeholder" title="placeholder">
+              {{HTML::image('http://placehold.it/370x278', 'placeholder', array('title'=>'placeholder', 'class' => 'postImage'));}}
             </a>
             <div class="entryDetails">
               <header class="entryHeader">
@@ -108,15 +108,15 @@
                 </h2>
               </header>
               <p class="info">by "author's name", in
-                <a href="#" title="#">"section"</a>
+                {{HTML::link('#', 'section', array('rel'=>'section'));}}
               </p>
               <div class="entryTag">
                 <ul>
                   <li>
-                    <a href="#" rel="tag"> "tag"</a>
+                    {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
                   </li>
                   <li>
-                    <a href="#" rel="tag">"tag"</a>
+                    {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
                   </li>
                 </ul>
               </div>
@@ -128,7 +128,7 @@
           {{HTML::link('#', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the highest rated addons'));}}
           <article id="post_659">
             <a href="#" class="imgHolder">
-              <img src="http://placehold.it/370x278"  alt="placeholder" title="placeholder">
+              {{HTML::image('http://placehold.it/370x278', 'placeholder', array('title'=>'placeholder', 'class' => 'postImage'));}}
             </a>
             <div class="entryDetails"> <!-- entry details -->
               <header class="entryHeader">
@@ -137,15 +137,15 @@
                 </h2>
               </header>
               <p class="info">by "author's name", in
-                <a href="#" title="#">"section"</a>
+                {{HTML::link('#', 'section', array('rel'=>'section'));}}
               </p>
               <div class="entryTag">
                 <ul>
                   <li>
-                    <a href="#" rel="tag">"tag"</a>
+                    {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
                   </li>
                   <li>
-                    <a href="#" rel="tag">"tag"</a>
+                    {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
                   </li>
                 </ul>
               </div>
@@ -156,7 +156,7 @@
           <h3 class="featuredSectionTitle">eddon <span class="colorWord">selected</span></h3>
           <article id="post_659">
             <a href="#" class="imgHolder">
-              <img src="http://placehold.it/370x278"  alt="placeholder" title="placeholder">
+              {{HTML::image('http://placehold.it/370x278', 'placeholder', array('title'=>'placeholder', 'class' => 'postImage'));}}
             </a>
             <div class="entryDetails"> <!-- entry details -->
               <header class="entryHeader">
@@ -165,15 +165,15 @@
                 </h2>
               </header>
               <p class="info">by "author's name", in
-                <a href="#" title="#">"section"</a>
+                {{HTML::link('#', 'section', array('rel'=>'section'));}}
               </p>
               <div class="entryTag">
                 <ul>
                   <li>
-                    <a href="#" rel="tag">"tag"</a>
+                    {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
                   </li>
                   <li>
-                    <a href="#" rel="tag">"tag"</a>
+                    {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
                   </li>
                 </ul>
               </div>

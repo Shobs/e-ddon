@@ -37,6 +37,7 @@
 
 Route::controller(Controller::detect());
 Route::get('about', 'home@about');
+
 /*
 Route::get('/', function()
 {

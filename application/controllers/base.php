@@ -10,7 +10,7 @@ class Base_Controller extends Controller {
 	    // Asset::add('plugins', 'js/plugins.js');
 	    Asset::container('footer')->add('jquery', 'js/libs/jquery.min.js');
 	    Asset::container('footer')->add('foundation-js', 'js/libs/foundation.js', 'jquery');
-	    Asset::container('footer')->add('script', 'js/script.js', 'jquery');
+	    Asset::container('footer')->add('script', 'js/script.php', 'jquery');
 	    Asset::container('footer')->add('plugins', 'js/plugins.js', 'script');
 	    Asset::add('foundation-css', 'css/libs/foundation.css');
 	    Asset::add('style', 'css/style.css');

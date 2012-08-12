@@ -331,6 +331,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             {{ $addonName_error }}
             @endforeach
           @endif
+          <div id="#sessionMessage"></div>
         </p>
         <p>
           {{Form::label('addonAuthor', "Addon's author (required)", array('class' => 'label'));}}
@@ -376,7 +377,6 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <span class="#">i'm the author of this addon</span>
       </div>
       <div>
-
       </div>
       <div class="four columns">
         <input type="submit" value="Submit the addon" class="small radius nice blue button btRight">
@@ -384,6 +384,58 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       {{Form::close();}}
     </div>
   </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="alertError" class="reveal-modal">
+  @if (isset($errors) && count($errors->all()) > 0)
+  <div class="row">
+    <div class="twelve columns">
+      <a class="close" data-dismiss="alert" href="#">×</a>
+      <h4 class="alert-heading">Oh Snap!</h4>
+      <ul>
+        @foreach ($errors->all('<li>:message</li>') as $message)
+        {{ $message }}
+        @endforeach
+      </ul>
+    </div>
+  </div>
+  @elseif (!is_null(Session::get('status_error')))
+  <div class="row">
+    <div class="twelve columns">
+      <h4 class="alert-heading">Oh Snap!</h4>
+      @if (is_array(Session::get('status_error')))
+      <ul>
+        @foreach (Session::get('status_error') as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+      @else
+      {{ Session::get('status_error') }}
+      @endif
+    </div>
+  </div>
+  @endif
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="alertSuccess" class="reveal-modal">
+  @if (!is_null(Session::get('status_success')))
+  <div class="row">
+    <div class="twelve columns">
+      <h4 class="alert-heading">Success!</h4>
+      @if (is_array(Session::get('status_success')))
+      <ul>
+        @foreach (Session::get('status_success') as $success)
+        <li>{{ $success }}</li>
+        @endforeach
+      </ul>
+      @else
+      {{ Session::get('status_success') }}
+      @endif
+    </div>
+  </div>
+  @endif
   <a class="close-reveal-modal">&#215;</a>
 </div>
 

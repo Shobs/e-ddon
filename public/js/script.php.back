@@ -40,7 +40,13 @@ $(document).ready(function () {
 		fakeUpload('#pictureUpload', '#fakePictureUpload');
 	});
 
-
+	// $(function()){
+	// 	if(!<?php echo $_SESSION['status_error'] ?> == NULL){
+	// 		$('#alertError').reveal();
+	// 	}elseif(!<?php echo $_SESSION['status_success'] ?> == NULL){
+	// 		$('#alertSuccess').reveal();
+	// 	}
+	// }
 
 });
 
