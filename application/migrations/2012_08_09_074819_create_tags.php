@@ -9,7 +9,13 @@ class Create_Tags {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('tags',function($table){
+		$table->engine = 'InnoDB';
+		$table->increments('id');
+		$table->string('name',255);
+		$table->boolean('visible');
+		$table->timestamps();
+		});
 	}
 
 	/**
@@ -19,7 +25,7 @@ class Create_Tags {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('tags');
 	}
 
 }

@@ -290,7 +290,7 @@ form .label, form label {
 	padding-left: 15px;
 }
 
-form input[type="text"], form input[type="password"], form input[type="email"],form input[type="file"], form input[type="date"], form textarea, form .select {
+form input[type="text"], form input[type="select"], form input[type="password"], form input[type="email"],form input[type="file"], form input[type="date"], form textarea, form .select {
 	margin-bottom: 20px;
 	position: relative;
 	background: #F5F0E6;

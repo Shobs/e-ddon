@@ -7,7 +7,7 @@ class User extends Eloquent {
 	public static $timestanp = true;
 	public static $table = 'users';
 
-	public function addon(){
+	public function addons(){
 		return $this->has_many('Addon');
 	}
 }

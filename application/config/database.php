@@ -64,7 +64,7 @@ return array(
 		'mysql' => array(
 			'driver'   => 'mysql',
 			'host'     => 'localhost',
-			'database' => 'eddon',
+			'database' => 'eddondb',
 			'username' => 'root',
 			'password' => '',
 			'charset'  => 'utf8',

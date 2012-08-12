@@ -326,6 +326,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <p>
           {{Form::label('addonName', "Addon's name (required)", array('class' => 'label'));}}
           {{Form::input('text', 'addonName', '', array('size' => '40', 'required' => 'required'));}}
+          @if ($errors)
+            @foreach ($errors->all('<p class="error-message">:message</p>') as $addonName_error)
+            {{ $addonName_error }}
+            @endforeach
+          @endif
         </p>
         <p>
           {{Form::label('addonAuthor', "Addon's author (required)", array('class' => 'label'));}}
@@ -335,6 +340,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       <div class="nine columns">
         <br/>
         {{Form::label('addonUpload', 'Addon (.zip format only)', array('class' => 'label'));}}
+        {{Form::hidden('MAX_FILE_SIZE', 3145728);}}
         {{Form::file('addonUpload', array('id'=>'addonUpload'));}}
         <div id="fakeAddonUpload"></div>
 
@@ -345,15 +351,19 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       </div>
       <div class="nine columns">
         {{Form::label('pictureUpload', 'Picture (.jpg format only)', array('class' => 'label'));}}
+        {{Form::hidden('MAX_FILE_SIZE', 500000);}}
         {{Form::file('pictureUpload', array('id'=>'pictureUpload'));}}
         <div id="fakePictureUpload"></div>
       </div>
       <div class="three columns">
         {{Form::button('Select', array('class'=>'small radius nice blue button btRight', 'id'=>'fakePicUpBtn'));}}
-        {{Form::open_for_files('user/profile', 'post', array('name' => 'addon', 'class' => 'formControlWrap', 'size' => '40', 'value' => '1'));}}
       </div>
       <div class="twelve columns">
-        <br/>
+        {{Form::label('category', 'Category', array('class' => 'label'));}}
+        {{Form::select('category', array('' => '', '1' => 'Economy', '2' => 'Gathering', '3' => 'Interface', '4' => 'PVP', '5' => 'Raiding', '6' => 'Vanity'), '', array('id' => 'addonCategory'));}}
+      </div>
+      <br/>
+      <div class="twelve columns">
         <p>
           {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label', 'required' => 'required'));}}
           {{Form::textarea('addonDescription', '', array('cols' => '40', 'rows' => '10', 'style' => 'font-size: "10px"'));}}
@@ -364,6 +374,9 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
         <span class="fakeCheckbox"></span>
         <input type="checkbox" name="is-author[]" value="i'm the author of this addon" style="display: none; ">&nbsp;
         <span class="#">i'm the author of this addon</span>
+      </div>
+      <div>
+
       </div>
       <div class="four columns">
         <input type="submit" value="Submit the addon" class="small radius nice blue button btRight">

@@ -3,30 +3,29 @@
 class Create_Users {
 
 	/**
-	 * Make changes to the database.
+	 * Creates the Users table and adds admin user
 	 *
 	 * @return void
 	 */
 	public function up(){
-		Schema::create('users',function($table){
 
+		Schema::create('users',function($table){
 		$table->increments('id');
-		$table->string('username',100);
-		$table->string('lastname',255);
-		$table->string('firstname',255);
-		$table->date('birthdate',64);
-		$table->string('country',255);
-		$table->string('password',100);
-		$table->string('comments',64);
-		$table->string('admin',64);
-		$table->string('visible',1);
+		$table->string('username', 100)->unique();
+		$table->string('password', 100);
+		$table->string('lastname', 255);
+		$table->string('firstname', 255);
+		$table->date('birthdate', 64);
+		$table->text('comments', 1000)->nullable();
+		$table->integer('role');
+		$table->boolean('visible');
 		$table->timestamps();
 		});
 
 		DB::table('users')->insert(array(
-		'username'=>'admin',
+		'username'=>'marcellinja@gmai.com',
 		'password'=>Hash::make('Ruomale1'),
-		'name'=>'Admin'
+		'role'=> 100,
 
 		));
 
@@ -41,7 +40,7 @@ class Create_Users {
 	 */
 	public function down()
 	{
-		Schema::drop($user);
+		Schema::drop($users);
 	}
 
 }

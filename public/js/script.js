@@ -1,5 +1,18 @@
 $(document).ready(function () {
 
+	// copies value from file input to a fake div
+	function fakeUpload (fieldUpload, fieldFakeUpload) {
+		var value = $(fieldUpload).val();
+		var drive = value.charAt(0);
+		value =  value.substring(0,37)+'...';
+		value = value.replace(drive+":\\fakepath\\","");
+		if (value.charAt(0) == '.'){
+			value = '';
+		}
+		$(fieldFakeUpload).html(value);
+	}
+
+	// Hides and shows different part of the form
 	$(".forgotPassLink").click(function() {
 		$('#loginArea').hide();
 		$('#registerArea').hide();
@@ -18,10 +31,16 @@ $(document).ready(function () {
 		$('#registerArea').fadeIn(500);
 	});
 
+	// Copy value from file input to a fake div
 	$("#addonUpload").change(function(){
-		var value = $('#addonUpload').val();
-		$('#fakeAddonUpload').html(value);
+		fakeUpload('#addonUpload', '#fakeAddonUpload');
 	});
+
+	$("#pictureUpload").change(function(){
+		fakeUpload('#pictureUpload', '#fakePictureUpload');
+	});
+
+
 
 });
 

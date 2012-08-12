@@ -115,20 +115,63 @@ class User_Controller extends Base_Controller{
 	}
 
 	public function action_upload(){
-		// $addonName = Input::get('addonName');
-		// $addonAuthor = Input::get('addonAuthor');
-		// $addonUpload = Input::get('addonUpload');
-		// $addonPicture = Input::get('addonPicture');
-		// $addonDesc = Input::get('addonDescription');
 
-		// $addon = new Addon();
-		// $addon->name() = $addonName;
-		// $addon->description() = $addonDescription;
-		// $addon->save();
+		$input = Input::all();
 
-		// $picture = new Picture();
-		// $picture->picture() = $addonPicture;
-		// $picture->save();
+        if( isset($input['addonDescription']) ) {
+            $input['addonDescription'] = filter_var($input['addonDescription'], FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+        }
+
+        $rules = array(
+        	'addonName' => 'required|max:50',
+			'addonAuthor' => 'required|max:50',
+			'addonDescription' => 'required|max:2000',
+			'addonUpload' => 'required|mimes:zip|max:3145728',
+			'pictureUpload' => 'required|image|max:500000',
+        );
+
+        $validation = Validator::make($input, $rules);
+
+        if( $validation->fails() ) {
+            return Redirect::back()->with_errors($validation);
+        }
+
+        $addonExtension = File::extension($input['addonUpload']['name']);
+        $pictureExtension = File::extension($input['pictureUpload']['name']);
+        $addonDirectory = 'public/_uploads/addons/'.sha1(Auth::user()->id);
+		$pictureDirectory = 'public/_uploads/pictures/'.sha1(Auth::user()->id);
+        $addonFilename = sha1(Auth::user()->id.time()).".{$addonExtension}";
+        $pictureFilename = sha1(Auth::user()->id.time()).".{$pictureExtension}";
+
+
+        // var_dump($category);
+        $add_upload_success = Input::upload('addonUpload', $addonDirectory, $addonFilename);
+        $pic_upload_success = Input::upload('pictureUpload', $pictureDirectory, $pictureFilename);
+
+        if( $add_upload_success && $pic_upload_success) {
+
+        	$addon = new Addon(array(
+            	'name' => $input['addonName'],
+            	'author' => $input['addonAuthor'],
+            	'description' => $input['addonDescription'],
+            	'category_id' => $input['category'],
+                'location' => URL::to('uploads/'.sha1(Auth::user()->id).'/'.$addonFilename),
+             ));
+
+        	Auth::user()->addons()->save($addon);
+
+        	$picture = new Picture(array(
+            	'addon_id' => $addon->id,
+                'location' => URL::to('uploads/'.sha1(Auth::user()->id).'/'.$pictureFilename),
+             ));
+
+            $addon->pictures()->save($picture);
+
+            Session::flash('status_success', 'Successfully uploaded your new addon');
+        } else {
+            Session::flash('status_error', 'An error occurred while uploading your new addon - please try again.');
+        }
+        return Redirect::to('dashboard');
 
 	}
 
