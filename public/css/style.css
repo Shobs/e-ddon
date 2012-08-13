@@ -18,6 +18,16 @@ p {
 
 }
 
+h1 {
+	display: block;
+	font-size: 2em;
+	-webkit-margin-before: 0.67em;
+	-webkit-margin-after: 0.67em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+}
+
 h2 {
 	display: block;
 	font-size: 1.5em;
@@ -51,6 +61,8 @@ h2 {
 	background: url(../img/eddon_logo.png) no-repeat;
 }
 
+#userName { margin-top: 70px;}
+
 #btLogin { float: right; width: 140px; margin-top: 59px;}
 
 #btUpload { float: right; width: 200px;	margin-top: 40px;}
@@ -61,6 +73,8 @@ h2 {
 
 .button.small { font-size: 15px; padding: 7px 10px 8px; }
 
+.colorWord{ font-weight: bold; color: #ed581f;}
+
 .mainTitle {
 	font-size: 3.5em;
 	font-weight: normal;
@@ -68,7 +82,52 @@ h2 {
 	margin-bottom: 20px;
 }
 
-.colorWord{ font-weight: bold; color: #ed581f;}
+.mainTitle h1::before {
+	font-weight: bold;
+	content: '';
+	border-color:transparent transparent transparent #CEC0A6;
+	border-style: solid;
+	border-width: 15px 0px 15px 15px;
+	display: block;
+	float: left;
+	margin: 12px 10px 0px 0px;
+}
+
+.mainTitle h1 {
+	font-weight: bold;
+	position: relative;
+	font-size: 50px;
+}
+
+.mainTitle h2 {
+	font-size: 38px;
+	line-height: 63px;
+	margin-right: 15px;
+	font-weight: normal;
+	line-height: 2.1em;
+}
+
+.mainTitle h1, .mainTitle h2 {float: left;}
+
+.mainTitle h2, .mainTitle h3 { margin-top: 20px; float: left; }
+
+.mainTitle h3{ font-weight: normal; }
+
+.mainTitle a {text-decoration: none;}
+
+.mainTitle .sep {
+	border-color: transparent transparent transparent #CEC0A6;
+	border-style: solid;
+	border-width: 15px 0px 15px 15px;
+	margin: 12px 15px 5px 15px;
+	display: inline-block;
+	margin-top: 3px;
+}
+
+.mainTitle h2.inlined{
+	text-align: inline;
+	line-height: 1em;
+}
 
 .catBlock {
 	-webkit-box-shadow: inset 0px 0px 0px 0px #fff;
@@ -290,17 +349,7 @@ h2 {
 
 #mentionRight{ float: right; }
 
-.mainTitle h2, .mainTitle h3 { margin-top: 20px; float: left; }
 
-.mainTitle h3{ font-weight: normal; }
-
-.mainTitle .sep {
-	border-color: transparent transparent transparent #CEC0A6;
-	border-style: solid;
-	border-width: 15px 0px 15px 15px;
-	margin: 12px 15px 5px 15px;
-	display: inline-block;
-}
 
 .underTitle { margin-top: 20px; }
 
@@ -544,6 +593,30 @@ form .select select {
 	float: left;
 	margin-top: -2px;
 	margin-right: 2px;
+}
+
+.entryDetails .entryTag {padding-top: 3px;}
+
+.soloEntry dl { margin-bottom: 20px;}
+
+.soloEntry dl dt {
+	font-size: 12px;
+	font-weight: bold;
+	color: #B1A590;
+	clear: left;
+	float: left;
+	padding-right: 5px;
+	line-height: 24px;
+}
+
+.soloEntry dl dd .link {color:#FC661C;}
+
+.soloEntry .entryContent {
+	color: #92897C;
+	font-size: 12px;
+	line-height: 18px;
+	padding-top: 10px;
+	background: url(../img/bg_sep.png) repeat-x;
 }
 
 .entryDetails .entryTag {padding-top: 3px;}

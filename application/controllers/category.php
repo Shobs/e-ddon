@@ -35,16 +35,24 @@ class Category_Controller extends Base_Controller {
 	public function action_index()
 	{
 
-		$category = Input::get('id');
+		// Getting category id from URL
+		$category = Input::get('cat');
+
+		// Getting addons info from DB that belong to the category
 		$addons = Addon::where('category_id', '=', $category)->get();
+
+		// Getting category info from DB
+		$category = Category::where('id', '=', $category)->first();
+
 		// $pictureId = Addon::where('')
 		// $pictures = Picture::where('addon_id', '=', $pictureId)->get();
 
-
+		// Saving addons and category to session
 		Session::put('addons', $addons);
+		Session::put('category', $category);
 
 		// if (Session::has('addons')) {
-		// 	var_dump(Session::get('addons'));
+			// var_dump($category);
 		// }
 
 		// $pictures = Picture::get();

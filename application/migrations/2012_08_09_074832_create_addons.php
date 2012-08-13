@@ -19,13 +19,14 @@ class Create_Addons {
 		$table->string('name',255);
 		$table->integer('user_id')->index();
 		$table->string('author', 255);
+		$table->string('version', 255);
 		$table->integer('rating')->default(0);
-		$table->text('description',2000);
+		$table->string('description',2000);
 		$table->integer('downloaded');
 		$table->timestamps();
 		$table->integer('category_id')->index();
 		$table->string('location',64);
-		$table->boolean('visible');
+		$table->boolean('visible')->default(1);
 
 		// Setup foreign keys relationship
 		// $table->foreign('user_id')->references('id')->on('users')->on_delete('no action');

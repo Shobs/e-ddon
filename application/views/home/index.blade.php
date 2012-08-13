@@ -7,42 +7,42 @@
       <h2 class="mainTitle">addon by <span class="colorWord">type</span></h2>
     </div>
     <div class="four columns">
-      <a href="category?id=1" title="View addon list in Economy">
+      <a href="category?cat=1" title="View addon list in Economy">
         {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Economy</h2> <!-- category name -->
         <p></p> <!-- category description -->
       </a>
     </div>
     <div class="four columns">
-      <a href="category?id=2" title="View addon list in Gathering">
+      <a href="category?cat=2" title="View addon list in Gathering">
         {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Gathering</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="category?id=3" title="View addon list in Interface" >
+      <a href="category?cat=3" title="View addon list in Interface" >
         {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Interface</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="category?id=4" title="View addon list in PVP" >
+      <a href="category?cat=4" title="View addon list in PVP" >
         {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">PVP</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="category?id=5" title="View addon list in Raiding" >
+      <a href="category?cat=5" title="View addon list in Raiding" >
         {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Raiding</h2>
         <p></p>
       </a>
     </div>
     <div class="four columns">
-      <a href="category?id=6" title="View addon list in Vanity" >
+      <a href="category?cat=6" title="View addon list in Vanity" >
         {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
         <h2 class="catTitle">Vanity</h2>
         <p></p>

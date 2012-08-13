@@ -14,7 +14,7 @@ class Create_Pictures {
 		$table->increments('id');
 		$table->integer('addon_id')->index();
 		$table->string('location',64);
-		$table->boolean('visible');
+		$table->boolean('visible')->default(1);
 		$table->timestamps();
 
 		// $table->foreign('addon_id')->references('id')->on('addons')->on_delete('no action');

@@ -2,11 +2,14 @@
 
 
 @section('content')
+<?php
+$category = Session::get('category');
+?>
 
 <header class="row">
   <div class="twelve columns">
     <div class="pageHeader ten columns ">
-      <h1 class="mainTitle">addon's type <span class="colorWord">Category</span></h1>
+      <h1 class="mainTitle">addon's type <span class="colorWord">{{$category->name}}</span></h1>
       <div class="entryTag"><span class="catTag">Category's tags</span><span class="arrow"></span></div>
     </div>
     <div class="two columns">
@@ -27,30 +30,27 @@
 </header>
 
 @if(Session::has('addons'))
-<?php $addons = Session::get('addons');?>
+<?php
+$addons = Session::get('addons');
+?>
 <content class="row">
   @foreach($addons as $addon)
   <?php
-  $id = $addon->id;
-  $name = $addon->name;
-  $author = $addon->author;
-  $rating = $addon->rating;
-  $category = $addon->category;
-  $visible = $addon->visible;
+   $picture = Picture::where('addon_id', '=', $addon->id)->first();
   ?>
-  @if($visible == 1)
+  @if($addon->visible == 1)
   <div id="addonLeft" class="addonCat three column">
-    <a href="<?php echo 'adddon/'.$id?>" class="imgHolder" title="<?php echo $name?>">
-      <img class="attachment-post-thumbnail postImage" title="Japonizer" src="http://www.toolmarklets.com/wp-content/uploads/2012/01/japonizer-286x211.jpg" width="260" height="200" style="display: inline; ">
+    <a href="addon?id={{$addon->id}}" class="imgHolder" title="{{$addon->name}}">
+      <img class=" postImage" title="{{$addon->name}}" src="{{$picture->location}}" width="260" height="200" style="display: inline; ">
     </a>
     <div class="entryDetails">
       <header class="entryHeader">
         <h2 class="entryTitle">
-          <a href="<?php echo 'adddon/'.$id ?>" title="See <?php echo $name?> detail's" rel="bookmark"><?php echo $name?></a>
+          <a href="{{$addon->name}}" title="See {{$addon->name}} detail's" rel="bookmark">{{$addon->name}}</a>
         </h2>
-        <div class="rateIt"><span></span><?php echo $rating?></div>
+        <div class="rateIt"><span></span>{{$addon->rating}}</div>
       </header>
-      <p class="info">by <?php echo $author?></p>
+      <p class="info">by {{$addon->author}}</p>
       <div class="entryTag">
         <ul>
           <li>
@@ -65,7 +65,6 @@
   @endforeach
 </content>
 @endif
-
 </content>
 
 @endsection

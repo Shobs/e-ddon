@@ -42,7 +42,9 @@ More info: h5bp.com/i/378 -->
 <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
 chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-
+<?php
+$user = Auth::user();
+?>
 
 <header id="header" >
   <div class="row">
@@ -52,7 +54,12 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
           {{HTML::link('home', '', array('title'=>'Eddon', 'rel'=>'home'));}}
         </h1>
       </hgroup>
-      <div class="three columns">
+      <div id="userName" class="two columns">
+        @if(Auth::check())
+          Welcome {{Str::title($user->firstname)}}!
+        @endif
+      </div>
+      <div class="two columns">
         <div id="btLogin">
 
           <!-- if user is logged shows logout button, if not login button -->
@@ -63,7 +70,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
           @endif
         </div>
       </div>
-      <div class="four columns">
+      <div class="three columns">
         <div id="btUpload">
 
           <!-- if user is logged links to upload form, if not login form -->
@@ -82,7 +89,7 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
       <div class="twelve columns">
         @yield('content')
         <div class="row">
-          <div class="twelve columns" style="display: block; ">
+          <div class="twelve columns">
             <div class="scrollToTop">
               {{HTML::link('#', 'ScrollTotop');}}
             </div>
@@ -171,13 +178,10 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <div id="loginForm" class="">
               <br/>
               <p class="underTitle">Please log in to access to your addon collection</p>
-              <br/>
               <div class="login" id="theme-my-login">
                 {{Form::open('user/authenticate', 'post');}}
                 <p>
                   {{Form::label('email', 'Email', array('class' => 'label'));}}
-                </p>
-                <p>
                   {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
                 </p>
                 <p>
@@ -262,7 +266,6 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             <div>
               <br/>
               <p>Sign up to upload your addons</p>
-              <br/>
             </div>
             <div>
               {{Form::open('user/authenticate', 'post')}};
@@ -270,7 +273,6 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
                   {{Form::label('email', 'E-mail', array('class' => 'label'));}}
                   {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'id' => 'email', 'required' => 'required'));}}
                 </p>
-                <br/>
                 <p>
                   {{Form::label('lastname', 'Lastname', array('class' => 'label'));}}
                   {{Form::input('text', 'lastname', '', array('class' => 'input', 'placeholder' => 'Enter your lastname', 'id' => 'lastname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
@@ -332,6 +334,10 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
             @endforeach
           @endif
           <div id="#sessionMessage"></div>
+        </p>
+        <p>
+          {{Form::label('addonVersion', "Addon's version (required)", array('class' => 'label'));}}
+          {{Form::input('text', 'addonVersion', '', array('size' => '40', 'required' => 'required'));}}
         </p>
         <p>
           {{Form::label('addonAuthor', "Addon's author (required)", array('class' => 'label'));}}

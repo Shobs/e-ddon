@@ -3,58 +3,63 @@
 
 @section('content')
 
+@if(Session::has('addon'))
+<?php
+$addon = Session::get('addon');
+$category = Session::get('category');
+$picture = Picture::where('addon_id', '=', $addon->id)->first();
+ ?>
+<content>
+
+@if($addon->visible == 1)
 <header class="row">
-  <div class="twelve columns">
-    <div class="pageHeader ten columns ">
-      <h1 class="mainTitle">addon's type <span class="colorWord">Category</span></h1>
-      <div class="entryTag"><span class="catTag">Category's tags</span><span class="arrow"></span></div>
-    </div>
-    <div class="two columns">
-      <ul id="sortButton" class="clearfix">
-        <li><p>order by:</p></li>
-        <li class="current">
-          <a class="date" href="?orderby=date" title="Sort tools by added date">by date</a>
-        </li>
-        <li>
-          <a class="name" href="?orderby=title&amp;order=ASC" title="Sort tools by name">by name</a>
-        </li>
-        <li>
-          <a class="rate" href="?r_sortby=highest_rated&amp;r_orderby=desc" title="Sort tools by rate">by rate</a>
-        </li>
-      </ul>
-    </div>
+  <div class="twelve column">
+    <hgroup class="mainTitle clearfix">
+      <h2>addon's type <span class="colorWord">
+        <a href="category?cat={{$category->id}}" title="View all posts in Graphics">{{$category->name}}</a></span>
+      </h2>
+      <h1>{{$addon->name}}</h1>
+    </hgroup>
   </div>
 </header>
-
-@if(Session::has('addons'))
-<?php $addons = Session::get('addons');?>
 <content class="row">
-@foreach($addons as $addon)
-  <div id="addonLeft" class="three column">
-    <a href="http://www.toolmarklets.com/japonizer/" class="imgHolder" title="See Japonizer detail's">
-      <img class="attachment-post-thumbnail wp-post-image" title="Japonizer" alt="background pattern in japan style" src="http://www.toolmarklets.com/wp-content/uploads/2012/01/japonizer-286x211.jpg" width="260" height="200" style="display: inline; ">
-    </a>
-    <div class="entry-details">
-      <header class="entry-header">
-        <h2 class="entry-title">
-          <a href="http://www.toolmarklets.com/japonizer/" title="See Japonizer detail's" rel="bookmark">Japonizer </a>
-        </h2>
-        <div class="rate-it"><span></span>4</div>
-      </header>
-      <p class="info">by ワノコト</p>
-      <div class="entry-tag">
-        <ul>
-          <li>
-            <a href="http://www.toolmarklets.com/tag/image-generator/" rel="tag">image generator</a>
-          </li>
-        </ul>
+  <div class="soloEntry twelve column">
+    <div class="row">
+      <div class="five column">
+        <img width="466" height="351" src="{{$picture->location}} " class="postImage" alt="{{$addon->name}}" title="{{$addon->name}}"/>
       </div>
+      <div class="entryDetails four column">
+        <dl class="clearfix">
+          <dt>Author:</dt>
+          <dd>{{$addon->author}}</dd>
+          <dt>Tags:</dt>
+          <dd class="entryTag clearfix">
+            <a href="#" rel="tag">image generator</a>
+          </dd>
+          <dt>Version:</dt>
+          <dd>
+            {{$addon->version}}
+          </dd>
+        </dl>
+      </div>
+      <div class="three column">
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+      <div class="entryContent ten column">
+        <p>Description:</p>
+        <p>{{$addon->description}}</p>
+      </div>
+    </div>
+    <br/>
+    <br/>
   </div>
-</div>
-@endforeach
 </content>
 @endif
 </content>
+@endif
 
 @endsection
 

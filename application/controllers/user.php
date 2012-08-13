@@ -116,55 +116,74 @@ class User_Controller extends Base_Controller{
 
 	public function action_upload(){
 
+		// Getting all inputs from upload form
 		$input = Input::all();
 
+		// Sanitizing the description text
         if( isset($input['addonDescription']) ) {
             $input['addonDescription'] = filter_var($input['addonDescription'], FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
         }
 
+        // Setting up my rules for validation
         $rules = array(
         	'addonName' => 'required|max:50',
+        	'addonVersion' => 'required',
 			'addonAuthor' => 'required|max:50',
-			'addonDescription' => 'required|max:2000',
+			'addonDescription' => 'required',
 			'addonUpload' => 'required|mimes:zip|max:3145728',
 			'pictureUpload' => 'required|image|max:500000',
         );
 
+        // Validating the form info
         $validation = Validator::make($input, $rules);
 
+        // If validation fails returns to the previous page with errors
         if( $validation->fails() ) {
             return Redirect::back()->with_errors($validation);
         }
 
+        // Getting addon and picture extension (zip, jpg, ...)
         $addonExtension = File::extension($input['addonUpload']['name']);
         $pictureExtension = File::extension($input['pictureUpload']['name']);
+
+        // Using sha1 encription to generate file location name
         $addonDirectory = 'public/_uploads/addons/'.sha1(Auth::user()->id);
 		$pictureDirectory = 'public/_uploads/pictures/'.sha1(Auth::user()->id);
+
+		// Using sha1 encription to generate random file name and adding extension
         $addonFilename = sha1(Auth::user()->id.time()).".{$addonExtension}";
         $pictureFilename = sha1(Auth::user()->id.time()).".{$pictureExtension}";
 
-
+        // testing
         // var_dump($category);
+
+        // Uploading addon and it's picture
         $add_upload_success = Input::upload('addonUpload', $addonDirectory, $addonFilename);
         $pic_upload_success = Input::upload('pictureUpload', $pictureDirectory, $pictureFilename);
 
+        // testing if addon and pictures were succesfully uploaded
         if( $add_upload_success && $pic_upload_success) {
 
+        	// Setting up array with addon information
         	$addon = new Addon(array(
             	'name' => $input['addonName'],
+            	'version' => $input['addonVersion'],
             	'author' => $input['addonAuthor'],
             	'description' => $input['addonDescription'],
             	'category_id' => $input['category'],
-                'location' => URL::to('uploads/'.sha1(Auth::user()->id).'/'.$addonFilename),
+                'location' => '../public/_uploads/addons/'.sha1(Auth::user()->id).'/'.$addonFilename,
              ));
 
+        	// Adding addon info to the database
         	Auth::user()->addons()->save($addon);
 
+        	// setting up array with picture info
         	$picture = new Picture(array(
             	'addon_id' => $addon->id,
-                'location' => URL::to('uploads/'.sha1(Auth::user()->id).'/'.$pictureFilename),
+                'location' => '../public/_uploads/pictures/'.sha1(Auth::user()->id).'/'.$pictureFilename,
              ));
 
+        	// Adding picture info to database
             $addon->pictures()->save($picture);
 
             Session::flash('status_success', 'Successfully uploaded your new addon');
@@ -176,7 +195,10 @@ class User_Controller extends Base_Controller{
 	}
 
 	public function action_logout(){
+
+		// Terminating user session
 		Auth::logout();
+
 		return Redirect::to('home');
 	}
 }
