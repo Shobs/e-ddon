@@ -1,5 +1,10 @@
 @layout('layouts/frame')
 
+<?php
+$lastAdded = Session::get('lastAdded');
+$lastAddedPic = Picture::where('addon_id', '=', $lastAdded->id)->first();
+?>
+
 @section('content')
 <div class="row">
   <div class="seven columns">
@@ -98,13 +103,13 @@
           <h3 class="featuredSectionTitle">last <span class="colorWord">added</span></h3>
           {{HTML::link('#', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the last added addons'));}}
           <article id="#"> <!-- post number -->
-            <a href="#" class="imgHolder">
-              {{HTML::image('http://placehold.it/370x278', 'placeholder', array('title'=>'placeholder', 'class' => 'postImage'));}}
+            <a href="addon?id={{$lastAdded->id}}" class="imgHolder">
+              {{HTML::image( $lastAddedPic->location , $lastAdded->name , array('title'=> $lastAdded->name, 'class' => 'postImage'));}}
             </a>
             <div class="entryDetails">
               <header class="entryHeader">
                 <h2 class="entryTitle">
-                  {{HTML::link('#', "addon's name", array('rel'=>'bookmark'));}}
+                  {{HTML::link('addon?id='.$lastAdded->id, $lastAdded->name, array('rel'=>'bookmark'));}}
                 </h2>
               </header>
               <p class="info">by "author's name", in

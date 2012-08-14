@@ -34,7 +34,10 @@ class Home_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$countries = File::get('inc/countries.txt');
+
+		$lastAdded = Addon::order_by('created_at', 'desc')->where('visible', '=', 1)->first();
+
+		Session::put('lastAdded', $lastAdded);
 
 		return View::make('home.index');
 	}
