@@ -1,8 +1,18 @@
-@layout('layouts/frame')
+@layout('layouts/modal')
 
 <?php
+// Getting all the sessions
 $lastAdded = Session::get('lastAdded');
+$highestRated = Session::get('highestRated');
+$selected = Session::get('selected');
+
+// Selecting data from Sessions
 $lastAddedPic = Picture::where('addon_id', '=', $lastAdded->id)->first();
+$lastAddedCat = Category::where('id', '=', $lastAdded->category_id)->first();
+$highestRatedPic = Picture::where('addon_id', '=', $highestRated->id)->first();
+$highestRatedCat = Category::where('id', '=', $highestRated->category_id)->first();
+$selectedPic = Picture::where('addon_id', '=', $selected->id)->first();
+$selectedCat = Category::where('id', '=', $selected->category_id)->first();
 ?>
 
 @section('content')
@@ -101,7 +111,7 @@ $lastAddedPic = Picture::where('addon_id', '=', $lastAdded->id)->first();
         <h2 class="sectionTitle"><span>featured</span></h2>
         <div class="four columns">
           <h3 class="featuredSectionTitle">last <span class="colorWord">added</span></h3>
-          {{HTML::link('#', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the last added addons'));}}
+          {{HTML::link('category?cat=7', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the last added addons'));}}
           <article id="#"> <!-- post number -->
             <a href="addon?id={{$lastAdded->id}}" class="imgHolder">
               {{HTML::image( $lastAddedPic->location , $lastAdded->name , array('title'=> $lastAdded->name, 'class' => 'postImage'));}}
@@ -112,8 +122,8 @@ $lastAddedPic = Picture::where('addon_id', '=', $lastAdded->id)->first();
                   {{HTML::link('addon?id='.$lastAdded->id, $lastAdded->name, array('rel'=>'bookmark'));}}
                 </h2>
               </header>
-              <p class="info">by "author's name", in
-                {{HTML::link('#', 'section', array('rel'=>'section'));}}
+              <p class="info">by {{$lastAdded->author}}, in
+                {{HTML::link('category?cat='.$lastAdded->category_id, $lastAddedCat->name, array('rel'=>'section'));}}
               </p>
               <div class="entryTag">
                 <ul>
@@ -130,19 +140,19 @@ $lastAddedPic = Picture::where('addon_id', '=', $lastAdded->id)->first();
         </div>
          <div class="four columns">
           <h3 class="featuredSectionTitle">highest <span class="colorWord">rated</span></h3>
-          {{HTML::link('#', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the highest rated addons'));}}
-          <article id="post_659">
-            <a href="#" class="imgHolder">
-              {{HTML::image('http://placehold.it/370x278', 'placeholder', array('title'=>'placeholder', 'class' => 'postImage'));}}
+          {{HTML::link('category?cat=8', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the highest rated addons'));}}
+          <article id="#">
+            <a href="addon?id={{$highestRated->id}}" class="imgHolder">
+              {{HTML::image($highestRatedPic->location , $highestRated->name, array('title'=>'placeholder', 'class' => 'postImage'));}}
             </a>
             <div class="entryDetails"> <!-- entry details -->
               <header class="entryHeader">
                 <h2 class="entryTitle"> <!-- entry title -->
-                  {{HTML::link('#', "addon's name", array('rel'=>'bookmark'));}}
+                  {{HTML::link('addon?id='.$highestRated->id, $highestRated->name, "addon's name", array('rel'=>'bookmark'));}}
                 </h2>
               </header>
-              <p class="info">by "author's name", in
-                {{HTML::link('#', 'section', array('rel'=>'section'));}}
+              <p class="info">by {{$highestRated->author}}, in
+                {{HTML::link('category?cat='.$highestRated->category_id, $highestRatedCat->name, array('rel'=>'section'));}}
               </p>
               <div class="entryTag">
                 <ul>
@@ -159,18 +169,18 @@ $lastAddedPic = Picture::where('addon_id', '=', $lastAdded->id)->first();
         </div>
          <div class="four columns">
           <h3 class="featuredSectionTitle">eddon <span class="colorWord">selected</span></h3>
-          <article id="post_659">
-            <a href="#" class="imgHolder">
-              {{HTML::image('http://placehold.it/370x278', 'placeholder', array('title'=>'placeholder', 'class' => 'postImage'));}}
+          <article id="#">
+            <a href="addon?id={{$selected->id}}" class="imgHolder">
+              {{HTML::image( $selectedPic->location, $selectedPic->name, array('title'=> $selectedPic->name, 'class' => 'postImage'));}}
             </a>
             <div class="entryDetails"> <!-- entry details -->
               <header class="entryHeader">
                 <h2 class="entryTitle"> <!-- entry title -->
-                  <a href="#" title="#" rel="bookmark">"addon's name"</a>
+                  {{HTML::link('addon?id='.$selected->id, $selected->name, array('rel'=>'bookmark'));}}
                 </h2>
               </header>
-              <p class="info">by "author's name", in
-                {{HTML::link('#', 'section', array('rel'=>'section'));}}
+              <p class="info">by {{$selected->author}}, in
+                {{HTML::link('category?cat='.$selected->category_id, $selectedCat->name, array('rel'=>'section'));}}
               </p>
               <div class="entryTag">
                 <ul>

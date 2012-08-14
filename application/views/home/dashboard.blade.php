@@ -1,4 +1,4 @@
-@layout('layouts/frame')
+@layout('layouts/modal')
 
 @section('logo')
 <a href="../home" title="Eddon" rel="home"><span class="colorWord">e</span>ddon<span>.com</span>

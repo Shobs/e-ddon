@@ -14,6 +14,7 @@ class Create_Pictures {
 		$table->increments('id');
 		$table->integer('addon_id')->index();
 		$table->string('location',64);
+		$table->string('thumb',64);
 		$table->boolean('visible')->default(1);
 		$table->timestamps();
 

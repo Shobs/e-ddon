@@ -34,10 +34,13 @@ class Home_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-
 		$lastAdded = Addon::order_by('created_at', 'desc')->where('visible', '=', 1)->first();
+		$highestRated = Addon::order_by('rating', 'desc')->where('visible', '=', 1)->first();
+		$selected = Addon::where('selected', '=', 1)->first();
 
 		Session::put('lastAdded', $lastAdded);
+		Session::put('highestRated', $highestRated);
+		Session::put('selected', $selected);
 
 		return View::make('home.index');
 	}

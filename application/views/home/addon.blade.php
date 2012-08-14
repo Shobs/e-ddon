@@ -1,4 +1,4 @@
-@layout('layouts/frame')
+@layout('layouts/modal')
 
 
 @section('content')
@@ -26,7 +26,7 @@ $picture = Picture::where('addon_id', '=', $addon->id)->first();
   <div class="soloEntry twelve column">
     <div class="row">
       <div class="five column">
-        <img width="466" height="351" src="{{$picture->location}} " class="postImage" alt="{{$addon->name}}" title="{{$addon->name}}"/>
+        <img width="466" height="351" src="{{$picture->location}}" class="postImage" alt="{{$addon->name}}" title="{{$addon->name}}"/>
       </div>
       <div class="entryDetails four column">
         <dl class="clearfix">

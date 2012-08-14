@@ -1,4 +1,4 @@
-@layout('layouts/frame')
+@layout('layouts/modal')
 
 
 @section('content')
@@ -41,7 +41,9 @@ $addons = Session::get('addons');
   @if($addon->visible == 1)
   <div id="addonLeft" class="addonCat three column">
     <a href="addon?id={{$addon->id}}" class="imgHolder" title="{{$addon->name}}">
+      <div class="imageContainer">
       <img class=" postImage" title="{{$addon->name}}" src="{{$picture->location}}" width="260" height="200" style="display: inline; ">
+      </div>
     </a>
     <div class="entryDetails">
       <header class="entryHeader">
