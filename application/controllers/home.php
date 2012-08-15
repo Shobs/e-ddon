@@ -42,6 +42,7 @@ class Home_Controller extends Base_Controller {
 		Session::put('highestRated', $highestRated);
 		Session::put('selected', $selected);
 
+
 		return View::make('home.index');
 	}
 

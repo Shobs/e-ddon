@@ -16,4 +16,8 @@ class Addon extends Eloquent{
 		return $this->has_many('Picture');
 	}
 
+	public function tags(){
+		return $this->has_many_and_belongs_to('Tag', 'addon_tag');
+	}
+
 }

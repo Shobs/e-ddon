@@ -39,7 +39,6 @@ class Category_Controller extends Base_Controller {
 		$category = Input::get('cat');
 
 		// Getting addons info from DB that belong to the category
-
 		if($category == 7){
 			$addons = Addon::order_by('updated_at', 'desc')->where('visible', '=', 1)->take(8)->get();
 		}elseif($category == 8){
@@ -50,35 +49,12 @@ class Category_Controller extends Base_Controller {
 		// Getting category info from DB
 		$category = Category::where('id', '=', $category)->first();
 
-		// $pictureId = Addon::where('')
-		// $pictures = Picture::where('addon_id', '=', $pictureId)->get();
-
 		// Saving addons and category to session
 		Session::put('addons', $addons);
 		Session::put('category', $category);
 
-		// if (Session::has('addons')) {
-			// var_dump($category);
-		// }
-
-		// $pictures = Picture::get();
-
-		// var_dump($category);
-		// var_dump($addons);
-		// var_dump($pictures);
-
-		// foreach ($addons as $addon) {
-
-
-
-
-		// }
 
 		return View::make('home.category');
-
-
-
-		// $addons = Addon::get()
 
 	}
 

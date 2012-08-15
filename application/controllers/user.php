@@ -37,8 +37,23 @@ class User_Controller extends Base_Controller{
 				'password' => $password
 				);
 
+
+
 				// Authentication of new user
 				if (Auth::attempt($credentials)) {
+
+					// Using sha1 encription to generate file location name
+			        $addonDirectory = 'public/_uploads/addons/'.sha1(Auth::user()->id);
+					$pictureDirectory = 'public/_uploads/pictures/'.sha1(Auth::user()->id);
+					$thumbFeatDirectory = 'public/_uploads/thumbsFeat/'.sha1(Auth::user()->id);
+					$thumbCatDirectory = 'public/_uploads/thumbsCat/'.sha1(Auth::user()->id);
+
+					// Creating new user upload directory
+					mkdir($addonDirectory);
+					mkdir($pictureDirectory);
+					mkdir($thumbFeatDirectory);
+					mkdir($thumbCatDirectory);
+
 					return Redirect::to('home/index');
 				}
 
@@ -149,12 +164,12 @@ class User_Controller extends Base_Controller{
         // Using sha1 encription to generate file location name
         $addonDirectory = 'public/_uploads/addons/'.sha1(Auth::user()->id);
 		$pictureDirectory = 'public/_uploads/pictures/'.sha1(Auth::user()->id);
-		$thumbDirectory = 'public/_uploads/thumbs/'.sha1(Auth::user()->id);
+		$thumbFeatDirectory = 'public/_uploads/thumbsFeat/'.sha1(Auth::user()->id);
+		$thumbCatDirectory = 'public/_uploads/thumbsCat/'.sha1(Auth::user()->id);
 
 		// Using sha1 encription to generate random file name and adding extension
         $addonFilename = sha1(Auth::user()->id.time()).".{$addonExtension}";
         $pictureFilename = sha1(Auth::user()->id.time()).".{$pictureExtension}";
-        $thumbFilename = sha1(Auth::user()->id.time()).".{$pictureExtension}";
 
         // testing
         // var_dump($category);
@@ -170,16 +185,20 @@ class User_Controller extends Base_Controller{
 			    ->resize(466 , 351 , 'auto')
 			    ->save( $pictureDirectory.'/'.$pictureFilename , 90);
 
-		$thumb = Input::file('pictureUpload');
+		// $thumbFeat = Input::file('pictureUpload');
 
-		$thumb_upload_success = Resizer::open($thumb)
+		$thumbFeat_upload_success = Resizer::open($image)
+			    ->resize(466 , 345 , 'crop')
+			    ->save( $thumbFeatDirectory.'/'.$pictureFilename , 90);
+
+		// $thumbCat = Input::file('pictureUpload');
+
+		$thumbCat_upload_success = Resizer::open($image)
 			    ->resize(260 , 200 , 'crop')
-			    ->save( $thumbDirectory.'/'.$thumbFilename , 90);
-
-        //$pic_upload_success = Input::upload('pictureUpload', $pictureDirectory, $pictureFilename);
+			    ->save( $thumbCatDirectory.'/'.$pictureFilename , 90);
 
         // testing if addon and pictures were succesfully uploaded
-        if( $add_upload_success && $pic_upload_success && $thumb_upload_success) {
+        if( $add_upload_success && $pic_upload_success && $thumbFeat_upload_success && $thumbCat_upload_success) {
 
         	// Setting up array with addon information
         	$addon = new Addon(array(
@@ -194,23 +213,50 @@ class User_Controller extends Base_Controller{
         	// Adding addon info to the database
         	Auth::user()->addons()->save($addon);
 
+
+        	// Generating tags for addons
+        	// $description = Str::lower($input['addonDescription']);
+
+        	// $tags = Tag::get();
+
+	        // foreach ($tags as $tag) {
+
+	        // 	$tagName = Str::lower($tag->name);
+
+	        // 	$tagPos = strpos($description, $tagName);
+
+	        // 	if($tagPos != FALSE){
+
+	        // 		$tagId = $tag->id;
+	        // 		$addonId = $addon->id;
+
+	        // 		// var_dump($addonTag);
+
+	        // 		// $addon_tag->save($addonTag);
+
+	        // 		$addon->tags()->pivot()->insert($tag);
+
+	        // 	}
+	        // }
+
         	// setting up array with picture info
         	$picture = new Picture(array(
             	'addon_id' => $addon->id,
                 'location' => '../public/_uploads/pictures/'.sha1(Auth::user()->id).'/'.$pictureFilename,
-                'thumb' => '../public/_uploads/thumbs/'.sha1(Auth::user()->id).'/'.$thumbFilename,
+                'thumbfeat' => '../public/_uploads/thumbsFeat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
+                'thumbcat' => '../public/_uploads/thumbsCat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
              ));
 
         	// Adding picture info to database
             $addon->pictures()->save($picture);
 
-            echo 'success';
-            // Session::flash('status_success', 'Successfully uploaded your new addon');
+            // echo 'success';
+            Session::flash('status_success', 'Successfully uploaded your new addon');
         } else {
-            // Session::flash('status_error', 'An error occurred while uploading your new addon - please try again.');
-        	echo('failed');
+            Session::flash('status_error', 'An error occurred while uploading your new addon - please try again.');
+        	// echo('failed');
         }
-        // return Redirect::to('dashboard');
+        return Redirect::to('dashboard');
 
 	}
 

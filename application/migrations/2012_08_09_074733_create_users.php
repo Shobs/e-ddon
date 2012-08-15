@@ -18,7 +18,7 @@ class Create_Users {
 		$table->date('birthdate', 64);
 		$table->text('comments', 1000)->nullable();
 		$table->integer('role');
-		$table->boolean('visible');
+		$table->boolean('visible')->default(1);
 		$table->timestamps();
 		});
 

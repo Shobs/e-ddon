@@ -108,7 +108,7 @@ $user = Auth::user();
           <h5><span class="colorWord">Say-it</span> to Facebook !</h5>
           <fb:fan profile_id="262740907103776" stream="false" connections="10" width="280" height="230" css="../css/fb.css" class="  fb_iframe_widget ">
           <span style="height: 230px; width: 280px; ">
-            <iframe id="f17fd77954" name="f2bd986348" scrolling="no" style="border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; overflow-x: hidden; overflow-y: hidden; height: 230px; width: 280px; " class="fb_ltr" src="http://www.facebook.com/plugins/fan.php?connections=10&amp;css=http%3A%2F%2Fwww.toolmarklets.com%2Fwp-content%2Fthemes%2Ftoolmarklets%2Fstyle-fb.css%3F120&amp;height=230&amp;id=262740907103776&amp;locale=en_US&amp;sdk=joey&amp;stream=false&amp;width=280"></iframe>
+            <!-- <iframe id="f17fd77954" name="f2bd986348" scrolling="no" style="border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; overflow-x: hidden; overflow-y: hidden; height: 230px; width: 280px; " class="fb_ltr" src="http://www.facebook.com/plugins/fan.php?connections=10&amp;css=http%3A%2F%2Fwww.toolmarklets.com%2Fwp-content%2Fthemes%2Ftoolmarklets%2Fstyle-fb.css%3F120&amp;height=230&amp;id=262740907103776&amp;locale=en_US&amp;sdk=joey&amp;stream=false&amp;width=280"></iframe> -->
           </span>
         </fb:fan>
       </div>
@@ -121,25 +121,25 @@ $user = Auth::user();
         <div id="addArea">
           <div style="margin: 0px; padding: 0px; background: none; border: none">
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
-              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
+              <img src="http://placehold.it/125x125">
             </div>
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
-              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
+              <img src="http://placehold.it/125x125">
             </div>
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
-              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
+              <img src="http://placehold.it/125x125">
             </div>
           </div>
           <div style="margin: 0px; padding: 0px; background: none; border: none">
 
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
-              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
+              <img src="http://placehold.it/125x125">
             </div>
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
-              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
+              <img src="http://placehold.it/125x125">
             </div>
             <div style="display: inline-block; margin: 0px 0px 1px 1px; padding: 0px; background: none; border: none">
-              <img src="http://www.toolmarklets.com/wp-content/plugins/sam-images/125x125.png">
+              <img src="http://placehold.it/125x125">
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@ $user = Auth::user();
         </div>
         <div class="six columns">
           <p id="mentionRight">
-            <a href="http://www.toolmarklets.com/legales/" title="legales" class="colorWord">legales</a>
+            <a href="#" title="legales" class="colorWord">legales</a>
             - ico by <a href="http://thenounproject.com/" title="The Noun Project" class="colorWord" target="_blank">The Noun Project</a>
           </p>
         </div>

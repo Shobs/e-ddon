@@ -114,7 +114,7 @@ $selectedCat = Category::where('id', '=', $selected->category_id)->first();
           {{HTML::link('category?cat=7', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the last added addons'));}}
           <article id="#"> <!-- post number -->
             <a href="addon?id={{$lastAdded->id}}" class="imgHolder">
-              {{HTML::image( $lastAddedPic->location , $lastAdded->name , array('title'=> $lastAdded->name, 'class' => 'postImage'));}}
+              {{HTML::image( $lastAddedPic->thumbfeat , $lastAdded->name , array('title'=> $lastAdded->name, 'class' => 'postImage'));}}
             </a>
             <div class="entryDetails">
               <header class="entryHeader">

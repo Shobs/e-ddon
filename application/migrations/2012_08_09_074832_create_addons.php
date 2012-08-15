@@ -21,11 +21,12 @@ class Create_Addons {
 		$table->string('author', 255);
 		$table->string('version', 255);
 		$table->integer('rating')->default(0);
-		$table->string('description',2000);
+		$table->string('description');
 		$table->integer('downloaded');
 		$table->timestamps();
 		$table->integer('category_id')->index();
-		$table->string('location',64);
+		$table->string('location',300);
+		$tabe->boolean('selected')->default(0);
 		$table->boolean('visible')->default(1);
 
 		// Setup foreign keys relationship

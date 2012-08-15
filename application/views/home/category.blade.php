@@ -16,13 +16,13 @@ $category = Session::get('category');
       <ul id="sortButton" class="clearfix">
         <li><p>order by:</p></li>
         <li class="current">
-          <a class="date" href="?orderby=date" title="Sort tools by added date">by date</a>
+          <a class="date" href="?orderby=date" title="Sort addons by added date">by date</a>
         </li>
         <li>
-          <a class="name" href="?orderby=title&amp;order=ASC" title="Sort tools by name">by name</a>
+          <a class="name" href="?orderby=title&amp;order=ASC" title="Sort addons by name">by name</a>
         </li>
         <li>
-          <a class="rate" href="?r_sortby=highest_rated&amp;r_orderby=desc" title="Sort tools by rate">by rate</a>
+          <a class="rate" href="?r_sortby=highest_rated&amp;r_orderby=desc" title="Sort addons by rate">by rate</a>
         </li>
       </ul>
     </div>
@@ -42,7 +42,7 @@ $addons = Session::get('addons');
   <div id="addonLeft" class="addonCat three column">
     <a href="addon?id={{$addon->id}}" class="imgHolder" title="{{$addon->name}}">
       <div class="imageContainer">
-      <img class=" postImage" title="{{$addon->name}}" src="{{$picture->location}}" width="260" height="200" style="display: inline; ">
+      <img class=" postImage" title="{{$addon->name}}" src="{{$picture->thumbcat}}" width="260" height="200" style="display: inline; ">
       </div>
     </a>
     <div class="entryDetails">

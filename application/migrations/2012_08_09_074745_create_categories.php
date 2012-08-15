@@ -14,7 +14,7 @@ class Create_Categories {
 		$table->increments('id');
 		$table->string('name',255);
 		$table->text('description',2000);
-		$table->boolean('visible');
+		$table->boolean('visible')->default(1);
 		});
 	}
 
