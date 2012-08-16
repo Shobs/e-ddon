@@ -9,7 +9,7 @@ $category = Session::get('category');
 <header class="row">
   <div class="twelve columns">
     <div class="pageHeader ten columns ">
-      <h1 class="mainTitle">addon's type <span class="colorWord">{{$category->name}}</span></h1>
+      <h1 class="mainTitle">addon's type <span class="colorWord">{{Str::lower($category->name)}}</span></h1>
       <div class="entryTag"><span class="catTag">Category's tags</span><span class="arrow"></span></div>
     </div>
     <div class="two columns">
