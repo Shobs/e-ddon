@@ -13,6 +13,13 @@ $highestRatedPic = Picture::where('addon_id', '=', $highestRated->id)->first();
 $highestRatedCat = Category::where('id', '=', $highestRated->category_id)->first();
 $selectedPic = Picture::where('addon_id', '=', $selected->id)->first();
 $selectedCat = Category::where('id', '=', $selected->category_id)->first();
+
+// Creating Tag object with tags data
+
+$tags = new Tag;
+
+$addonTag = $tags->addons()->pivot()->first();
+var_dump($addonTag);
 ?>
 
 @section('content')

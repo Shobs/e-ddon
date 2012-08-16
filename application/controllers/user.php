@@ -215,29 +215,33 @@ class User_Controller extends Base_Controller{
 
 
         	// Generating tags for addons
-        	// $description = Str::lower($input['addonDescription']);
 
-        	// $tags = Tag::get();
+        	// Getting addon description text
+        	$description = Str::lower($input['addonDescription']);
 
-	        // foreach ($tags as $tag) {
+        	// Getting tag list from DB
+        	$tags = Tag::get();
 
-	        // 	$tagName = Str::lower($tag->name);
+        	// For each tag
+	        foreach ($tags as $tag) {
 
-	        // 	$tagPos = strpos($description, $tagName);
+	        	// Changing tag name to lower text
+	        	$tagName = Str::lower($tag->name);
 
-	        // 	if($tagPos != FALSE){
+	        	// Looking in description for the tag
+	        	$tagPos = strpos($description, $tagName);
 
-	        // 		$tagId = $tag->id;
-	        // 		$addonId = $addon->id;
+	        	// if tag is found in description
+	        	if($tagPos != FALSE){
 
-	        // 		// var_dump($addonTag);
+	        		// Getting the tag id
+	        		$tagId = $tag->id;
 
-	        // 		// $addon_tag->save($addonTag);
+	        		// Inserting the tag id and addon id into the Addon_Tag relational table (many-to-many)
+	        		$addon->tags()->attach($tagId);
 
-	        // 		$addon->tags()->pivot()->insert($tag);
-
-	        // 	}
-	        // }
+	        	}
+	        }
 
         	// setting up array with picture info
         	$picture = new Picture(array(
