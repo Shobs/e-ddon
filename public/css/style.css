@@ -193,7 +193,28 @@ h2 {
 	background: url(../img/bt_search_hover.png) no-repeat;
 }
 
-.tagList {text-align: center;}
+.tagCloud {
+	text-align: center;
+	padding:5px;
+	overflow:auto;
+	font-size: 80%;
+	font-family:arial;
+}
+
+.tagsList{
+	margin:0;
+	padding:0;
+}
+
+.tag {
+	margin:0 10px;
+	height:28px;
+	font-weight: bold;
+}
+
+.tag:hover {
+	text-decoration:underline;
+}
 
 #featuredPost {clear: both; padding-top: 50px; margin-bottom: 80px;}
 

@@ -14,7 +14,7 @@ $highestRatedCat = Category::where('id', '=', $highestRated->category_id)->first
 $selectedPic = Picture::where('addon_id', '=', $selected->id)->first();
 $selectedCat = Category::where('id', '=', $selected->category_id)->first();
 
-// Creating Tag object with tags data
+// Getting tags from DB
 $tags = Tag::get();
 
 // var_dump($tags);
@@ -80,16 +80,22 @@ $tags = Tag::get();
         </div>
         <div class="twelve columns">
           <h2 class="mainTitle">addon by <span class="colorWord">tags</span></h2>
-          <div> <!-- World cloud division -->
-            <h2></h2> <!-- title -->
-            <div class="tagList">
+          <div class="tagCloud"> <!-- World cloud division -->
+            <div class="tagsList">
               @foreach($tags as $tag)
-                <?php $AddonTag = AddonTag::where('tag_id', '=', $tag->id)->first(); ?>
-                @if( $AddonTag != null)
-                {{HTML::link('#', $tag->name);}}
+                <?php $currentTag = Tag::where('id', '=', $tag->id)->first();?>
+                @if($currentTag->frequency != 0)
+                  <?php
+                  if (($tag->frequency)/10 < 1) {
+                    $tagSize = ($tag->frequency)/10 + 1;
+                  }elseif (($tag->frequency)/10 > 2 ) {
+                    $tagSize = 2;
+                  }else{
+                    $tagSize = ($tag->frequency)/10;
+                  }?>
+                  {{HTML::link('#', $tag->name, array('style' => 'font-size: '.$tagSize.'em', 'class' =>'tag'));}}
                 @endif
               @endforeach
-
             </div>
           </div>
         </div>
