@@ -1,6 +1,6 @@
 <?php
 
-class Addon_tag extends Eloquent{
+class AddonTag extends Eloquent{
 
 	public static $table = 'addon_tag';
 

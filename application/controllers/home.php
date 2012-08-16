@@ -38,12 +38,28 @@ class Home_Controller extends Base_Controller {
 		$lastAdded = Addon::order_by('created_at', 'desc')->where('visible', '=', 1)->first();
 		$highestRated = Addon::order_by('rating', 'desc')->where('visible', '=', 1)->first();
 		$selected = Addon::where('selected', '=', 1)->first();
+		$tagIds = AddonTag::group_by('tag_id')->get('tag_id');
+
+		$addonId = AddonTag::get('addon_id');
+
+		foreach ($tagIds as $tagId) {
+			$tagCount = AddonTag::where('tag_id', '=', $tagId->tag_id)->count();
+
+			// $tagFreq = array(
+			// 	'frequency' => ($addonTag->frequency) + 1,
+			// 	);
+
+			var_dump($tagCount);
+			// $tag->frequency->save($tagFreq);
+		}
+
+
 
 		Session::put('lastAdded', $lastAdded);
 		Session::put('highestRated', $highestRated);
 		Session::put('selected', $selected);
 
-		return View::make('home.index');
+		// return View::make('home.index');
 	}
 
 

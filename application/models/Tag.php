@@ -2,6 +2,7 @@
 
 class Tag extends Eloquent{
 
+	public static $timestanp = true;
 	public static $table = 'tags';
 
 	public function addons(){
