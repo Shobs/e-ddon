@@ -8,6 +8,7 @@
 $addon = Session::get('addon');
 $category = Session::get('category');
 $picture = Picture::where('addon_id', '=', $addon->id)->first();
+$tags = Session::get('tags')
  ?>
 <content>
 
@@ -33,9 +34,11 @@ $picture = Picture::where('addon_id', '=', $addon->id)->first();
           <dt>Author:</dt>
           <dd>{{$addon->author}}</dd>
           <dt>Tags:</dt>
-          <dd class="entryTag clearfix">
-            <a href="#" rel="tag">image generator</a>
-          </dd>
+          @foreach($tags as $tag)
+             <dd class="entryTag clearfix">
+              {{HTML::link('tag?tag='.$tag->id, $tag->name, array('rel'=>'bookmark'))}}
+            </dd>
+          @endforeach
           <dt>Version:</dt>
           <dd>
             {{$addon->version}}

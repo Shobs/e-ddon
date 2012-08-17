@@ -6,18 +6,22 @@ $lastAdded = Session::get('lastAdded');
 $highestRated = Session::get('highestRated');
 $selected = Session::get('selected');
 
-// Selecting data from Sessions
+// Selecting data from db
 $lastAddedPic = Picture::where('addon_id', '=', $lastAdded->id)->first();
 $lastAddedCat = Category::where('id', '=', $lastAdded->category_id)->first();
+$lastAddedTags = Addon::find($lastAdded->id)->tags()->take(5)->get();
 $highestRatedPic = Picture::where('addon_id', '=', $highestRated->id)->first();
 $highestRatedCat = Category::where('id', '=', $highestRated->category_id)->first();
+$highestRatedTags = Addon::find($highestRated->id)->tags()->take(5)->get();
 $selectedPic = Picture::where('addon_id', '=', $selected->id)->first();
 $selectedCat = Category::where('id', '=', $selected->category_id)->first();
+$selectedTags = Addon::find($selected->id)->tags()->take(5)->get();
+
+// var_dump($lastAddedTags);
 
 // Getting the six first categories
 $categories = Category::take(6)->get();
 
-// var_dump($categories);
 // Getting tags from DB
 $tags = Tag::get();
 
@@ -60,15 +64,17 @@ $tags = Tag::get();
           @foreach($tags as $tag)
           <?php $currentTag = Tag::where('id', '=', $tag->id)->first();?>
           @if($currentTag->frequency != 0)
-          <?php
-          if (($tag->frequency)/10 < 1) {
-            $tagSize = ($tag->frequency)/10 + 1;
-          }elseif (($tag->frequency)/10 > 2 ) {
-            $tagSize = 2;
-          }else{
-            $tagSize = ($tag->frequency)/10;
-          }?>
-          {{HTML::link('#', $tag->name, array('style' => 'font-size: '.$tagSize.'em', 'class' =>'tag'));}}
+            <?php
+            if (($tag->frequency)/10 < 1) {
+              $tagSize = ($tag->frequency)/10 + 1;
+            }elseif (($tag->frequency)/10 > 2 ) {
+              $tagSize = 2;
+            }else{
+              $tagSize = ($tag->frequency)/10;
+            }
+
+            ?>
+          {{HTML::link('tag?tag='.$currentTag->id, $tag->name, array('style' => 'font-size: '.$tagSize.'em', 'class' =>'tag'));}}
           @endif
           @endforeach
         </div>
@@ -99,12 +105,11 @@ $tags = Tag::get();
           </p>
           <div class="entryTag">
             <ul>
+              @foreach($lastAddedTags as $lastAddedTag)
               <li>
-                {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
+                {{HTML::link('tag?tag='.$lastAddedTag->id, $lastAddedTag->name, array('rel'=>'tag'));}}
               </li>
-              <li>
-                {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
-              </li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -130,12 +135,11 @@ $tags = Tag::get();
           </p>
           <div class="entryTag">
             <ul>
+              @foreach($highestRatedTags as $highestRatedTag)
               <li>
-                {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
+                {{HTML::link('tag?tag='.$highestRatedTag->id, $highestRatedTag->name, array('rel'=>'tag'));}}
               </li>
-              <li>
-                {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
-              </li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -160,12 +164,11 @@ $tags = Tag::get();
           </p>
           <div class="entryTag">
             <ul>
+              @foreach($selectedTags as $selectedTag)
               <li>
-                {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
+                {{HTML::link('tag?tag='.$selectedTag->id, $selectedTag->name, array('rel'=>'tag'));}}
               </li>
-              <li>
-                {{HTML::link('#', 'tag', array('rel'=>'tag'));}}
-              </li>
+              @endforeach
             </ul>
           </div>
         </div>

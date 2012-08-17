@@ -246,9 +246,9 @@ class User_Controller extends Base_Controller{
         	// setting up array with picture info
         	$picture = new Picture(array(
             	'addon_id' => $addon->id,
-                'location' => '../public/_uploads/pictures/'.sha1(Auth::user()->id).'/'.$pictureFilename,
-                'thumbfeat' => '../public/_uploads/thumbsFeat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
-                'thumbcat' => '../public/_uploads/thumbsCat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
+                'location' => '../_uploads/pictures/'.sha1(Auth::user()->id).'/'.$pictureFilename,
+                'thumbfeat' => '../_uploads/thumbsFeat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
+                'thumbcat' => '../_uploads/thumbsCat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
              ));
 
         	// Adding picture info to database

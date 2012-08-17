@@ -2,13 +2,12 @@
 
 
 @section('content')
-<?php $category = Session::get('category');?>
+<?php $tag = Session::get('tag');?>
 
 <header class="row">
   <div class="twelve columns">
     <div class="pageHeader ten columns ">
-      <h1 class="mainTitle">addon's type <span class="colorWord">{{$category->name}}</span></h1>
-      <div class="entryTag"><span class="catTag">Category's tags</span><span class="arrow"></span></div>
+      <h1 class="mainTitle">addon's type <span class="colorWord">{{$tag->name}}</span></h1>
     </div>
     <div class="two columns">
       <ul id="sortButton" class="clearfix">
@@ -35,7 +34,7 @@ $addons = Session::get('addons');
   @foreach($addons as $addon)
   <?php
    $picture = Picture::where('addon_id', '=', $addon->id)->first();
-   $tags = Addon::find($addon->id)->tags()->take(3)->get();
+   $addonTags = Addon::find($addon->id)->tags()->take(3)->get();
   ?>
   @if($addon->visible == 1)
   <div id="addonLeft" class="addonCat three column">
@@ -49,18 +48,19 @@ $addons = Session::get('addons');
         <h2 class="entryTitle">
           <a href="addon?id={{$addon->id}}" title="See {{$addon->name}} detail's" rel="bookmark">{{$addon->name}}</a>
         </h2>
-        <div class="rateIt"><span></span>{{$addon->rating}}</div>
+
       </header>
       <p class="info">by {{$addon->author}}</p>
       <div class="entryTag">
         <ul>
-          @foreach($tags as $tag)
+          @foreach($addonTags as $addonTag)
             <li>
-              {{HTML::link('tag?tag='.$tag->id, $tag->name, array('rel'=>'bookmark'));}}
+              {{HTML::link('tag?tag='.$addonTag->id, $addonTag->name, array('rel'=>'bookmark'))}}
             </li>
           @endforeach
         </ul>
       </div>
+      <div class="rateIt"><span></span>{{$addon->rating}}</div>
     </div>
   </div>
   @endif

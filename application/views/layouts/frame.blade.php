@@ -88,9 +88,11 @@ $user = Auth::user();
     <div class="row">
       <div class="twelve columns">
         @yield('content')
+
         <div class="row">
           <div class="twelve columns">
             <div class="scrollToTop">
+              <br>
               {{HTML::link('#', 'ScrollTotop');}}
             </div>
           </div>
