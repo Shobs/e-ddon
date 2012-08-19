@@ -66,7 +66,7 @@ $user = Auth::user();
           @if (Auth::guest())
           {{HTML::link('#', 'Login / Register', array('class'=>'small radius nice blue button', 'title'=>'log in or register', 'data-reveal-id'=>'loginModal'));}}
           @else
-          {{HTML::link('user/logout', 'Logout', array('class'=>'small radius nice blue button', 'title'=>'Logout'));}}
+          {{HTML::link('auth/logout', 'Logout', array('class'=>'small radius nice blue button', 'title'=>'Logout'));}}
           @endif
         </div>
       </div>
@@ -175,7 +175,7 @@ $user = Auth::user();
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
+<script type="text/javascript">var BASE = "<?php echo URL::base(); ?>";</script>
 
 <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
   mathiasbynens.be/notes/async-analytics-snippet -->

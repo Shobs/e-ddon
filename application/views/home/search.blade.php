@@ -2,24 +2,28 @@
 
 
 @section('content')
-<?php $category = Session::get('category');?>
+
+<?php
+$search = Session::get('search');
+$results = Session::get('results');
+?>
 
 <header class="row">
   <div class="twelve columns">
     <div class="pageHeader ten columns ">
-      <h1 class="mainTitle">addon's type <span class="colorWord">{{$category->name}}</span></h1>
+      <h1 class="mainTitle">search results for:<span class="colorWord">{{$search}}</span></h1>
     </div>
     <div class="two columns">
       <ul id="sortButton" class="clearfix">
         <li><p>order by:</p></li>
         <li class="current">
-          <a class="date" href="order/date" title="Sort addons by added date">by date</a>
+          <a class="date" href="?orderby=date" title="Sort addons by added date">by date</a>
         </li>
         <li>
-          <a class="name" href="order/asc" title="Sort addons by name">by name</a>
+          <a class="name" href="?orderby=title&amp;order=ASC" title="Sort addons by name">by name</a>
         </li>
         <li>
-          <a class="rate" href="order/rate" title="Sort addons by rate">by rate</a>
+          <a class="rate" href="?r_sortby=highest_rated&amp;r_orderby=desc" title="Sort addons by rate">by rate</a>
         </li>
       </ul>
     </div>
@@ -66,6 +70,10 @@ $addons = Session::get('addons');
   @endforeach
 </content>
 @endif
+
+
+
+
 </content>
 @endsection
 

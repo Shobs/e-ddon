@@ -66,6 +66,30 @@ class Home_Controller extends Base_Controller {
 		}
 
 
+
+
+		// if (Request::ajax()) {
+
+		// 	$searchInput = Input::get('searchInput');
+
+		// // if ($searchInput != '') {
+		// 	$results = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->take(5)->get();
+
+		// 	foreach ($results as $result) {
+		// 		echo '<li>'.$result->name.'</li>';
+		// 	}
+
+		// 	var_dump($searchInput);
+		// }else{
+		// 	echo 'no ajax found';
+		// 	var_dump(URL::base());
+		// }
+
+
+
+
+
+
 		// Saving info from database to session
 		Session::put('lastAdded', $lastAdded);
 		Session::put('highestRated', $highestRated);

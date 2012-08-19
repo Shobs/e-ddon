@@ -35,8 +35,54 @@
 |
 */
 
+// Live search route
+Route::post('liveSearch', function() {
+
+	// Checking if it's an ajax request
+	if (Request::ajax()) {
+
+		// Getting ajax request
+    	$searchInput = Input::get('searchInput');
+
+    	// Making sure input is not empty
+		if ($searchInput != '') {
+
+	    	// Getting info from DB
+	    	$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('name')->take(4)->get();
+	    	$tags = Tag::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('name')->take(4)->get();
+
+	    	echo '<div class="six columns">';
+			echo '<ul id="searchResults">';
+			echo '<li>Addons ►</li>';
+			// Sending back array info
+			foreach ($addons as $addon) {
+
+				echo '<li class="helperResult">'.HTML::link('addon?id='.$addon->id, $addon->name).'</li>';
+			}
+			echo '</ul>';
+			echo '</div>';
+
+			echo '<div class="six columns">';
+			echo '<ul id="searchResults">';
+			echo '<li>Tags ►</li>';
+			// Sending back array info
+			foreach ($tags as $tag) {
+
+				echo '<li class="helperResult">'.HTML::link('tag?tag='.$tag->id, $tag->name).'</li>';
+			}
+			echo '</ul>';
+			echo '</div>';
+		}else{
+
+			// var_dump($searchInput);
+		}
+	}
+});
+
 Route::controller(Controller::detect());
 Route::get('about', 'home@about');
+
+
 
 /*
 Route::get('/', function()

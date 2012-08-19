@@ -32,16 +32,16 @@ $tags = Tag::get();
 <div class="row">
   <div class="seven columns">
     <div class="twelve columns">
-      <h2 class="mainTitle">addon by <span class="colorWord">type</span></h2>
+      <h2 class="mainTitle">addon by <span class="colorWord">category</span></h2>
     </div>
 
     <!-- Dynamic generation of categories -->
     @foreach($categories as $category)
-    <div class="four columns">
+    <div class="category four columns">
       <a href="category?cat={{$category->id}}"title="View addon list in {{Str::lower($category->name); $category->name}}">
-        {{HTML::image('http://placehold.it/180x180', 'placeholder+image');}}
-        <h2 class="catTitle">{{$category->name}}</h2> <!-- category name -->
-        <p></p> <!-- category description -->
+        {{HTML::image($category->image, 'placeholder+image');}}
+        <h2 class="catTitle">{{$category->name}}</h2>
+        <p></p>
       </a>
     </div>
     @endforeach
@@ -50,16 +50,20 @@ $tags = Tag::get();
   <!-- Search Box -->
   <div class="five columns">
     <div id="search">
-      {{Form::open('#', 'get', array('role'=>'search'));}}
-      {{Form::search('search', '', array('id'=>'s', 'placeholder'=>'search an addon'));}}
+      {{Form::open('search', 'get', array('role'=>'search', 'id' => 'liveSearch'));}}
+      {{Form::input('text', 's', '', array('id'=>'s', 'placeholder'=>'search an addon'));}}
       {{Form::input('submit', '', 'search', array('class'=>'small radius nice blue button'));}}
       {{Form::close();}}
+
+    </div>
+    <div id="searchHelper">
+      <ul id="searchResults"></ul>
     </div>
 
     <!-- Tag cloud -->
-    <div class="twelve columns">
+    <div id="tagCloudArea" class="twelve columns">
       <h2 class="mainTitle">addon by <span class="colorWord">tags</span></h2>
-      <div class="tagCloud"> <!-- World cloud division -->
+      <div class="tagCloud">
         <div class="tagsList">
           @foreach($tags as $tag)
           <?php $currentTag = Tag::where('id', '=', $tag->id)->first();?>

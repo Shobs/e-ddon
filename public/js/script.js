@@ -1,4 +1,7 @@
-$(document).ready(function () {
+jQuery(document).ready(function ($) {
+
+	// Hiding live search helper div
+	$('#searchHelper').hide();
 
 	// copies value from file input to a fake div
 	function fakeUpload (fieldUpload, fieldFakeUpload) {
@@ -11,6 +14,24 @@ $(document).ready(function () {
 		}
 		$(fieldFakeUpload).html(value);
 	}
+
+	// Ajax live search
+	$("#s").keyup(function(){
+		var input = $(this).val();
+		if (input != '') {
+			$.post(BASE+'/liveSearch', {searchInput:input}, function(data){
+				$('#searchHelper').fadeIn(250);
+				$('#searchResults').html(data);
+			});
+		}else{
+			$('#searchHelper').fadeOut(250);
+		};
+	});
+
+	// When out of focus higing live search helper div
+	$("#s").blur(function(){
+		$('#searchHelper').fadeOut(250);
+	});
 
 	// Hides and shows different part of the form
 	$(".forgotPassLink").click(function() {
@@ -39,6 +60,8 @@ $(document).ready(function () {
 	$("#pictureUpload").change(function(){
 		fakeUpload('#pictureUpload', '#fakePictureUpload');
 	});
+
+
 
 
 });

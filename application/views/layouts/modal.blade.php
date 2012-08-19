@@ -17,14 +17,14 @@
               <br/>
               <p class="underTitle">Please log in to access to your addon collection</p>
               <div class="login" id="theme-my-login">
-                {{Form::open('user/authenticate', 'post');}}
+                {{Form::open('auth', 'post');}}
                 <p>
                   {{Form::label('email', 'Email', array('class' => 'label'));}}
                   {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
                 </p>
                 <p>
                   {{Form::label('password', 'Password', array('class' => 'label'));}}
-                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required', 'pattern' => '(?=^.{8,}$)^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'));}}
+                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required'));}}
                 </p>
                 <div class=" nine columns">
                   <p class="forgetMeNot">
@@ -66,7 +66,7 @@
           <div id="forgetForm" class=" twelve columns" >
             <br/>
             <p>Please enter your email address.<br/>You will receive a link to create a new password via email.</p>
-            {{Form::open('user/resetPassword', 'post');}}
+            {{Form::open('reset', 'post');}}
             <p>
               {{Form::label('email', 'E-mail', array('class' => 'label'));}}
               {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
@@ -106,7 +106,7 @@
               <p>Sign up to upload your addons</p>
             </div>
             <div>
-              {{Form::open('user/authenticate', 'post')}};
+              {{Form::open('auth', 'post')}};
                 <p>
                   {{Form::label('email', 'E-mail', array('class' => 'label'));}}
                   {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'id' => 'email', 'required' => 'required'));}}
@@ -160,7 +160,7 @@
 <div id="uploadModal" class="reveal-modal">
   <div class="row">
     <div id="content" role="main" class="twelve column clearfix">
-      {{Form::open_for_files('user/upload', 'post');}}
+      {{Form::open_for_files('upload', 'post');}}
       <div class="twelve column">
         <h1 class="mainTitle">submit an <span class="colorWord">addon</span></h1>
         <p>

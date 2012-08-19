@@ -129,6 +129,10 @@ h2 {
 	line-height: 1em;
 }
 
+.category{
+	margin-bottom: 18px;
+}
+
 .catBlock {
 	-webkit-box-shadow: inset 0px 0px 0px 0px #fff;
 	-moz-box-shadow: inset 0px 0px 0px 0px #fff;
@@ -141,13 +145,12 @@ h2 {
 
 .catTitle {
 	font-size: 24px;
-	color: #92897C;
+	color: #ed581f;
 	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 	position: absolute;
 	bottom: 10px;
 	right: 30px;
 	font-family: Georgia,"Times New Roman",Times,serif;
-	opacity: 0.5;
 	font-weight: normal;
 }
 
@@ -192,6 +195,54 @@ h2 {
 #search input[type="submit"]:hover {
 	background: url(../img/bt_search_hover.png) no-repeat;
 }
+
+#searchHelper::before {
+  border-color:transparent transparent #B1A590;
+  border-style:solid;
+  border-width:11px;
+  content:'';
+  height:0;
+  left:54px;
+  position:absolute;
+  top:-22px;
+  width:0;
+}
+
+#searchHelper {
+  -webkit-box-shadow:rgba(0, 0, 0, 0.0976563) 2px 2px 0 0;
+  background-color:#B1A590;
+  background-position:initial initial;
+  background-repeat:initial initial;
+  border-bottom-left-radius:6px;
+  border-bottom-right-radius:6px;
+  border-top-left-radius:6px;
+  border-top-right-radius:6px;
+  box-shadow:rgba(0, 0, 0, 0.0976563) 2px 2px 0 0;
+  color:#ECE4D9;
+  font-size:12px;
+  padding:3px 3px;
+  position:absolute;
+  top:145px;
+  width: 420px;
+  z-index:10;
+  display: none;
+}
+
+#searchResults{
+	margin-bottom: 0px;
+}
+
+.helperResult a{
+	font-weight: bold;
+	 color:#ECE4D9;
+}
+
+.helperResult a:hover{
+	font-weight: bold;
+	 color:#ed581f;
+}
+
+#tagCloudArea{margin-top: 60px}
 
 .tagCloud {
 	text-align: center;
@@ -634,7 +685,7 @@ form .select select {
 .soloEntry dl { margin-bottom: 20px;}
 
 .soloEntry dl dt {
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: bold;
 	color: #B1A590;
 	clear: left;
@@ -643,7 +694,15 @@ form .select select {
 	line-height: 24px;
 }
 
+.soloEntry dl dd {
+font-size: 12px;
+color:#92897C;
+line-height: 24px;
+}
+
 .soloEntry dl dd .link {color:#FC661C;}
+
+
 
 .soloEntry .entryContent {
 	color: #92897C;
@@ -652,8 +711,6 @@ form .select select {
 	padding-top: 10px;
 	background: url(../img/bg_sep.png) repeat-x;
 }
-
-.entryDetails .entryTag {padding-top: 3px;}
 
 #addonLeft{float: left;}
 

@@ -37,5 +37,6 @@ return array(
 
 	'docs' => array('handles' => 'docs'),
 	'resizer' => array( 'auto' => true ),
+	'swiftmailer' => array('auto'=>true),
 
 );
