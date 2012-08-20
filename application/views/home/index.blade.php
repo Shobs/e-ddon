@@ -6,6 +6,11 @@ $lastAdded = Session::get('lastAdded');
 $highestRated = Session::get('highestRated');
 $selected = Session::get('selected');
 
+// Killing sessions
+if(Session::has('search')){
+  Session::forget('search');
+}
+
 // Selecting data from db
 $lastAddedPic = Picture::where('addon_id', '=', $lastAdded->id)->first();
 $lastAddedCat = Category::where('id', '=', $lastAdded->category_id)->first();
@@ -38,7 +43,7 @@ $tags = Tag::get();
     <!-- Dynamic generation of categories -->
     @foreach($categories as $category)
     <div class="category four columns">
-      <a href="category?cat={{$category->id}}"title="View addon list in {{Str::lower($category->name); $category->name}}">
+      <a href={{URL::to('category?cat='.$category->id);}} title="View addon list in {{Str::lower($category->name); $category->name}}">
         {{HTML::image($category->image, 'placeholder+image');}}
         <h2 class="catTitle">{{$category->name}}</h2>
         <p></p>
@@ -95,7 +100,7 @@ $tags = Tag::get();
       <h3 class="featuredSectionTitle">last <span class="colorWord">added</span></h3>
       {{HTML::link('category?cat=7', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the last added addons'));}}
       <article id="#"> <!-- post number -->
-        <a href="addon?id={{$lastAdded->id}}" class="imgHolder">
+        <a href={{URL::to('addon?id='.$lastAdded->id);}} class="imgHolder">
           {{HTML::image( $lastAddedPic->thumbfeat , $lastAdded->name , array('title'=> $lastAdded->name, 'class' => 'postImage'));}}
         </a>
         <div class="entryDetails">
@@ -125,7 +130,7 @@ $tags = Tag::get();
       <h3 class="featuredSectionTitle">highest <span class="colorWord">rated</span></h3>
       {{HTML::link('category?cat=8', 'see all »', array('class'=>'linkPage btColor2', 'title'=>'see all the highest rated addons'));}}
       <article id="#">
-        <a href="addon?id={{$highestRated->id}}" class="imgHolder">
+        <a href={{URL::to('addon?id='.$highestRated->id);}} class="imgHolder">
           {{HTML::image($highestRatedPic->location , $highestRated->name, array('title'=>'placeholder', 'class' => 'postImage'));}}
         </a>
         <div class="entryDetails"> <!-- entry details -->
@@ -154,7 +159,7 @@ $tags = Tag::get();
     <div class="four columns">
       <h3 class="featuredSectionTitle">eddon <span class="colorWord">selected</span></h3>
       <article id="#">
-        <a href="addon?id={{$selected->id}}" class="imgHolder">
+        <a href= {{URL::to('addon?id='.$selected->id);}} class="imgHolder">
           {{HTML::image( $selectedPic->location, $selectedPic->name, array('title'=> $selectedPic->name, 'class' => 'postImage'));}}
         </a>
         <div class="entryDetails"> <!-- entry details -->

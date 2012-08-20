@@ -5,7 +5,7 @@
 
 <?php
 $search = Session::get('search');
-$results = Session::get('results');
+$addons = Session::get('addons');
 ?>
 
 <header class="row">
@@ -17,13 +17,13 @@ $results = Session::get('results');
       <ul id="sortButton" class="clearfix">
         <li><p>order by:</p></li>
         <li class="current">
-          <a class="date" href="?orderby=date" title="Sort addons by added date">by date</a>
+          <a class="date" href={{URL::to('search/date');}} title="Sort addons by added date">by date</a>
         </li>
         <li>
-          <a class="name" href="?orderby=title&amp;order=ASC" title="Sort addons by name">by name</a>
+          <a class="name" href={{URL::to('search/asc');}} title="Sort addons by name">by name</a>
         </li>
         <li>
-          <a class="rate" href="?r_sortby=highest_rated&amp;r_orderby=desc" title="Sort addons by rate">by rate</a>
+          <a class="rate" href={{URL::to('search/rate');}} title="Sort addons by rate">by rate</a>
         </li>
       </ul>
     </div>
@@ -31,9 +31,6 @@ $results = Session::get('results');
 </header>
 
 @if(Session::has('addons'))
-<?php
-$addons = Session::get('addons');
-?>
 <content class="row">
   @foreach($addons as $addon)
   <?php
@@ -42,15 +39,15 @@ $addons = Session::get('addons');
   ?>
   @if($addon->visible == 1)
   <div id="addonLeft" class="addonCat three column">
-    <a href="addon?id={{$addon->id}}" class="imgHolder" title="{{$addon->name}}">
+    <a href={{URL::to('addon?id='.$addon->id);}} class="imgHolder" title="{{$addon->name}}">
       <div class="imageContainer">
-      <img class=" postImage" title="{{$addon->name}}" src="{{$picture->thumbcat}}" width="260" height="200" style="display: inline; ">
+      <img class=" postImage" title="{{$addon->name}}" src="{{URL::base().'/'.$picture->thumbcat}}" width="260" height="200" style="display: inline; ">
       </div>
     </a>
     <div class="entryDetails">
       <header class="entryHeader">
         <h2 class="entryTitle">
-          <a href="addon?id={{$addon->id}}" title="See {{$addon->name}} detail's" rel="bookmark">{{$addon->name}}</a>
+          <a href={{URL::to('addon?id='.$addon->id);}} title="See {{$addon->name}} detail's" rel="bookmark">{{$addon->name}}</a>
         </h2>
       </header>
       <p class="info">by {{$addon->author}}</p>
@@ -70,9 +67,6 @@ $addons = Session::get('addons');
   @endforeach
 </content>
 @endif
-
-
-
 
 </content>
 @endsection

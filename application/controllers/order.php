@@ -34,11 +34,18 @@ class Order_Controller extends Base_Controller {
 
 		$searchInput = Session::get('search');
 
+		var_dump($searchInput);
 		$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('updated_at', 'desc')->get();
+
+		var_dump($searchInput);
+
+		// Clearing addon session
+		if (Session::has('addons')) {
+			Session::forget('addons');
+		}
 
 		// Creating search result session
 		Session::put('addons', $addons);
-		Session::put('search', $searchInput);
 
 		return View::make('home.search');
 
@@ -48,25 +55,37 @@ class Order_Controller extends Base_Controller {
 
 		$searchInput = Session::get('search');
 
+		var_dump($searchInput);
+
 		$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('name')->get();
+
+		var_dump($searchInput);
+
+		// Clearing addon session
+		if (Session::has('addons')) {
+			Session::forget('addons');
+		}
 
 		// Creating search result session
 		Session::put('addons', $addons);
-		Session::put('search', $searchInput);
 
 		return View::make('home.search');
 
 	}
 
-	public function action_name(){
+	public function action_rate(){
 
 		$searchInput = Session::get('search');
 
 		$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('rating', 'desc')->get();
 
+		// Clearing addon session
+		if (Session::has('addons')) {
+			Session::forget('addons');
+		}
+
 		// Creating search result session
 		Session::put('addons', $addons);
-		Session::put('search', $searchInput);
 
 		return View::make('home.search');
 

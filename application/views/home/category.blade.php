@@ -13,13 +13,13 @@
       <ul id="sortButton" class="clearfix">
         <li><p>order by:</p></li>
         <li class="current">
-          <a class="date" href="order/date" title="Sort addons by added date">by date</a>
+          <a class="date" href={{URL::to('search/date');}} title="Sort addons by added date">by date</a>
         </li>
         <li>
-          <a class="name" href="order/asc" title="Sort addons by name">by name</a>
+          <a class="name" href={{URL::to('search/asc');}} title="Sort addons by name">by name</a>
         </li>
         <li>
-          <a class="rate" href="order/rate" title="Sort addons by rate">by rate</a>
+          <a class="rate" href={{URL::to('search/rate');}} title="Sort addons by rate">by rate</a>
         </li>
       </ul>
     </div>
@@ -38,7 +38,7 @@ $addons = Session::get('addons');
   ?>
   @if($addon->visible == 1)
   <div id="addonLeft" class="addonCat three column">
-    <a href="addon?id={{$addon->id}}" class="imgHolder" title="{{$addon->name}}">
+    <a href={{URL::to('addon?id='.$addon->id);}} class="imgHolder" title="{{$addon->name}}">
       <div class="imageContainer">
       <img class=" postImage" title="{{$addon->name}}" src="{{$picture->thumbcat}}" width="260" height="200" style="display: inline; ">
       </div>
@@ -46,7 +46,7 @@ $addons = Session::get('addons');
     <div class="entryDetails">
       <header class="entryHeader">
         <h2 class="entryTitle">
-          <a href="addon?id={{$addon->id}}" title="See {{$addon->name}} detail's" rel="bookmark">{{$addon->name}}</a>
+          <a href={{URL::to('addon?id='.$addon->id);}} title="See {{$addon->name}} detail's" rel="bookmark">{{$addon->name}}</a>
         </h2>
       </header>
       <p class="info">by {{$addon->author}}</p>

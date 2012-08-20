@@ -17,7 +17,7 @@ $tags = Session::get('tags')
     <div class="twelve column">
       <hgroup class="mainTitle clearfix">
         <h2>addon's type <span class="colorWord">
-          <a href="category?cat={{$category->id}}" title="View all posts in Graphics">{{$category->name}}</a></span>
+          <a href={{URL::to('category?cat='.$category->id);}} title="View all posts in Graphics">{{$category->name}}</a></span>
         </h2>
         <h1>{{$addon->name}}</h1>
       </hgroup>
