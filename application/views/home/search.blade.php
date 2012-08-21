@@ -43,6 +43,7 @@ $addons = Session::get('addons');
         </h2>
       </header>
       <p class="info">by {{$addon->author}}</p>
+      <div class="rateIt"><span></span>{{$addon->rating}}</div>
       <div class="entryTag">
         <ul>
           @foreach($tags as $tag)
@@ -52,7 +53,6 @@ $addons = Session::get('addons');
           @endforeach
         </ul>
       </div>
-      <div class="rateIt"><span></span>{{$addon->rating}}</div>
     </div>
   </div>
   @endif

@@ -29,7 +29,8 @@ $tags = Session::get('tags')
         <div class="five column">
           <img width="466" height="351" src="{{URL::to($picture->location);}}" class="postImage" alt="{{$addon->name}}" title="{{$addon->name}}"/>
         </div>
-        <div class="entryDetails four column">
+        <div class="seven columns">
+        <div class="entryDetails seven column">
           <dl class="clearfix">
             <dt>Author:</dt>
             <dd>{{$addon->author}}</dd>
@@ -45,9 +46,14 @@ $tags = Session::get('tags')
             @endforeach
           </dl>
         </div>
-        <div class="three column">
+        <div class="five column">
 
           </div>
+          <div class="twelve columns">
+            {{HTML::link('download', 'Download addon', array('class'=>'small radius nice blue button', 'title'=>'Download addon'));}}
+
+          </div>
+        </div>
         </div>
         <br/>
         <br/>

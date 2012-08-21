@@ -25,22 +25,6 @@ class Order_Controller extends Base_Controller {
 
 			return View::make('home.search');
 
-		}elseif(Session::has('userAddons')){
-
-			$user = Auth::user();
-
-			$addons = $user->addons()->order_by('updated_at', 'desc')->get();
-
-			// Clearing addon session
-			if (Session::has('addons')) {
-				Session::forget('addons');
-			}
-
-			// Creating search result session
-			Session::put('userAddons', $addons);
-
-			return View::make('home.userAddons');
-
 		}elseif(Session::has('category')){
 
 			$category = Session::get('category');
@@ -71,6 +55,22 @@ class Order_Controller extends Base_Controller {
 
 			return View::make('home.tag');
 
+		}elseif(Session::has('userAddons')){
+
+			$user = Auth::user();
+
+			$addons = $user->addons()->order_by('updated_at', 'desc')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('userAddons', $addons);
+
+			return View::make('home.userAddons');
+
 		}
 	}
 
@@ -89,22 +89,6 @@ class Order_Controller extends Base_Controller {
 			Session::put('addons', $addons);
 
 			return View::make('home.search');
-
-		}elseif(Session::has('userAddons')){
-
-			$user = Auth::user();
-
-			$addons = $user->addons()->order_by('name')->get();
-
-			// Clearing addon session
-			if (Session::has('addons')) {
-				Session::forget('addons');
-			}
-
-			// Creating search result session
-			Session::put('userAddons', $addons);
-
-			return View::make('home.userAddons');
 
 		}elseif(Session::has('category')){
 
@@ -135,6 +119,22 @@ class Order_Controller extends Base_Controller {
 			Session::put('addons', $addons);
 
 			return View::make('home.tag');
+
+		}elseif(Session::has('userAddons')){
+
+			$user = Auth::user();
+
+			$addons = $user->addons()->order_by('name')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('userAddons', $addons);
+
+			return View::make('home.userAddons');
 		}
 
 	}
@@ -154,22 +154,6 @@ class Order_Controller extends Base_Controller {
 			Session::put('addons', $addons);
 
 			return View::make('home.search');
-
-		}elseif(Session::has('userAddons')){
-
-			$user = Auth::user();
-
-			$addons = $user->addons()->order_by('rating', 'desc')->get();
-
-			// Clearing addon session
-			if (Session::has('addons')) {
-				Session::forget('addons');
-			}
-
-			// Creating search result session
-			Session::put('userAddons', $addons);
-
-			return View::make('home.userAddons');
 
 		}elseif(Session::has('category')){
 
@@ -200,6 +184,22 @@ class Order_Controller extends Base_Controller {
 			Session::put('addons', $addons);
 
 			return View::make('home.tag');
+
+		}elseif(Session::has('userAddons')){
+
+			$user = Auth::user();
+
+			$addons = $user->addons()->order_by('rating', 'desc')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('userAddons', $addons);
+
+			return View::make('home.userAddons');
 
 		}
 	}

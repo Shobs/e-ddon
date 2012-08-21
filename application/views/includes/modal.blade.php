@@ -200,7 +200,7 @@
       </div>
       <div class="twelve columns">
         {{Form::label('category', 'Category', array('class' => 'label'));}}
-        {{Form::select('category', array('' => '', '1' => 'Economy', '2' => 'Gathering', '3' => 'Interface', '4' => 'PVP', '5' => 'Raiding', '6' => 'Vanity'), '', array('id' => 'addonCategory'));}}
+        {{Form::select('category', array('' => '', '1' => 'Economy', '2' => 'Interface', '3' => 'Professions', '4' => 'PVP', '5' => 'Raiding', '6' => 'Vanity'), '', array('id' => 'addonCategory'));}}
       </div>
       <br/>
       <div class="twelve columns">

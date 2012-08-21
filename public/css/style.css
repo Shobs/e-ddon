@@ -705,7 +705,8 @@ form .select select {
 }
 
 .rateIt {
-	float: right;
+	position: absolute;
+	right:15px;
 	padding: 3px 3px 3px;
 	color: #92897C;
 	font-size: 12px;
@@ -728,7 +729,7 @@ form .select select {
 	margin-right: 2px;
 }
 
-.entryDetails .entryTag {padding-top: 3px;}
+.entryDetails .entryTag {padding-top: 6px;}
 
 .soloEntry dl { margin-bottom: 20px;}
 

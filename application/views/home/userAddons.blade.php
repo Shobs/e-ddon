@@ -5,7 +5,7 @@
 <?php $user = Auth::user();?>
 
 <div class="row">
-  <div class="nine columns">
+  <div class="ten columns">
 
     <h1 class="mainTitle">your <span class="colorWord">Addons</span></h1>
     <div class="userInfo clearfix">
@@ -38,6 +38,7 @@
             </h2>
           </header>
           <p class="info">by {{$addon->author}}</p>
+          <div class="rateIt"><span></span>{{$addon->rating}}</div>
           <div class="entryTag">
             <ul>
               @foreach($tags as $tag)
@@ -47,7 +48,7 @@
               @endforeach
             </ul>
           </div>
-          <div class="rateIt"><span></span>{{$addon->rating}}</div>
+
         </div>
       </div>
       @endif
@@ -60,7 +61,7 @@
 
   </div>
 
-  <div class="three columns">
+  <div class="two columns">
     <div>
       <ul id="sortButton" class="clearfix">
         <li><p>order by:</p></li>

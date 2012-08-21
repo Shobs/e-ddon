@@ -82,7 +82,7 @@ class Upload_Controller extends Base_Controller{
             	'author' => $input['addonAuthor'],
             	'description' => $input['addonDescription'],
             	'category_id' => $input['category'],
-                'location' => '../public/_uploads/addons/'.sha1(Auth::user()->id).'/'.$addonFilename,
+                'location' => '_uploads/addons/'.sha1(Auth::user()->id).'/'.$addonFilename,
              ));
 
         	// Adding addon info to the database
@@ -121,9 +121,9 @@ class Upload_Controller extends Base_Controller{
         	// setting up array with picture info
         	$picture = new Picture(array(
             	'addon_id' => $addon->id,
-                'location' => '../_uploads/pictures/'.sha1(Auth::user()->id).'/'.$pictureFilename,
-                'thumbfeat' => '../_uploads/thumbsFeat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
-                'thumbcat' => '../_uploads/thumbsCat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
+                'location' => '_uploads/pictures/'.sha1(Auth::user()->id).'/'.$pictureFilename,
+                'thumbfeat' => '_uploads/thumbsFeat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
+                'thumbcat' => '_uploads/thumbsCat/'.sha1(Auth::user()->id).'/'.$pictureFilename,
              ));
 
         	// Adding picture info to database
@@ -135,7 +135,7 @@ class Upload_Controller extends Base_Controller{
             Session::flash('status_error', 'An error occurred while uploading your new addon - please try again.');
         	// echo('failed');
         }
-        return Redirect::to('dashboard');
+        return Redirect::to('profile/addons');
 
 	}
 

@@ -54,7 +54,7 @@ class Auth_Controller extends Base_Controller{
 					mkdir($thumbFeatDirectory);
 					mkdir($thumbCatDirectory);
 
-					return Redirect::to('profile');
+					return Redirect::to('profile/user');
 				}
 
 			}catch(Exception $e){
