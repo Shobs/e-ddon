@@ -82,7 +82,7 @@ class Upload_Controller extends Base_Controller{
             	'author' => $input['addonAuthor'],
             	'description' => $input['addonDescription'],
             	'category_id' => $input['category'],
-                'location' => '_uploads/addons/'.sha1(Auth::user()->id).'/'.$addonFilename,
+                'location' => 'public/_uploads/addons/'.sha1(Auth::user()->id).'/'.$addonFilename,
              ));
 
         	// Adding addon info to the database

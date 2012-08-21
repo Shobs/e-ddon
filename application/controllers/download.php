@@ -12,11 +12,19 @@ class Download_Controller extends Base_Controller{
 		// Getting addon info from DB
 		$location = $addon->location;
 
-		$name = (string)$addon->name;
+		// Getting the addon name
+		$name = $addon->name;
+
+		// Getting addon version
 		$version = $addon->version;
 
-		// Send addon for download
-		return Response::download('public/'.$location, $name.'-'.$version.'.zip');
+		// Updating addon's downloaded column
+		$download = $addon->downloaded + 1;
+		$addon->downloaded = $download;
+		$addon->save();
+
+		// Send addon for download with rename
+		return Response::download($location, $name.'-'.$version.'.zip');
 	}
 }
 
