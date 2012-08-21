@@ -1,4 +1,4 @@
-@layout('layouts/modal')
+@layout('layouts/frame')
 
 
 @section('content')
@@ -16,15 +16,7 @@ $addons = Session::get('addons');
     <div class="two columns">
       <ul id="sortButton" class="clearfix">
         <li><p>order by:</p></li>
-        <li class="current">
-          <a class="date" href={{URL::to('search/date');}} title="Sort addons by added date">by date</a>
-        </li>
-        <li>
-          <a class="name" href={{URL::to('search/asc');}} title="Sort addons by name">by name</a>
-        </li>
-        <li>
-          <a class="rate" href={{URL::to('search/rate');}} title="Sort addons by rate">by rate</a>
-        </li>
+        @include('includes.order')
       </ul>
     </div>
   </div>

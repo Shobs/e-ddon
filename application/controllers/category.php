@@ -15,7 +15,7 @@ class Category_Controller extends Base_Controller {
 		}elseif($category == 8){
 			$addons = Addon::order_by('rating', 'desc')->where('visible', '=', 1)->take(8)->get();
 		}else{
-			$addons = Addon::where('category_id', '=', $category)->get();
+			$addons = Addon::where('category_id', '=', $category)->order_by('updated_at', 'desc')->get();
 		}
 		// Getting category info from DB
 		$category = Category::where('id', '=', $category)->first();
@@ -24,7 +24,7 @@ class Category_Controller extends Base_Controller {
 		Session::put('addons', $addons);
 		Session::put('category', $category);
 		Session::forget('tag');
-
+		Session::forget('search');
 
 		return View::make('home.category');
 

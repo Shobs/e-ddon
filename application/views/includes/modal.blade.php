@@ -1,8 +1,3 @@
-@layout('layouts/frame')
-
-
-@section('modal')
-
 <div id="loginModal" class="reveal-modal">
   <div id="main" class="row">
     <div id="content" role="main" class="twelve columns">
@@ -283,7 +278,3 @@
   @endif
   <a class="close-reveal-modal">&#215;</a>
 </div>
-
-
-@endsection
-

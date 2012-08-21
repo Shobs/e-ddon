@@ -1,4 +1,4 @@
-@layout('layouts/modal')
+@layout('layouts/frame')
 
 
 @section('content')

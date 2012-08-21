@@ -1,4 +1,4 @@
-@layout('layouts/modal')
+@layout('layouts/frame')
 
 
 @section('content')
@@ -12,15 +12,7 @@
     <div class="two columns">
       <ul id="sortButton" class="clearfix">
         <li><p>order by:</p></li>
-        <li class="current">
-          <a class="date" href={{URL::to('search/date');}} title="Sort addons by added date">by date</a>
-        </li>
-        <li>
-          <a class="name" href={{URL::to('search/asc');}} title="Sort addons by name">by name</a>
-        </li>
-        <li>
-          <a class="rate" href={{URL::to('search/rate');}} title="Sort addons by rate">by rate</a>
-        </li>
+        @include('includes.order')
       </ul>
     </div>
   </div>
@@ -40,7 +32,7 @@ $addons = Session::get('addons');
   <div id="addonLeft" class="addonCat three column">
     <a href={{URL::to('addon?id='.$addon->id);}} class="imgHolder" title="{{$addon->name}}">
       <div class="imageContainer">
-      <img class=" postImage" title="{{$addon->name}}" src="{{$picture->thumbcat}}" width="260" height="200" style="display: inline; ">
+      <img class=" postImage" title="{{$addon->name}}" src="{{URL::to($picture->thumbcat)}}" width="260" height="200" style="display: inline; ">
       </div>
     </a>
     <div class="entryDetails">

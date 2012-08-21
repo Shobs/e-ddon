@@ -54,7 +54,7 @@ class Auth_Controller extends Base_Controller{
 					mkdir($thumbFeatDirectory);
 					mkdir($thumbCatDirectory);
 
-					return Redirect::to('home/index');
+					return Redirect::to('profile');
 				}
 
 			}catch(Exception $e){
@@ -70,11 +70,14 @@ class Auth_Controller extends Base_Controller{
 				'password' => $password
 			);
 
-
 			// Authentication of existing user
-			if (Auth::attempt($credentials)) {
+			if (Auth::attempt($credentials) && (Auth::user()->role == 100)) {
 
-				return Redirect::to('dashboard/index');
+				return Redirect::to('dashboard');
+
+			}elseif(Auth::attempt($credentials)){
+
+				return Redirect::to('profile/user');
 
 			}else{
 				Session::flash('status_error', 'Your email or password is invalid - please try again.');

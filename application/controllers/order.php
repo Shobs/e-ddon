@@ -6,88 +6,201 @@ class Order_Controller extends Base_Controller {
 
 	public function action_index(){
 
-		// Getting category id from URL
-		$category = Input::get('cat');
-
-		// Getting addons info from DB that belong to the category
-		if($category == 7){
-			$addons = Addon::order_by('updated_at', 'desc')->where('visible', '=', 1)->take(8)->get();
-		}elseif($category == 8){
-			$addons = Addon::order_by('rating', 'desc')->where('visible', '=', 1)->take(8)->get();
-		}else{
-			$addons = Addon::where('category_id', '=', $category)->get();
-		}
-		// Getting category info from DB
-		$category = Category::where('id', '=', $category)->first();
-
-		// Creating addons and category session
-		Session::put('addons', $addons);
-		Session::put('category', $category);
-		Session::forget('tag');
-
-
-		return View::make('home.category');
 
 	}
 
 	public function action_date(){
 
-		$searchInput = Session::get('search');
+		if (Session::has('search')) {
+			$searchInput = Session::get('search');
+			$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('updated_at', 'desc')->get();
 
-		var_dump($searchInput);
-		$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('updated_at', 'desc')->get();
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
 
-		var_dump($searchInput);
+			// Creating search result session
+			Session::put('addons', $addons);
 
-		// Clearing addon session
-		if (Session::has('addons')) {
-			Session::forget('addons');
+			return View::make('home.search');
+
+		}elseif(Session::has('userAddons')){
+
+			$user = Auth::user();
+
+			$addons = $user->addons()->order_by('updated_at', 'desc')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('userAddons', $addons);
+
+			return View::make('home.userAddons');
+
+		}elseif(Session::has('category')){
+
+			$category = Session::get('category');
+			$addons = Addon::where('category_id', '=', $category->id)->order_by('updated_at', 'desc')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('addons', $addons);
+
+			return View::make('home.category');
+
+		}elseif(Session::has('tag')){
+
+			$tagId = Session::get('tag')->id;
+			$addons = Tag::find($tagId)->addons()->order_by('updated_at', 'desc')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('addons', $addons);
+
+			return View::make('home.tag');
+
 		}
-
-		// Creating search result session
-		Session::put('addons', $addons);
-
-		return View::make('home.search');
-
 	}
 
 	public function action_asc(){
 
-		$searchInput = Session::get('search');
+		if (Session::has('search') && Session::get('search') != False) {
+			$searchInput = Session::get('search');
+			$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('name')->get();
 
-		var_dump($searchInput);
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
 
-		$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('name')->get();
+			// Creating search result session
+			Session::put('addons', $addons);
 
-		var_dump($searchInput);
+			return View::make('home.search');
 
-		// Clearing addon session
-		if (Session::has('addons')) {
-			Session::forget('addons');
+		}elseif(Session::has('userAddons')){
+
+			$user = Auth::user();
+
+			$addons = $user->addons()->order_by('name')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('userAddons', $addons);
+
+			return View::make('home.userAddons');
+
+		}elseif(Session::has('category')){
+
+			$category = Session::get('category');
+			$addons = Addon::where('category_id', '=', $category->id)->order_by('name')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('addons', $addons);
+
+			return View::make('home.category');
+
+		}elseif(Session::has('tag')){
+
+			$tagId = Session::get('tag')->id;
+			$addons = Tag::find($tagId)->addons()->order_by('name')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('addons', $addons);
+
+			return View::make('home.tag');
 		}
-
-		// Creating search result session
-		Session::put('addons', $addons);
-
-		return View::make('home.search');
 
 	}
 
 	public function action_rate(){
 
-		$searchInput = Session::get('search');
+		if (Session::has('search')) {
+			$searchInput = Session::get('search');
+			$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('rating', 'desc')->get();
 
-		$addons = Addon::where('name', 'LIKE', '%'.$searchInput.'%')->order_by('rating', 'desc')->get();
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
 
-		// Clearing addon session
-		if (Session::has('addons')) {
-			Session::forget('addons');
+			// Creating search result session
+			Session::put('addons', $addons);
+
+			return View::make('home.search');
+
+		}elseif(Session::has('userAddons')){
+
+			$user = Auth::user();
+
+			$addons = $user->addons()->order_by('rating', 'desc')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('userAddons', $addons);
+
+			return View::make('home.userAddons');
+
+		}elseif(Session::has('category')){
+
+			$category = Session::get('category');
+			$addons = Addon::where('category_id', '=', $category->id)->order_by('rating', 'desc')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('addons', $addons);
+
+			return View::make('home.category');
+
+		}elseif(Session::has('tag')){
+
+			$tagId = Session::get('tag')->id;
+			$addons = Tag::find($tagId)->addons()->order_by('rating', 'desc')->get();
+
+			// Clearing addon session
+			if (Session::has('addons')) {
+				Session::forget('addons');
+			}
+
+			// Creating search result session
+			Session::put('addons', $addons);
+
+			return View::make('home.tag');
+
 		}
-
-		// Creating search result session
-		Session::put('addons', $addons);
-
-		return View::make('home.search');
-
 	}
 }

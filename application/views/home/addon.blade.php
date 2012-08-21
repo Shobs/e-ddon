@@ -1,4 +1,4 @@
-@layout('layouts/modal')
+@layout('layouts/frame')
 
 
 @section('content')
@@ -27,7 +27,7 @@ $tags = Session::get('tags')
     <div class="soloEntry twelve column">
       <div class="row">
         <div class="five column">
-          <img width="466" height="351" src="{{$picture->location}}" class="postImage" alt="{{$addon->name}}" title="{{$addon->name}}"/>
+          <img width="466" height="351" src="{{URL::to($picture->location);}}" class="postImage" alt="{{$addon->name}}" title="{{$addon->name}}"/>
         </div>
         <div class="entryDetails four column">
           <dl class="clearfix">

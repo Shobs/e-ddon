@@ -61,7 +61,54 @@ h2 {
 	background: url(../img/eddon_logo.png) no-repeat;
 }
 
-#userName { margin-top: 70px;}
+/*#userName { margin-top: 70px;}*/
+
+#userHeader {
+	float: left;
+	margin-left: 1%;
+	border-left: 1px solid black;
+	height: 100px;
+}
+
+#userHeader .userContent {
+	border-left: 1px solid #42403E;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	padding-left: 10px;
+	height: 50px;
+}
+
+#userHeader .userInfo {padding-right: 10px;}
+
+#userHeader .userAvatar {
+	float: left;
+	margin-top: 40px;
+	margin-right: 10px;
+	overflow: hidden;
+}
+
+/*#userHeader .userInfo a {color: #FC661C;}*/
+
+#userHeader .userEntry {
+	margin-top: -75px;
+	padding-top: 5px;
+}
+
+#userHeader .entryTitle {
+	color: white;
+	font-weight: normal;
+	font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+#userHeader .entryTitle a{
+	color: #FC661C;
+}
+
+#userHeader .userAccess a {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	padding: 2px 5px;
+}
 
 #btLogin { float: right; width: 140px; margin-top: 59px;}
 
@@ -277,7 +324,7 @@ h2 {
 #featuredPost {clear: both; padding-top: 50px; margin-bottom: 80px;}
 
 .sectionTitle {
-	color: #92897C;
+	color: #D2C9BB;
 	font-size: 48px;
 	font-weight: normal;
 	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
@@ -447,6 +494,7 @@ form .label, form label {
 	font-weight: bold;
 	color: #92897C;
 	padding-left: 15px;
+	white-space: nowrap;
 }
 
 form input[type="text"], form input[type="select"], form input[type="password"], form input[type="email"],form input[type="file"], form input[type="date"], form textarea, form .select {
@@ -710,6 +758,30 @@ line-height: 24px;
 	line-height: 18px;
 	padding-top: 10px;
 	background: url(../img/bg_sep.png) repeat-x;
+}
+
+.menu {
+	background: #D2C9BB;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	padding: 5px 10px;
+	margin-bottom: 10px;
+	margin-top: 100px;
+	min-width: 140px;
+	float: right;
+}
+
+.menu a {
+	font-size: 30px;
+	color: #F5F0E6;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 44px;
+}
+
+.menu a:hover,.menu .current a {
+color: #FC661C;
 }
 
 #addonLeft{float: left;}
