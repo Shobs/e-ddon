@@ -25,6 +25,8 @@ class Category_Controller extends Base_Controller {
 		Session::put('category', $category);
 		Session::forget('tag');
 		Session::forget('search');
+		Session::forget('userAddons');
+
 
 		return View::make('home.category');
 

@@ -1,4 +1,4 @@
-<div id="loginModal" class="reveal-modal">
+<div id="loginModal" class="reveal-modal modals">
   <div id="main" class="row">
     <div id="content" role="main" class="twelve columns">
       <div id="loginArea">
@@ -120,8 +120,7 @@
                 </p>
                 <p>
                   {{Form::label('password', 'Password', array('class' => 'label'));}}
-                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required', 'pattern' => '(?=^.{8,}$)^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'));}}
-                  UpperCase, LowerCase, Number and 8 chars min.
+                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required'));}}
                 </p>
                 {{Form::input('hidden', 'newUser', 'on', array('id' => 'newUser'));}}
                 <div class="nine columns"></div>
@@ -152,7 +151,7 @@
   <a class="close-reveal-modal">&#215;</a>
 </div>
 
-<div id="uploadModal" class="reveal-modal">
+<div id="uploadModal" class="reveal-modal modals">
   <div class="row">
     <div id="content" role="main" class="twelve column clearfix">
       {{Form::open_for_files('upload', 'post');}}
@@ -210,11 +209,7 @@
         </p>
         <br/>
        </div>
-      <div class="eight columns">
-        <span class="fakeCheckbox"></span>
-        <input type="checkbox" name="is-author[]" value="i'm the author of this addon" style="display: none; ">&nbsp;
-        <span class="#">i'm the author of this addon</span>
-      </div>
+      <div class="eight columns"></div>
       <div>
       </div>
       <div class="four columns">
@@ -227,7 +222,7 @@
 </div>
 
 
-<div id="alertError" class="reveal-modal">
+<div id="alertError" class="reveal-modal modals">
   @if (isset($errors) && count($errors->all()) > 0)
   <div class="row">
     <div class="twelve columns">
@@ -259,7 +254,7 @@
   <a class="close-reveal-modal">&#215;</a>
 </div>
 
-<div id="alertSuccess" class="reveal-modal">
+<div id="alertSuccess" class="reveal-modal modals">
   @if (!is_null(Session::get('status_success')))
   <div class="row">
     <div class="twelve columns">
@@ -278,3 +273,28 @@
   @endif
   <a class="close-reveal-modal">&#215;</a>
 </div>
+
+
+@if(Session::has('userAddons'))
+@foreach($addons as $addon)
+<div {{'id="addonDelete'.$addon->id.'"'}} class="reveal-modal modals">
+  <div class="row">
+    <div class="twelve columns">
+      <h4 class="alertHeading">Warning!</h4>
+      <br>
+      <div class="warning">
+     Are you sure you want to <strong>DELETE</strong> <span>{{$addon->name}}</span>?
+     </div>
+    </div>
+
+    <div class="btRight twelve columns">
+      <br>
+      {{HTML::link('profile/delete?id='.$addon->id, 'Delete', array('class'=>'small radius nice blue button btRight', 'title'=>'Delete your addon'));}}
+    </div>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+@endforeach
+@endif
+
+

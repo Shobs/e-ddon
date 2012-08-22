@@ -63,6 +63,10 @@ class Reset_Controller extends Base_Controller{
 
 			$user->save();
 
+			if(Session::has('userAddons')){
+				Session::forget('userAddons');
+			}
+
 		    Session::flash('status_success', 'Successfully sent you a temporary password');
         } else {
             Session::flash('status_error', 'An error occurred while sending you a new password - please try again.');

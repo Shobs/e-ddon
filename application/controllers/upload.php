@@ -20,7 +20,7 @@ class Upload_Controller extends Base_Controller{
         	'addonVersion' => 'required',
 			'addonAuthor' => 'required|max:50',
 			'addonDescription' => 'required',
-			'addonUpload' => 'required|mimes:zip|max:3145728',
+			'addonUpload' => 'required|mimes:zip,rar|max:3145728',
 			'pictureUpload' => 'required|image|max:500000',
         );
 
@@ -128,6 +128,9 @@ class Upload_Controller extends Base_Controller{
 
         	// Adding picture info to database
             $addon->pictures()->save($picture);
+
+            // Making sure user addon session is not there
+            Session::forget('userAddons');
 
             // echo 'success';
             Session::flash('status_success', 'Successfully uploaded your new addon');

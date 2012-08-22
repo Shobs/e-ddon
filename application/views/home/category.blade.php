@@ -2,7 +2,10 @@
 
 
 @section('content')
-<?php $category = Session::get('category');?>
+<?php
+$category = Session::get('category');
+$cat =  Input::get('cat');
+?>
 
 <header class="row">
   <div class="twelve columns">
@@ -11,8 +14,10 @@
     </div>
     <div class="two columns">
       <ul id="sortButton" class="clearfix">
-        <li><p>order by:</p></li>
-        @include('includes.order')
+        <?php if ($cat != 7 || $cat != 8) {?>
+          <li><p>order by:</p></li>
+          @include('includes.order')
+       <?php }?>
       </ul>
     </div>
   </div>

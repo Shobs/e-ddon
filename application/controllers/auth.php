@@ -54,6 +54,9 @@ class Auth_Controller extends Base_Controller{
 					mkdir($thumbFeatDirectory);
 					mkdir($thumbCatDirectory);
 
+					// Making sure user addon session is not there
+					Session::forget('userAddons');
+
 					return Redirect::to('profile/user');
 				}
 
@@ -77,6 +80,9 @@ class Auth_Controller extends Base_Controller{
 
 			}elseif(Auth::attempt($credentials)){
 
+				// Making sure user addon session is not there
+				Session::forget('userAddons');
+
 				return Redirect::to('profile/user');
 
 			}else{
@@ -89,6 +95,8 @@ class Auth_Controller extends Base_Controller{
 	}
 
 	public function action_logout(){
+
+		Session::flush();
 
 		// Terminating user session
 		Auth::logout();

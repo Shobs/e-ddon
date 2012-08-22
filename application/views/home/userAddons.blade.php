@@ -10,7 +10,6 @@
     <h1 class="mainTitle">your <span class="colorWord">Addons</span></h1>
     <div class="userInfo clearfix">
       <div class="userEntry">
-        <h3 class="entryTitle">Welcome, <span class="colorWord">{{$user->firstname}}</span></h3>
         <p>Feel free to add, modify or delete your addons</p>
       </div>
     </div>
@@ -26,6 +25,10 @@
       ?>
       @if($addon->visible == 1)
       <div id="addonLeft" class="addonCat three column">
+        <div class="addonEdit">
+          {{HTML::link('#', 'Delete', array('class'=>'small radius nice blue button btAddon', 'title'=>'Delete your addon', 'data-reveal-id'=>'addonDelete'.$addon->id));}}
+          {{HTML::link('profile/modify?id='.$addon->id, 'Modify', array('class'=>'small radius nice blue button btAddon', 'title'=>'Modify your addon'));}}
+        </div>
         <a href={{URL::to('addon?id='.$addon->id);}} class="imgHolder" title="{{$addon->name}}">
           <div class="imageContainer">
             <img class=" postImage" title="{{$addon->name}}" src="{{URL::to($picture->thumbcat)}}" width="260" height="200" style="display: inline; ">

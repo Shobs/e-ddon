@@ -61,6 +61,15 @@ jQuery(document).ready(function ($) {
 		fakeUpload('#pictureUpload', '#fakePictureUpload');
 	});
 
+	// Copy value from file input to a fake div
+	$("#addonProfile").change(function(){
+		fakeUpload('#addonProfile', '#fakeAddonProfile');
+	});
+
+	$("#pictureProfile").change(function(){
+		fakeUpload('#pictureProfile', '#fakePictureProfile');
+	});
+
 
 
 

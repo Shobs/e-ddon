@@ -23,6 +23,9 @@ class Tag_Controller extends Base_Controller {
 		Session::forget('category');
 		Session::forget('search');
 
+		// Making sure user addon session is not there
+		Session::forget('userAddons');
+
 		return View::make('home.tag');
 
 	}

@@ -27,8 +27,9 @@ class Addon_Controller extends Base_Controller{
 		Session::put('category', $category);
 		Session::put('tags', $tags);
 
-		// Testing
-		// var_dump($tags);
+		// Making sure user addon session is not there
+		Session::forget('userAddons');
+
 
 		// Redirect to addon page
 		return View::make('home.addon');

@@ -1,4 +1,4 @@
-body, #loginModal, #uploadModal{
+body, .modals{
 	background: url(../img/bg.png);
 	font-family: "Arial", "Helvetica", "sans-serif";
 }
@@ -38,6 +38,8 @@ h2 {
 	font-weight: bold;
 }
 
+.modals h4, .modals .warning span{color: #ed581f;}
+
 .label {background-color: transparent;}
 
 .row { width: 1180px;}
@@ -60,8 +62,6 @@ h2 {
 	overflow: hidden;
 	background: url(../img/eddon_logo.png) no-repeat;
 }
-
-/*#userName { margin-top: 70px;}*/
 
 #userHeader {
 	float: left;
@@ -561,7 +561,7 @@ form .select select {
 	cursor: pointer;
 }
 
-#fakeAddonUpload{
+#fakeAddonUpload, #fakeAddonProfile{
 	position: absolute;
 	top: 28px;
 	left: 17px;
@@ -581,7 +581,7 @@ form .select select {
 	font-size: 24px;
 }
 
-#fakePictureUpload{
+#fakePictureUpload, #fakeAddonProfile{
 	position: absolute;
 	top: 14px;
 	left: 17px;
@@ -601,7 +601,7 @@ form .select select {
 	font-size: 24px;
 }
 
-#addonUpload, #pictureUpload{
+#addonUpload, #pictureUpload, #addonProfile, #pictureProfile{
 	width:400px;
 	position: relative;
 	text-align: right;
@@ -784,6 +784,19 @@ line-height: 24px;
 .menu a:hover,.menu .current a {
 color: #FC661C;
 }
+
+.userForm span{color: #FC661C; float: right;}
+
+.button.small.btAddon{
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	padding: 2px 5px;
+	margin: 5px 5px;
+	float:right;
+}
+
+#profileSubmit{z-index: 2;}
 
 #addonLeft{float: left;}
 
