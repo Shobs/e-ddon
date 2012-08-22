@@ -2,6 +2,8 @@
   <ul class="menu">
     @if(URI::is('profile/addons'))
       {{'<li class="current">'}}
+    @elseif(URI::is('profile/modify'))
+      {{'<li class="current">'}}
     @else
      {{'<li>'}}
     @endif

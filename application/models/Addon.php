@@ -5,11 +5,11 @@ class Addon extends Eloquent{
 	public static $table = 'addons';
 
 	public function users(){
-		return $this->belongs_to('User');
+		return $this->belongs_to('User', 'user_id');
 	}
 
 	public function categories(){
-		return $this->belongs_to('Category');
+		return $this->belongs_to('Category', 'category_id');
 	}
 
 	public function pictures(){

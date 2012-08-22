@@ -199,10 +199,12 @@
       </div>
       <div class="twelve columns">
         {{Form::label('category', 'Category', array('class' => 'label'));}}
+        <div class="select">
         {{Form::select('category', array('' => '', '1' => 'Economy', '2' => 'Interface', '3' => 'Professions', '4' => 'PVP', '5' => 'Raiding', '6' => 'Vanity'), '', array('id' => 'addonCategory'));}}
+        </div>
       </div>
       <br/>
-      <div class="twelve columns">
+      <div id="uploadTextarea" class="twelve columns">
         <p>
           {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label', 'required' => 'required'));}}
           {{Form::textarea('addonDescription', '', array('cols' => '40', 'rows' => '10', 'style' => 'font-size: "10px"'));}}

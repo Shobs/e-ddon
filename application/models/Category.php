@@ -8,7 +8,7 @@ class Category extends Eloquent {
 	public static $table = 'categories';
 
 	public function addons(){
-		return $this->has_many('Addon');
+		return $this->has_many('Addon', 'category_id');
 	}
 }
 

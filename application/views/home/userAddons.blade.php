@@ -6,7 +6,6 @@
 
 <div class="row">
   <div class="ten columns">
-
     <h1 class="mainTitle">your <span class="colorWord">Addons</span></h1>
     <div class="userInfo clearfix">
       <div class="userEntry">
@@ -27,7 +26,7 @@
       <div id="addonLeft" class="addonCat three column">
         <div class="addonEdit">
           {{HTML::link('#', 'Delete', array('class'=>'small radius nice blue button btAddon', 'title'=>'Delete your addon', 'data-reveal-id'=>'addonDelete'.$addon->id));}}
-          {{HTML::link('profile/modify?id='.$addon->id, 'Modify', array('class'=>'small radius nice blue button btAddon', 'title'=>'Modify your addon'));}}
+          {{HTML::link('profile/addon?id='.$addon->id, 'Modify', array('class'=>'small radius nice blue button btAddon', 'title'=>'Modify your addon'));}}
         </div>
         <a href={{URL::to('addon?id='.$addon->id);}} class="imgHolder" title="{{$addon->name}}">
           <div class="imageContainer">
@@ -60,10 +59,7 @@
       You have no addons!
     </content>
     @endif
-
-
   </div>
-
   <div class="two columns">
     <div>
       <ul id="sortButton" class="clearfix">
