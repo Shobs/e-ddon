@@ -76,7 +76,7 @@ class Auth_Controller extends Base_Controller{
 			// Authentication of existing user
 			if (Auth::attempt($credentials) && (Auth::user()->role == 100)) {
 
-				return Redirect::to('dashboard');
+				return Redirect::to('admin');
 
 			}elseif(Auth::attempt($credentials)){
 

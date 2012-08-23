@@ -38,11 +38,11 @@
                 <div class="clear">
                   <div class="twelve columns ">
                     <p class="formExtraLnk">
-                      <h4 class="entryTitle">Forgot Password ?</h4>
+                      <h5 class="entryTitle">Forgot Password ?</h5>
                       {{HTML::link('#', 'Reset Password', array('class'=>'forgotPassLink clear', 'title'=>'Click here if you forgot your password'));}}
                     </p>
                     <p class="formExtraLnk">
-                      <h4 class="entryTitle">You don't have an account yet ?</h4>
+                      <h5 class="entryTitle">You don't have an account yet ?</h5>
                       {{HTML::link('#', 'Create Account', array('class'=>'registerLink clear', 'title'=>'Click here if you have do not have an account'));}}
                     </p>
                   </div>
@@ -77,11 +77,11 @@
             <div class="clear">
               <div class="twelve columns ">
                 <p class="formExtraLnk">
-                  <h4 class="entryTitle">Remember your password ?</h4>
+                  <h5 class="entryTitle">Remember your password ?</h5>
                   {{HTML::link('#', 'Log in', array('class'=>'loginLink clear', 'title'=>'Click here if you want to log-in'));}}
                 </p>
                 <p class="formExtraLnk">
-                  <h4 class="entryTitle">You don't have an account yet ?</h4>
+                  <h5 class="entryTitle">You don't have an account yet ?</h5>
                   {{HTML::link('#', 'Create Account', array('class'=>'registerLink clear', 'title'=>'Click here if you have do not have an account'));}}
                 </p>
               </div>
@@ -120,7 +120,8 @@
                 </p>
                 <p>
                   {{Form::label('password', 'Password', array('class' => 'label'));}}
-                  {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required'));}}
+                  {{Form::password('password', array('id' => 'registerPassword','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required'));}}
+                  Your password is forceable in: <span id="registerTime"></span>
                 </p>
                 {{Form::input('hidden', 'newUser', 'on', array('id' => 'newUser'));}}
                 <div class="nine columns"></div>
@@ -132,11 +133,11 @@
               <div class="clear">
                 <div class="twelve columns ">
                   <p class="formExtraLnk">
-                    <h4 class="entryTitle">Forgot Password ?</h4>
+                    <h5 class="entryTitle">Forgot Password ?</h5>
                     {{HTML::link('#', 'Reset Password', array('class'=>'forgotPassLink', 'title'=>'Click here if you forgot your password'));}}
                   </p>
                   <p class="formExtraLnk">
-                    <h4 class="entryTitle">You have an account ?</h4>
+                    <h5 class="entryTitle">You have an account ?</h5>
                     {{HTML::link('#', 'Log in', array('class'=>'loginLink', 'title'=>'Click here if you already have an account'));}}
                   </p>
                 </div>
@@ -229,7 +230,7 @@
   <div class="row">
     <div class="twelve columns">
       <a class="close" data-dismiss="alert" href="#">×</a>
-      <h4 class="alert-heading">Oh Snap!</h4>
+      <h5 class="alert-heading">Oh Snap!</h5>
       <ul>
         @foreach ($errors->all('<li>:message</li>') as $message)
         {{ $message }}
@@ -240,7 +241,7 @@
   @elseif (!is_null(Session::get('status_error')))
   <div class="row">
     <div class="twelve columns">
-      <h4 class="alert-heading">Oh Snap!</h4>
+      <h5 class="alert-heading">Oh Snap!</h5>
       @if (is_array(Session::get('status_error')))
       <ul>
         @foreach (Session::get('status_error') as $error)
@@ -260,7 +261,7 @@
   @if (!is_null(Session::get('status_success')))
   <div class="row">
     <div class="twelve columns">
-      <h4 class="alert-heading">Success!</h4>
+      <h5 class="alert-heading">Success!</h5>
       @if (is_array(Session::get('status_success')))
       <ul>
         @foreach (Session::get('status_success') as $success)
@@ -282,7 +283,7 @@
 <div {{'id="addonDelete'.$addon->id.'"'}} class="reveal-modal modals">
   <div class="row">
     <div class="twelve columns">
-      <h4 class="alertHeading">Warning!</h4>
+      <h5 class="alertHeading">Warning!</h5>
       <br>
       <div class="warning">
      Are you sure you want to <strong>DELETE</strong> <span>{{$addon->name}}</span>?

@@ -598,6 +598,7 @@ form input[type="checkbox"] {
 	font-size: 16px;
 }
 
+#profilePassword { margin-bottom: 5px;}
 
 .fakeCheckbox.checked {
 	background: #F5F0E6 url(../img/checked.png) no-repeat 50% 70%;
@@ -915,6 +916,13 @@ color: #FC661C;
 	color: #FC661C;
 	float: right;
 	font-size: 11px;
+}
+
+#profileTime, #registerTime {
+	float: none;
+	color: #FC661C;
+	font-size: 13px;
+	font-weight: bold;
 }
 
 .button.small.btAddon{

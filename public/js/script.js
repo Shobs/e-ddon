@@ -71,7 +71,25 @@ jQuery(document).ready(function ($) {
 	});
 
 	$('#profilePassword').pwdstr('#profileTime');
-	});
+
+	$('#registerPassword').pwdstr('#registerTime');
+
+	$('.dataTables').dataTable({
+	 	"aaSorting": [[ 4, "desc" ]],
+	 	// "bJQueryUI": true,
+	 	"sScrollY": 400,
+	 	"sScrollX": "100%",
+        "sScrollXInner": "110%",
+        "bScrollCollapse": true,
+	 	"sPaginationType": "full_numbers",
+
+	 });
+
+});
+
+
+
+
 
 
 
