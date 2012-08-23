@@ -70,10 +70,12 @@ jQuery(document).ready(function ($) {
 		fakeUpload('#pictureProfile', '#fakePictureProfile');
 	});
 
+	$('#profilePassword').pwdstr('#profileTime');
+	});
 
 
 
-});
+
 
 
 

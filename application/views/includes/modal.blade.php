@@ -207,7 +207,7 @@
       <div id="uploadTextarea" class="twelve columns">
         <p>
           {{Form::label('addonDescription', "Addon's description (required)", array('class' => 'label', 'required' => 'required'));}}
-          {{Form::textarea('addonDescription', '', array('cols' => '40', 'rows' => '10', 'style' => 'font-size: "10px"'));}}
+          {{Form::textarea('addonDescription', '', array('class' => 'widgEditor', 'id' => 'uploadTextBox'));}}
         </p>
         <br/>
        </div>

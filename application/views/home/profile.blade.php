@@ -24,7 +24,7 @@ $user = Auth::user();
 
 			<p class="userForm six columns">
 				{{Form::label('email', 'Email', array('class' => 'label'));}}<span>{{$errors->first('username');}}</span>
-				{{Form::email('email', '', array('class' => 'input','placeholder' => $user->username));}}
+				{{Form::email('email', '', array('class' => 'input', 'placeholder' => $user->username));}}
 
 				{{Form::label('firstname', 'Firstname', array('class' => 'label'));}}<span>{{$errors->first('firstname');}}</span>
 				{{Form::input('text', 'firstname', '', array('class' => 'input', 'placeholder' => Str::title($user->firstname), 'id' => 'firstname', 'pattern' => '[A-Za-z]+'));}}
@@ -43,10 +43,12 @@ $user = Auth::user();
 			<div class="userForm six columns">
 				<p>
 					{{Form::label('pass1', 'New Password', array('class' => 'label'));}}<span>{{$errors->first('password');}}</span>
-					{{Form::password('pass1', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password'));}}
-
+					{{Form::password('pass1', array('class' => 'input', 'id' => 'profilePassword', 'placeholder' => 'Enter your password'));}}
+					Your password is forceable in <span id="profileTime"></span>
+				</p>
+				<p>
 					{{Form::label('pass2', 'Type your new password again.', array('class' => 'label'));}}
-					{{Form::password('pass2', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password'));}}
+					{{Form::password('pass2', array('id' => 'password2','class' => 'input','placeholder' => 'Enter your password'));}}
 				</p>
 			</div>
 			<div class="six columns">

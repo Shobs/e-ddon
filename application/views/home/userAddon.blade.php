@@ -25,7 +25,7 @@ $picture = Picture::where('addon_id', '=', $addon->id)->first();
               <img width="466" height="351" src="{{URL::to($picture->location);}}" class="postImage" alt="{{$addon->name}}" title="{{$addon->name}}"/>
               <p>
                 {{Form::label('addonDescription', "Addon's description", array('class' => 'label', 'required' => 'required'));}}
-                {{Form::textarea('addonDescription', $addon->description, array('style' => 'font-size: "10px"'));}}
+                {{Form::textarea('addonDescription', $addon->description, array('class' => 'widgEditor', 'id' => 'profileTextBox'));}}
               </p>
             </div>
             <div class="entryDetails userForm five column">

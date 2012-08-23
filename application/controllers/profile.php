@@ -179,7 +179,7 @@ class Profile_Controller extends Base_Controller{
 				}
 
 		        // if input addonUpload has been filled
-				if(Input::file('addonProfile')){
+				if(Input::file('addonProfile.size') != 0){
 
 					 // Getting addon extension
 					$addonExtension = File::extension($input['addonProfile']['name']);
@@ -195,6 +195,9 @@ class Profile_Controller extends Base_Controller{
 
 		        	// if upload is successful
 					if ($add_upload_success) {
+
+						File::delete($addon->location);
+
 						$directory = sha1(Auth::user()->id);
 		        		// Saving new location of addon
 						$addon->location = 'public/_uploads/addons/'.$directory.'/'.$addonFilename;
@@ -270,7 +273,7 @@ class Profile_Controller extends Base_Controller{
 				}
 
 
-				if(Input::has('pictureProfile')){
+				if(Input::file('pictureProfile.size') != 0){
 
 			        // Getting picture extension
 					$pictureExtension = File::extension($input['pictureProfile']['name']);
@@ -301,13 +304,18 @@ class Profile_Controller extends Base_Controller{
 					// Testing if upload was successful
 					if($pic_upload_success && $thumbFeat_upload_success && $thumbCat_upload_success) {
 
-						// Adding new pictures location to addon pictures
-						$addon->pictures()->location = '_uploads/pictures/'.sha1(Auth::user()->id).'/'.$pictureFilename;
-						$addon->pictures()->thumbfeat = '_uploads/thumbsFeat/'.sha1(Auth::user()->id).'/'.$pictureFilename;
-						$addon->pictures()->thumbfeat = '_uploads/thumbsCat/'.sha1(Auth::user()->id).'/'.$pictureFilename;
+						$pictures = Picture::where('addon_id', '=', $addon->id)->first();
+
+						File::delete('public/'.$pictures->location);
+						File::delete('public/'.$pictures->thumbfeat);
+						File::delete('public/'.$pictures->thumbcat);
+
+						$pictures->location = '_uploads/pictures/'.sha1(Auth::user()->id).'/'.$pictureFilename;
+						$pictures->thumbfeat = '_uploads/thumbsFeat/'.sha1(Auth::user()->id).'/'.$pictureFilename;
+						$pictures->thumbcat = '_uploads/thumbsCat/'.sha1(Auth::user()->id).'/'.$pictureFilename;
 
 						// Saving pictures
-						$addon->pictures()->save();
+						$pictures->save();
 					}
 				}
 
