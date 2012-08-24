@@ -7,21 +7,18 @@ class Base_Controller extends Controller {
 	    //Assets
 	    Asset::add('modernizr', 'js/libs/modernizr.foundation.js');
 
+	    Asset::add('foundation-css', 'css/libs/foundation.css');
+	    Asset::add('widgEditor-css', 'css/libs/widgEditor.css');
+	    Asset::add('flexigrid-css', 'css/libs/flexigrid.css');
+	    Asset::add('style', 'css/style.css');
+
 	    Asset::container('footer')->add('jquery', 'js/libs/jquery.js');
 	    Asset::container('footer')->add('foundation-js', 'js/libs/foundation.js', 'jquery');
         Asset::container('footer')->add('pwdstr', 'js/libs/pwdstr-1.0.js', 'jquery');
-        Asset::container('footer')->add('dataTables', 'js/libs/dataTables.js', 'jquery');
+        Asset::container('footer')->add('flexigrid', 'js/libs/flexigrid.js', 'jquery');
 	    Asset::container('footer')->add('script', 'js/script.js', 'jquery');
 	    Asset::container('footer')->add('plugins', 'js/plugins.js', 'script');
 	    Asset::container('footer')->add('widgEditor', 'js/libs/widgEditor.js');
-
-	    Asset::add('foundation-css', 'css/libs/foundation.css');
-	    Asset::add('widgEditor-css', 'css/libs/widgEditor.css');
-	    Asset::add('dataTables-css', 'css/libs/demo_table.css');
-	    // Asset::add('dataTables-css', 'css/libs/jquery.dataTables_themeroller.css');
-	    // Asset::add('dataTablesTheme-css', 'css/libs/peperGrinder/jquery-ui-1.8.23.custom.css');
-	    Asset::add('style', 'css/style.css');
-
 
 	    parent::__construct();
 	}

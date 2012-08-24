@@ -64,9 +64,14 @@ class Admin_Controller extends Base_Controller{
 
 		if (Auth::user()-> role == 100) {
 
-			$users = User::get();
+			$usersData = User::get();
 
-			Session::put('users', $users);
+			// $jsonUsers = eloquent_to_json($users);
+
+			// var_dump($users);
+			// echo $jsonUsers;
+
+			Session::put('usersData', $usersData);
 
 			return View::make('admin.users');
 

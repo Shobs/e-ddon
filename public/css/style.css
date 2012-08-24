@@ -38,6 +38,10 @@ h2 {
 	font-weight: bold;
 }
 
+table {
+	margin-bottom: 0px;
+}
+
 .modals h4, .modals .warning span{color: #ed581f;}
 
 .label {background-color: transparent;}
@@ -933,6 +937,18 @@ color: #FC661C;
 	margin: 5px 5px;
 	float:right;
 }
+
+.pcontrol input{
+	display: inline;
+	width: auto;
+	height: 20px;
+}
+
+.flexigrid div.pDiv input {top: -3px;}
+
+table thead tr th, table tfoot tr td {padding: 0px;}
+
+.flexigrid div.nDiv {margin-top: -6px;}
 
 #profileSubmit{z-index: 2;}
 

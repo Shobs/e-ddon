@@ -2,7 +2,7 @@
 
 <?php
 $user = Auth::user();
-$users = Session::get('users');
+$users = Session::get('usersData');
 ?>
 
 @section('content')
@@ -14,38 +14,36 @@ $users = Session::get('users');
 		</div>
 		<div class=" tables twelve columns">
 			<h3 class="sectionTitle"><span>Users information</span></h3>
-			<table class="dataTables">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Username</th>
-						<th>Lastname</th>
-						<th>Firstname</th>
-						<th>Comments</th>
-						<th>Role</th>
-						<th>Temp</th>
-						<th>Visible</th>
-						<th>Created</th>
-						<th>Updated</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($users as $user)
-					<tr>
-						<td>{{$user->id}}</td>
-						<td>{{$user->username}}</td>
-						<td>{{$user->lastname}}</td>
-						<td>{{$user->firstname}}</td>
-						<td>{{$user->comments}}</td>
-						<td>{{$user->role}}</td>
-						<td>{{$user->temporary}}</td>
-						<td>{{$user->visible}}</td>
-						<td>{{$user->created_at}}</td>
-						<td>{{$user->updated_at}}</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
+			<table id="usersTable" class="dataTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Lastname</th>
+            <th>Firstname</th>
+            <th>Role</th>
+            <th>Temporary</th>
+            <th>Visible</th>
+            <th>Comments</th>
+            <th>Created</th>
+            <th>Updated</th>
+          </tr>
+        </thead>
+          @foreach($users as $user)
+          <tr>
+            <td>{{$user->id}}</td>
+            <td>{{$user->username}}</td>
+            <td>{{$user->lastname}}</td>
+            <td>{{$user->firstname}}</td>
+            <td>{{$user->role}}</td>
+            <td>{{$user->temporary}}</td>
+            <td>{{$user->visible}}</td>
+            <td>{{$user->comments}}</td>
+            <td>{{$user->created_at}}</td>
+            <td>{{$user->updated_at}}</td>
+          </tr>
+          @endforeach
+      </table>
 		</div>
 		<div class="twelve column">
 			<h3 class="sectionTitle"><span>Change your password:</span></h3>

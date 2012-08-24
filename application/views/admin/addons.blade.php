@@ -14,7 +14,7 @@ $addons = Session::get('addons');
 		</div>
 		<div class="twelve columns">
 			<h3 class="sectionTitle"><span>Addons information</span></h3>
-      <table class="dataTables">
+      <table id="addonsTable" class="dataTable">
         <thead>
           <tr>
             <th>ID</th>

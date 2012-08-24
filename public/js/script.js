@@ -15,6 +15,22 @@ jQuery(document).ready(function ($) {
 		$(fieldFakeUpload).html(value);
 	}
 
+	function doCommand(com, grid) {
+		if (com == 'Edit') {
+			$('.trSelected', grid).each(function() {
+			var id = $(this).attr('id');
+			id = id.substring(id.lastIndexOf('row')+3);
+			alert("Edit row " + id);
+			});
+		} else if (com == 'Delete') {
+			$('.trSelected', grid).each(function() {
+			var id = $(this).attr('id');
+			id = id.substring(id.lastIndexOf('row')+3);
+			alert("Delete row " + id);
+			});
+		}
+	}
+
 	// Ajax live search
 	$("#s").keyup(function(){
 		var input = $(this).val();
@@ -27,6 +43,8 @@ jQuery(document).ready(function ($) {
 			$('#searchHelper').fadeOut(250);
 		};
 	});
+
+
 
 	// When out of focus higing live search helper div
 	$("#s").blur(function(){
@@ -74,16 +92,39 @@ jQuery(document).ready(function ($) {
 
 	$('#registerPassword').pwdstr('#registerTime');
 
-	$('.dataTables').dataTable({
-	 	"aaSorting": [[ 4, "desc" ]],
-	 	// "bJQueryUI": true,
-	 	"sScrollY": 400,
-	 	"sScrollX": "100%",
-        "sScrollXInner": "110%",
-        "bScrollCollapse": true,
-	 	"sPaginationType": "full_numbers",
+	$(".dataTable th").each(function() {
+	  $(this).attr("width", $(this).width());
+	});
 
-	 });
+	$('.dataTable').flexigrid({
+		buttons : [
+			{name: 'Edit', bclass: 'edit', onpress : doCommand},
+			{name: 'Delete', bclass: 'delete', onpress : doCommand},
+			{separator: true}
+		],
+
+		sortname: "id",
+		sortorder: "asc",
+		usepager: true,
+		height: 300,
+		singleSelect: true,
+	});
+
+	$('#usersTable').flexigrid({
+		searchitems : [
+			{display: 'Username', name : 'username'},
+			{display: 'Lastname', name : 'lastname', isdefault: true},
+			{display: 'Firstname', name : 'firstname'}
+		],
+	});
+
+	$('#addonsTable').flexigrid({
+		searchitems : [
+			{display: 'Name', name : 'name', isdefault: true},
+			{display: 'User ID', name : 'user_id'},
+			{display: 'Category', name : 'category'}
+		],
+	});
 
 });
 
