@@ -11,20 +11,21 @@
             <div id="loginForm" class="">
               <br/>
               <p class="underTitle">Please log in to access to your addon collection</p>
-              <div class="login" id="theme-my-login">
+              <div class="login">
                 {{Form::open('auth', 'post');}}
-                <p>
-                  {{Form::label('email', 'Email', array('class' => 'label'));}}
-                  {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
+                <p class="userForm">
+                  {{Form::label('email', 'Email', array('class' => 'label'));}}<span>{{Session::get('loginStatus_error')}}</span>
+                  {{Form::email('email', Input::old('email'), array('class' => 'input', 'placeholder' => 'Enter your email', 'required' => 'required'));}}
                 </p>
                 <p>
                   {{Form::label('password', 'Password', array('class' => 'label'));}}
                   {{Form::password('password', array('id' => 'password','class' => 'input','placeholder' => 'Enter your password', 'required' => 'required'));}}
                 </p>
+
                 <div class=" nine columns">
                   <p class="forgetMeNot">
-                    <span class="fakeCheckbox"></span>
-                    {{Form::checkbox('rememberme', 'forever', '', array('id' => 'rememberme', 'style' => 'display: none'));}}
+                    <span class="fakeCheckbox"></span><span class="fakeChecked"></span>
+                    {{Form::checkbox('remember', 'remember', '', array('id' => 'rememberme', 'style' => 'display: none'));}}
                     <span class="wpcf7-list-item-label">Remember Me</span>
                   </p>
                 </div>
@@ -58,13 +59,13 @@
           <h2 class="inlined">Recovery</h2>
         </hgroup>
         <div class="row">
-          <div id="forgetForm" class=" twelve columns" >
+          <div id="forgetForm" class="userForm twelve columns" >
             <br/>
             <p>Please enter your email address.<br/>You will receive a link to create a new password via email.</p>
             {{Form::open('reset', 'post');}}
             <p>
-              {{Form::label('email', 'E-mail', array('class' => 'label'));}}
-              {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
+              {{Form::label('email', 'E-mail', array('class' => 'label'));}}<span></span>
+              {{Form::email('resetEmail', Input::old('resetEmail'), array('class' => 'input','placeholder' => 'Enter your email', 'required' => 'required'));}}
             </p>
             <br/>
             <div class="nine columns"></div>
@@ -103,8 +104,8 @@
             <div>
               {{Form::open('auth', 'post')}};
                 <p>
-                  {{Form::label('email', 'E-mail', array('class' => 'label'));}}
-                  {{Form::email('email', '', array('class' => 'input','placeholder' => 'Enter your email', 'id' => 'email', 'required' => 'required'));}}
+                  {{Form::label('registrationEmail', 'E-mail', array('class' => 'label'));}}<span>{{Session::get('loginStatus_error')}}</span>
+                  {{Form::email('registrationEmail', Input::old('registrationEmail'), array('class' => 'input','placeholder' => 'Enter your email', 'id' => 'email', 'required' => 'required'));}}
                 </p>
                 <p>
                   {{Form::label('lastname', 'Lastname', array('class' => 'label'));}}
@@ -161,11 +162,6 @@
         <p>
           {{Form::label('addonName', "Addon's name (required)", array('class' => 'label'));}}
           {{Form::input('text', 'addonName', '', array('size' => '40', 'required' => 'required'));}}
-          @if ($errors)
-            @foreach ($errors->all('<p class="error-message">:message</p>') as $addonName_error)
-            {{ $addonName_error }}
-            @endforeach
-          @endif
           <div id="#sessionMessage"></div>
         </p>
         <p>

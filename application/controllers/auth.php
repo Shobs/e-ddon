@@ -16,10 +16,37 @@ class Auth_Controller extends Base_Controller{
 		if ($newUser == 'on') {
 
 			// Aquiring data from registration forms
+			$username = Input::get('registrationEmail');
 			$lastname = Input::get('lastname');
 			$firstname = Input::get('firstname');
 			$birthdate = Input::get('birthdate');
 			$password2 = Input::get('password2');
+
+			// php form validation commented out - now using HTML5 pattern validation
+			$input = array(
+			'username' => $username,
+			'lasname' => $lastname,
+			'firstname' => $firstname,
+			'birthdate' => $birthdate,
+			'password' => $password
+			);
+
+			$rules = array(
+				'username' => 'required|email|unique:users,username',
+				'lastname' => 'required|alpha|max:50',
+				'firstname' => 'required|alpha|max:50',
+				'birthdate' => 'required',
+				'password' => 'required|same:password2',
+				'password2' => 'required|same:password'
+			);
+
+			$validation = Validator::make($input, $rules);
+
+			if ($validation->fails()) {
+
+				return Redirect::to('home')->with_input()->with_errors($validation);
+
+			}
 
 			// Adding new user to the DB
 			try{
@@ -73,12 +100,22 @@ class Auth_Controller extends Base_Controller{
 				'password' => $password
 			);
 
+			$remember = Input::get('remember');
+
 			// Authentication of existing user
 			if (Auth::attempt($credentials) && (Auth::user()->role == 100)) {
+
+				if(!empty($remember)){
+					Auth::login(Auth::user()->id, true);
+				}
 
 				return Redirect::to('admin');
 
 			}elseif(Auth::attempt($credentials)){
+
+				if(!empty($remember)){
+					Auth::login(Auth::user()->id, true);
+				}
 
 				// Making sure user addon session is not there
 				Session::forget('userAddons');
@@ -86,9 +123,10 @@ class Auth_Controller extends Base_Controller{
 				return Redirect::to('profile/user');
 
 			}else{
-				Session::flash('status_error', 'Your email or password is invalid - please try again.');
 
-				return Redirect::to('home');
+				Session::flash('loginStatus_error', 'Your email or password is invalid - please try again.');
+
+				return Redirect::to('home')->with_input();
 
 			}
 		}

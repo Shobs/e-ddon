@@ -604,15 +604,30 @@ form input[type="checkbox"] {
 
 #profilePassword { margin-bottom: 5px;}
 
-.fakeCheckbox.checked {
+.fakeChecked {
+	position: relative;
+	background:#F5F0E6;
+	height: 20px;
+	width: 20px;
+	border-radius: 5px;
+	display: none;
+	float: left;
+	margin-right: 5px;
+	-webkit-box-shadow: inset 0px 2px 0px 0px
+	rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: inset 0px 2px 0px 0px rgba(0,0,0,0.1);
+	box-shadow: inset 0px 2px 0px 0px
+	rgba(0, 0, 0, 0.1);
+	border: 0;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 24px;
+	cursor: pointer;
 	background: #F5F0E6 url(../img/checked.png) no-repeat 50% 70%;
 }
 
 .fakeCheckbox {
-	margin-bottom: 20px;
 	position: relative;
-	background:
-	#F5F0E6;
+	background:#F5F0E6;
 	height: 20px;
 	width: 20px;
 	border-radius: 5px;
@@ -938,17 +953,20 @@ color: #FC661C;
 	float:right;
 }
 
-.pcontrol input{
-	display: inline;
-	width: auto;
-	height: 20px;
+input[type="text"].cell_edit_box{
+	display: none;
+	text-align: center;
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	height: 25px;
 }
 
-.flexigrid div.pDiv input {top: -3px;}
+.td_edit {
+	text-align: center;
+	align: middle;
+}
 
-table thead tr th, table tfoot tr td {padding: 0px;}
-
-.flexigrid div.nDiv {margin-top: -6px;}
 
 #profileSubmit{z-index: 2;}
 

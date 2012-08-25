@@ -54,9 +54,9 @@ Route::post('liveSearch', function() {
 	    	echo '<div class="six columns">';
 			echo '<ul id="searchResults">';
 			echo '<li>Addons ►</li>';
+
 			// Sending back array info
 			foreach ($addons as $addon) {
-
 				echo '<li class="helperResult">'.HTML::link('addon?id='.$addon->id, $addon->name).'</li>';
 			}
 			echo '</ul>';
@@ -65,9 +65,9 @@ Route::post('liveSearch', function() {
 			echo '<div class="six columns">';
 			echo '<ul id="searchResults">';
 			echo '<li>Tags ►</li>';
+
 			// Sending back array info
 			foreach ($tags as $tag) {
-
 				echo '<li class="helperResult">'.HTML::link('tag?tag='.$tag->id, $tag->name).'</li>';
 			}
 			echo '</ul>';
@@ -76,6 +76,36 @@ Route::post('liveSearch', function() {
 
 			// var_dump($searchInput);
 		}
+	}
+});
+
+Route::post('userstable', function() {
+
+	// Checking if it's an ajax request
+	if (Request::ajax()) {
+
+		$userId = Input::get('id');
+		$user = User::find($userId);
+
+		$user->username = Input::get('username');
+		$user->lastname = Input::get('lastname');
+		$user->firstname = Input::get('firstname');
+		$user->role = Input::get('role');
+		$user->temporary = Input::get('temporary');
+		$user->visible = Input::get('visible');
+		$user->comments = Input::get('comments');
+
+		$user->save();
+
+		$user = User::find($userId);
+
+		$user = eloquent_to_json($user);
+
+		echo $user;
+
+	}else{
+
+		// var_dump($searchInput);
 	}
 });
 

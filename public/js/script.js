@@ -15,22 +15,6 @@ jQuery(document).ready(function ($) {
 		$(fieldFakeUpload).html(value);
 	}
 
-	function doCommand(com, grid) {
-		if (com == 'Edit') {
-			$('.trSelected', grid).each(function() {
-			var id = $(this).attr('id');
-			id = id.substring(id.lastIndexOf('row')+3);
-			alert("Edit row " + id);
-			});
-		} else if (com == 'Delete') {
-			$('.trSelected', grid).each(function() {
-			var id = $(this).attr('id');
-			id = id.substring(id.lastIndexOf('row')+3);
-			alert("Delete row " + id);
-			});
-		}
-	}
-
 	// Ajax live search
 	$("#s").keyup(function(){
 		var input = $(this).val();
@@ -44,12 +28,22 @@ jQuery(document).ready(function ($) {
 		};
 	});
 
-
-
-	// When out of focus higing live search helper div
+	// When out of focus hiding live search helper div
 	$("#s").blur(function(){
 		$('#searchHelper').fadeOut(250);
 	});
+
+	$('.fakeCheckbox').click(function(){
+		$('.fakeCheckbox').hide();
+		$('.fakeChecked').show();
+		$('input[name=remember]').attr('checked', true);
+	})
+
+	$('.fakeChecked').click(function(){
+		$('.fakeChecked').hide();
+		$('.fakeCheckbox').show();
+		$('input[name=remember]').attr('checked', false);
+	})
 
 	// Hides and shows different part of the form
 	$(".forgotPassLink").click(function() {
@@ -92,39 +86,98 @@ jQuery(document).ready(function ($) {
 
 	$('#registerPassword').pwdstr('#registerTime');
 
-	$(".dataTable th").each(function() {
-	  $(this).attr("width", $(this).width());
+	//data table ajax editing
+	$('.tr_edit').click(function(){
+		var ID = $(this).attr('id');
+
+		var user = [];
+
+		// $(this){
+		// 	.each('td span'){
+
+		// 	var value = $(this).html();
+		// 	user.push(value);
+		// });
+		// };
+
+		alert(user);
+		// $('#result').hmtl(user);
+
+		$('#username_'+ID).hide();
+		$('#lastname_'+ID).hide();
+		$('#firstname_'+ID).hide();
+		$('#role_'+ID).hide();
+		$('#temporary_'+ID).hide();
+		$('#visible_'+ID).hide();
+		$('#comments_'+ID).hide();
+		$('#username_input_'+ID).show();
+		$('#lastname_input_'+ID).show();
+		$('#firstname_input_'+ID).show();
+		$('#role_input_'+ID).show();
+		$('#temporary_input_'+ID).show();
+		$('#visible_input_'+ID).show();
+		$('#comments_input_'+ID).show();
+
+		$('#username_input_'+ID).focus();
+
+		$('#usersUpdate').click(function(){
+
+			var userid = $('#userid_'+ID).html();
+			var username = $('#username_input_'+ID).val();
+			var lastname = $('#lastname_input_'+ID).val();
+			var firstname = $('#firstname_input_'+ID).val();
+			var role = $('#role_input_'+ID).val();
+			var temporary = $('#temporary_input_'+ID).val();
+			var visible = $('#visible_input_'+ID).val();
+			var comments = $('#comments_input_'+ID).val();
+
+			$('#userid_'+ID).html('<img src="../img/load.gif" />'); // Loading image
+
+			$('.cell_edit_box').hide();
+			$('.cell_text').show();
+
+			if(username.length > 0 && lastname.length > 0  && firstname.length > 0 && role.length > 0 && temporary.length > 0 && visible.length > 0 ){
+
+				$.post(BASE+'/userstable', {
+					id : userid,
+					username : username,
+					lastname : lastname,
+					firstname : firstname,
+					role : role,
+					temporary : temporary,
+					visible : visible,
+					comments : comments,
+
+				}, function(data){
+					data = $.parseJSON(data);
+					$('#userid_'+ID).html(data['id']);
+					$('#username_'+ID).html(data['username']);
+					$('#lastname_'+ID).html(data['lastname']);
+					$('#firstname_'+ID).html(data['firstname']);
+					$('#role_'+ID).html(data['role']);
+					$('#temporary_'+ID).html(data['temporary']);
+					$('#visible_'+ID).html(data['visible']);
+					$('#comments_'+ID).html(data['comments']);
+
+				});
+
+			}else{
+				alert('Enter something.');
+			}
+
+		});
 	});
 
-	$('.dataTable').flexigrid({
-		buttons : [
-			{name: 'Edit', bclass: 'edit', onpress : doCommand},
-			{name: 'Delete', bclass: 'delete', onpress : doCommand},
-			{separator: true}
-		],
 
-		sortname: "id",
-		sortorder: "asc",
-		usepager: true,
-		height: 300,
-		singleSelect: true,
+	// Edit input box click action
+	$('.cell_edit_box').mouseup(function(){
+		return false
 	});
 
-	$('#usersTable').flexigrid({
-		searchitems : [
-			{display: 'Username', name : 'username'},
-			{display: 'Lastname', name : 'lastname', isdefault: true},
-			{display: 'Firstname', name : 'firstname'}
-		],
-	});
+	$('')
 
-	$('#addonsTable').flexigrid({
-		searchitems : [
-			{display: 'Name', name : 'name', isdefault: true},
-			{display: 'User ID', name : 'user_id'},
-			{display: 'Category', name : 'category'}
-		],
-	});
+
+	$(".dataTable").tablesorter();
 
 });
 
