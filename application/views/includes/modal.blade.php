@@ -101,23 +101,25 @@
               <br/>
               <p>Sign up to upload your addons</p>
             </div>
+            <br>
             <div>
-              {{Form::open('auth', 'post')}};
+              {{Form::open('auth', 'post')}}
                 <p>
-                  {{Form::label('registrationEmail', 'E-mail', array('class' => 'label'));}}<span>{{Session::get('loginStatus_error')}}</span>
+                  <div><span>{{Session::get('loginStatus_error')}}</span></div>
+                  {{Form::label('registrationEmail', 'E-mail', array('class' => 'label'));}}<span>{{Session::get('loginStatus_error')}} </span>
                   {{Form::email('registrationEmail', Input::old('registrationEmail'), array('class' => 'input','placeholder' => 'Enter your email', 'id' => 'email', 'required' => 'required'));}}
                 </p>
                 <p>
                   {{Form::label('lastname', 'Lastname', array('class' => 'label'));}}
-                  {{Form::input('text', 'lastname', '', array('class' => 'input', 'placeholder' => 'Enter your lastname', 'id' => 'lastname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
+                  {{Form::input('text', 'lastname', Input::old('lastname'), array('class' => 'input', 'placeholder' => 'Enter your lastname', 'id' => 'lastname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
                 </p>
                 <p>
                   {{Form::label('firstname', 'Firstname', array('class' => 'label'));}}
-                  {{Form::input('text', 'firstname', '', array('class' => 'input', 'placeholder' => 'Enter your firstname', 'id' => 'firstname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
+                  {{Form::input('text', 'firstname', Input::old('firstname'), array('class' => 'input', 'placeholder' => 'Enter your firstname', 'id' => 'firstname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
                 </p>
                 <p>
                   {{Form::label('birthdate', 'Birthdate', array('class' => 'label'));}}
-                  {{Form::date('birthdate', '', array('class' => 'input', 'placeholder' => 'YYYY-MM-DD', 'id' => 'birthdate', 'required' => 'required', 'pattern' => '(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))'));}}
+                  {{Form::date('birthdate', Input::old('birthdate'), array('class' => 'input', 'placeholder' => 'YYYY-MM-DD', 'id' => 'birthdate', 'required' => 'required', 'pattern' => '(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))'));}}
                 </p>
                 <p>
                   {{Form::label('password', 'Password', array('class' => 'label'));}}
@@ -277,6 +279,7 @@
 @if(Session::has('userAddons'))
 @foreach($addons as $addon)
 <div {{'id="addonDelete'.$addon->id.'"'}} class="reveal-modal modals">
+
   <div class="row">
     <div class="twelve columns">
       <h5 class="alertHeading">Warning!</h5>
@@ -295,5 +298,82 @@
 </div>
 @endforeach
 @endif
+
+
+<div id="addUserModal" class="reveal-modal modals">
+        <hgroup class="mainTitle ">
+          <h3><span class="colorWord">admin</span><span class="sep"></span></h3>
+          <h2 class="inlined">Add User</h2>
+        </hgroup>
+        <div class="row">
+          <div id="goCreate" class="twelve columns">
+            <div>
+              {{Form::open('admin/adduser', 'post')}}
+                <p>
+                  @if($errors->has())
+                      @foreach ($errors->all() as $error)
+                          <div>{{ $error }}</div>
+                      @endforeach
+                  @endif
+                  {{Form::label('userEmail', 'E-mail', array('class' => 'label'));}}
+                  {{Form::email('userEmail', Input::old('userEmail'), array('class' => 'input','placeholder' => 'Enter email', 'id' => 'email', 'required' => 'required'));}}
+                </p>
+                <p>
+                  {{Form::label('lastname', 'Lastname', array('class' => 'label'));}}
+                  {{Form::input('text', 'lastname', Input::old('lastname'), array('class' => 'input', 'placeholder' => 'Enter lastname', 'id' => 'lastname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
+                </p>
+                <p>
+                  {{Form::label('firstname', 'Firstname', array('class' => 'label'));}}
+                  {{Form::input('text', 'firstname', Input::old('firstname'), array('class' => 'input', 'placeholder' => 'Enter firstname', 'id' => 'firstname', 'required' => 'required', 'pattern' => '[A-Za-z]+'));}}
+                </p>
+                <p>
+                  {{Form::label('birthdate', 'Birthdate', array('class' => 'label'));}}
+                  {{Form::date('birthdate', Input::old('birthdate'), array('class' => 'input', 'placeholder' => 'YYYY-MM-DD', 'id' => 'birthdate', 'required' => 'required', 'pattern' => '(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))'));}}
+                </p>
+                <p>
+                  {{Form::label('role', 'Role', array('class' => 'label'));}}<span>{{$errors->first('role');}}</span>
+                  {{Form::input('text', 'role', '', array('class' => 'input', 'placeholder' => '0-100', 'id' => 'role', 'pattern' => '[0-9]+'));}}
+                </p>
+                <p>
+                  {{Form::label('password', 'Password', array('class' => 'label'));}}
+                  {{Form::password('password', array('id' => 'registerPassword','class' => 'input','placeholder' => 'Enter password', 'required' => 'required'));}}
+                  The password is forceable in: <span id="registerTime"></span>
+                </p>
+                <div class="nine columns"></div>
+                <div class="three columns submit clearfix">
+                  {{Form::submit('Add', array('class' => 'small radius nice blue button btright', 'name' => 'submit', 'id' => 'submit'));}}
+                </div>
+              </form>
+              {{Form::close();}}
+
+            <br/>
+        </div>
+      </div>
+    </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="deleteUserModal" class="reveal-modal modals">
+  <hgroup class="mainTitle ">
+          <h3><span class="colorWord">admin</span><span class="sep"></span></h3>
+          <h2 class="inlined">Remove User</h2>
+        </hgroup>
+  <div class="row">
+    <div class="twelve columns">
+      <br>
+      <h5 class="alertHeading">Warning!</h5>
+      <br>
+      <div class="warning">
+     Are you sure you want to <strong>DELETE</strong> the selected user(s)?
+     </div>
+    </div>
+
+    <div class="btRight twelve columns">
+      <br>
+      {{HTML::link('admin/deleteuser?id=', 'Delete', array('class'=>'small radius nice blue button btRight', 'title'=>'Delete your addon', 'id' => 'deleteConfirm'));}}
+    </div>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
 
 

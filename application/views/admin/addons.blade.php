@@ -2,7 +2,7 @@
 
 <?php
 $user = Auth::user();
-$addons = Session::get('addons');
+$data = Session::get('addons');
 ?>
 
 @section('content')
@@ -14,41 +14,8 @@ $addons = Session::get('addons');
 		</div>
 		<div class="twelve columns">
 			<h3 class="sectionTitle"><span>Addons information</span></h3>
-      <table id="addonsTable" class="dataTable">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Visible</th>
-            <th>Select</th>
-            <th>Cat</th>
-            <th>Name</th>
-            <th>User ID</th>
-            <th>Author</th>
-            <th>Version</th>
-            <th>Rating</th>
-            <th>Dwnld</th>
-            <th>Created</th>
-            <th>Updated</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($addons as $addon)
-          <tr>
-            <td>{{$addon->id}}</td>
-            <td>{{$addon->visible}}</td>
-            <td>{{$addon->selected}}</td>
-            <td>{{$addon->category}}</td>
-            <td>{{$addon->name}}</td>
-            <td>{{$addon->user_id}}</td>
-            <td>{{$addon->author}}</td>
-            <td>{{$addon->version}}</td>
-            <td>{{$addon->rating}}</td>
-            <td>{{$addon->downloaded}}</td>
-            <td>{{$addon->created_at}}</td>
-            <td>{{$addon->updated_at}}</td>
-          </tr>
-          @endforeach
-        </tbody>
+      <table id="addonsTable" class="dataTable tablesorter">
+        @include('includes.dataTable')
       </table>
 
 		</div>

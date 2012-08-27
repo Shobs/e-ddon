@@ -967,6 +967,14 @@ input[type="text"].cell_edit_box{
 	align: middle;
 }
 
+td span{
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
 
 #profileSubmit{z-index: 2;}
 

@@ -6,8 +6,10 @@ class Download_Controller extends Base_Controller{
 
 	public function action_index(){
 
+		$id = Input::get('id');
 		// Getting addon info
-		$addon = Session::get('addon');
+		//
+		$addon = Addon::where('id', '=', $id)->first();
 
 		// Getting addon info from DB
 		$location = $addon->location;

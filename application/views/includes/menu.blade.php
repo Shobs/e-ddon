@@ -42,7 +42,7 @@
     @endif
 
     <!-- Profile menu -->
-    @if(URI::is('user'))
+    @if(URI::is('profile/user'))
       {{'<li class="current">'}}
     @elseif(URI::is('admin/profile'))
       {{'<li class="current">'}}
@@ -54,15 +54,17 @@
     @else
       {{HTML::link('profile/user', 'Profile');}}
     @endif
-
-
     </li>
+
+
 
     <!-- Users menu -->
     @if(Auth::user()->role == 100)
      @if(URI::is('user'))
       {{'<li class="current">'}}
     @elseif(URI::is('admin/users'))
+      {{'<li class="current">'}}
+    @elseif(URI::is('admin/adduser'))
       {{'<li class="current">'}}
     @else
      {{'<li>'}}

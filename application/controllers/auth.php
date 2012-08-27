@@ -22,10 +22,10 @@ class Auth_Controller extends Base_Controller{
 			$birthdate = Input::get('birthdate');
 			$password2 = Input::get('password2');
 
-			// php form validation commented out - now using HTML5 pattern validation
+			// php form validation
 			$input = array(
 			'username' => $username,
-			'lasname' => $lastname,
+			'lastname' => $lastname,
 			'firstname' => $firstname,
 			'birthdate' => $birthdate,
 			'password' => $password
@@ -36,8 +36,8 @@ class Auth_Controller extends Base_Controller{
 				'lastname' => 'required|alpha|max:50',
 				'firstname' => 'required|alpha|max:50',
 				'birthdate' => 'required',
-				'password' => 'required|same:password2',
-				'password2' => 'required|same:password'
+				'password' => 'required',
+
 			);
 
 			$validation = Validator::make($input, $rules);
@@ -91,6 +91,7 @@ class Auth_Controller extends Base_Controller{
 
 				Session::flash('status_error', 'An error occurred while creating a new account - please try again.');
 
+				return Redirect::to('home')->with_input();
 			}
 		}else{
 

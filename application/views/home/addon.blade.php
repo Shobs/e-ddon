@@ -50,7 +50,7 @@ $tags = Session::get('tags')
 
           </div>
           <div class="twelve columns">
-            {{HTML::link('download', 'Download addon', array('class'=>'small radius nice blue button', 'title'=>'Download addon'));}}
+            {{HTML::link('download?id='.$addon->id, 'Download addon', array('class'=>'small radius nice blue button', 'title'=>'Download addon'));}}
 
           </div>
         </div>

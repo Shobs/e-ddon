@@ -6,6 +6,7 @@ class User extends Eloquent {
 	//and updated_at values
 	public static $timestanp = true;
 	public static $table = 'users';
+	public static $hidden = array('password');
 
 	public function addons(){
 		return $this->has_many('Addon');

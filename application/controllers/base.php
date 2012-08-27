@@ -16,6 +16,8 @@ class Base_Controller extends Controller {
 	    Asset::container('footer')->add('foundation-js', 'js/libs/foundation.js', 'jquery');
         Asset::container('footer')->add('pwdstr', 'js/libs/pwdstr-1.0.js', 'jquery');
         Asset::container('footer')->add('tableSorter', 'js/libs/tableSorter.js', 'jquery');
+	    Asset::container('footer')->add('jqueryui', 'js/libs/jqueryui.js', 'jquery');
+	    Asset::container('footer')->add('dataTable', 'js/dataTable.js', 'jquery');
 	    Asset::container('footer')->add('script', 'js/script.js', 'jquery');
 	    Asset::container('footer')->add('plugins', 'js/plugins.js', 'script');
 	    Asset::container('footer')->add('widgEditor', 'js/libs/widgEditor.js');

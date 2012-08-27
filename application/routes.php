@@ -84,23 +84,45 @@ Route::post('userstable', function() {
 	// Checking if it's an ajax request
 	if (Request::ajax()) {
 
+		// Getting user id
 		$userId = Input::get('id');
+
+		// Getting user from DB
 		$user = User::find($userId);
 
-		$user->username = Input::get('username');
-		$user->lastname = Input::get('lastname');
-		$user->firstname = Input::get('firstname');
-		$user->role = Input::get('role');
-		$user->temporary = Input::get('temporary');
-		$user->visible = Input::get('visible');
-		$user->comments = Input::get('comments');
+		// checking if any changes have occured between input and db
+		if ($user->username != Input::get('username')) {
+			$user->username = Input::get('username');
+		}
+		if ($user->lastname != Input::get('lastname')) {
+			$user->lastname = Input::get('lastname');
+		}
+		if ($user->firstname != Input::get('firstname')) {
+			$user->firstname = Input::get('firstname');
+		}
+		if ($user->role != Input::get('role')) {
+			$user->role = Input::get('role');
+		}
+		if ($user->temporary != Input::get('temporary')) {
+			$user->temporary = Input::get('temporary');
+		}
+		if ($user->visible != Input::get('visible')) {
+			$user->visible = Input::get('visible');
+		}
+		if ($user->comments != Input::get('comments')) {
+			$user->comments = Input::get('comments');
+		}
 
+		// saving user
 		$user->save();
 
+		// Getting user from DB
 		$user = User::find($userId);
 
+		// Formating user from object to JSON
 		$user = eloquent_to_json($user);
 
+		// Sending JSON
 		echo $user;
 
 	}else{
