@@ -89,7 +89,9 @@ jQuery(document).ready(function ($) {
 
 	$(".dataTable").tablesorter();
 
-
+	$('#files').fileTree({ root: '/' }, function(file) {
+        alert(file);
+    });
 
 
 });

@@ -2,7 +2,8 @@
 
 <?php
 $user = Auth::user();
-$data = Session::get('addons');
+$data = Session::get('addonsDisplay');
+$addons = Session::get('addons');
 ?>
 
 @section('content')
@@ -20,7 +21,7 @@ $data = Session::get('addons');
 
 		</div>
 		<div class="twelve column">
-			<h3 class="sectionTitle"><span>Change your password:</span></h3>
+			<h3 class="sectionTitle"><span>Modify addon :</span></h3>
 			<p>If you would like to change the password type a new one. Otherwise leave this blank.<br><br></p>
 		</div>
 		<div class="userForm six columns">

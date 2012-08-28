@@ -15,8 +15,8 @@
 			</div>
 		</div>
 		<div class="twelve columns">
-			<h3 class="sectionTitle"><span>Your profile information</span></h3>
-
+			<h3 class="sectionTitle"><span>Your files</span></h3>
+			<div id="files"></div>
 
 		</div>
 		<div class="twelve column">

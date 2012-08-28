@@ -116,6 +116,13 @@ class Admin_Controller extends Base_Controller{
 				return $addonsData->to_array();
 			}, $addonsData);
 
+			foreach ($addons as $addon) {
+				unset($addon['description']);
+				unset($addon['location']);
+				$addonsDisplay[] = $addon;
+			}
+
+			Session::put('addonsDisplay', $addonsDisplay);
 			Session::put('addons', $addons);
 
 			return View::make('admin.addons');

@@ -967,6 +967,10 @@ input[type="text"].cell_edit_box{
 	align: middle;
 }
 
+table{
+	max-width: 825px;
+}
+
 td span{
 	white-space: nowrap;
 	width: 100%;

@@ -10,13 +10,14 @@ class Base_Controller extends Controller {
 	    Asset::add('foundation-css', 'css/libs/foundation.css');
 	    Asset::add('widgEditor-css', 'css/libs/widgEditor.css');
 	    Asset::add('tableSorter-css', 'css/libs/tableSorter.css');
+	    Asset::add('fileTree-css', 'css/libs/fileTree.css');
 	    Asset::add('style', 'css/style.css');
 
 	    Asset::container('footer')->add('jquery', 'js/libs/jquery.js');
 	    Asset::container('footer')->add('foundation-js', 'js/libs/foundation.js', 'jquery');
         Asset::container('footer')->add('pwdstr', 'js/libs/pwdstr-1.0.js', 'jquery');
         Asset::container('footer')->add('tableSorter', 'js/libs/tableSorter.js', 'jquery');
-	    Asset::container('footer')->add('jqueryui', 'js/libs/jqueryui.js', 'jquery');
+	    Asset::container('footer')->add('fileTree', 'js/libs/fileTree.js', 'jquery');
 	    Asset::container('footer')->add('dataTable', 'js/dataTable.js', 'jquery');
 	    Asset::container('footer')->add('script', 'js/script.js', 'jquery');
 	    Asset::container('footer')->add('plugins', 'js/plugins.js', 'script');
