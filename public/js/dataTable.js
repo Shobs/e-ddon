@@ -1,26 +1,27 @@
 jQuery(document).ready(function ($) {
 
 
-	$('#deleteRow').click(function(){
-		event.preventDefault();
-		var ids = [];
+	// $('#deleteRow').click(function(){
+	// 	event.preventDefault();
+	// 	var ids = [];
 
-		$('.dataTable :checkbox:checked').each(function() {
-			ids.push($(this).attr('name'));
-	    });
-	    console.log(ids);
+	// 	$('.dataTable :checkbox:checked').each(function() {
+	// 		ids.push($(this).attr('name'));
+	//     });
+	//     console.log(ids);
 
-	    $.each(ids, function(key, value){
-	    	var id = value;
+	//     $.each(ids, function(key, value){
+	//     	var id = value;
 
-	    	var _href = $('#deleteConfirm').attr('href');
+	//     	var href = $('#deleteConfirm').prop('href');
+	//     	var _href = href+id+'u';
+	//     	console.log(_href);
+	//     	$('#deleteConfirm').prop('href', _href);
+	//     	// $('#deleteUserConfirm').attr('href', +'&'+$(this));
+	//     	console.log(id);
+	//     })
 
-	    	$('#deleteConfirm').attr('href', _href+id+',');
-	    	// $('#deleteUserConfirm').attr('href', +'&'+$(this));
-	    	console.log(id);
-	    })
-
-	});
+	// });
 
 
 
@@ -113,7 +114,6 @@ jQuery(document).ready(function ($) {
 	$('.cell_edit_box').mouseup(function(){
 		return false
 	});
-
 
 });
 

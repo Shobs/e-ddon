@@ -370,7 +370,8 @@
 
     <div class="btRight twelve columns">
       <br>
-      {{HTML::link('admin/deleteuser?id=', 'Delete', array('class'=>'small radius nice blue button btRight', 'title'=>'Delete your addon', 'id' => 'deleteConfirm'));}}
+      <a href="javascript:deleteUserId();" class="small radius nice blue button btRight" title="Delete your addon" id="deleteConfirm">Delete</a>
+
     </div>
   </div>
   <a class="close-reveal-modal">&#215;</a>

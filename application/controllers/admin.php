@@ -140,7 +140,7 @@ class Admin_Controller extends Base_Controller{
 
 			if(!empty($idsInput)){
 				// Placing id(s) into an array
-				$idsArray = explode(',', $idsInput);
+				$idsArray = explode('check_', $idsInput);
 
 				// Deleting array empty value
 				foreach ($idsArray as $id) {
@@ -160,6 +160,11 @@ class Admin_Controller extends Base_Controller{
 
 					// Getting addons from user
 					$addons = Addon::where('user_id', '=', $id)->get();
+
+					$addonDirectory = 'public/_uploads/addons/'.sha1($user->id);
+					$pictureDirectory = 'public/_uploads/pictures/'.sha1($user->id);
+					$thumbFeatDirectory = 'public/_uploads/thumbsFeat/'.sha1($user->id);
+					$thumbCatDirectory = 'public/_uploads/thumbsCat/'.sha1($user->id);
 
 					// Checking if user has addons
 					if (!empty($addons)) {
@@ -241,13 +246,14 @@ class Admin_Controller extends Base_Controller{
 
 						}
 
-						// Removing user directory
-						File::rmdir($addonOldDir);
-						File::rmdir('public/_uploads/pictures/'.$picLocArray['2']);
-						File::rmdir('public/_uploads/thumbsFeat/'.$featLocArray['2']);
-						File::rmdir('public/_uploads/thumbsCat/'.$catLocArray['2']);
 
 					}
+
+					// Removing user directory
+					File::rmdir($addonDirectory);
+					File::rmdir($pictureDirectory);
+					File::rmdir($thumbFeatDirectory);
+					File::rmdir($thumbCatDirectory);
 
 					// Deleting user from DB
 					$userDeleteSuccess =$user->delete();
@@ -258,17 +264,21 @@ class Admin_Controller extends Base_Controller{
 
 					Session::flash('deleteUserSuccess', 'Deleted the user(s)!');
 
-					return Redirect::back();
-
 				}else{
 					Session::flash('deleteUserFail', 'User(s) delete failed - please try again.');
 
-					return Redirect::back();
 				}
-
 			}
 
-			return Redirect::back();
+			$usersData = User::get();
+
+			$users = array_map(function($usersData){
+				return $usersData->to_array();
+			}, $usersData);
+
+			Session::put('users', $users);
+
+			return View::make('admin.users');
 			// var_dump($ids);
 	}
 

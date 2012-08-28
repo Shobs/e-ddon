@@ -16,7 +16,7 @@
 		</div>
 		<div class="twelve columns">
 			<h3 class="sectionTitle"><span>Your files</span></h3>
-			<div id="files"></div>
+			<div id="elfinder"></div>
 
 		</div>
 		<div class="twelve column">

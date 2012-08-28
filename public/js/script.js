@@ -89,12 +89,25 @@ jQuery(document).ready(function ($) {
 
 	$(".dataTable").tablesorter();
 
-	$('#files').fileTree({ root: '/' }, function(file) {
-        alert(file);
-    });
-
+	var elf = $('#elfinder').elfinder({
+			// lang: 'ru',             // language (OPTIONAL)
+			url : 'elfinder'  // connector URL (REQUIRED)
+		}).elfinder('instance');
 
 });
+
+
+    function deleteUserId(){
+		var checkboxs = document.getElementsByClassName('checkbox');
+		var ids = "";
+
+		for (var i = 0; i < checkboxs.length; i++) {
+			if (checkboxs[i].checked == true) {
+				ids += checkboxs[i].getAttribute('id');
+			};
+		};
+		window.location.href="deleteuser?id="+ids;
+	}
 
 
 
