@@ -19,7 +19,7 @@ class Upload_Controller extends Base_Controller{
         	'addonName' => 'required|max:50',
         	'addonVersion' => 'required',
 			'addonAuthor' => 'required|max:50',
-			'addonDescription' => 'required',
+ 			'addonDescription' => 'required',
 			'addonUpload' => 'required|mimes:zip,rar|max:3145728',
 			'pictureUpload' => 'required|image|max:500000',
         );
@@ -138,11 +138,16 @@ class Upload_Controller extends Base_Controller{
             Session::flash('status_error', 'An error occurred while uploading your new addon - please try again.');
         	// echo('failed');
         }
-        return Redirect::to('profile/addons');
 
+        if(Auth::user()->role == 100){
+
+            return Redirect::to('admin/addons');
+        }else{
+
+            return Redirect::to('profile/addons');
+        }
 	}
 
 }
-
 
 ?>

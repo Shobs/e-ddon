@@ -97,7 +97,7 @@ jQuery(document).ready(function ($) {
 });
 
 
-    function deleteUserId(){
+    function rowdelete(controller){
 		var checkboxs = document.getElementsByClassName('checkbox');
 		var ids = "";
 
@@ -106,7 +106,7 @@ jQuery(document).ready(function ($) {
 				ids += checkboxs[i].getAttribute('id');
 			};
 		};
-		window.location.href="deleteuser?id="+ids;
+		window.location.href= controller+"?id="+ids;
 	}
 
 

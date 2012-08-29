@@ -68,7 +68,9 @@ Route::post('liveSearch', function() {
 
 			// Sending back array info
 			foreach ($tags as $tag) {
-				echo '<li class="helperResult">'.HTML::link('tag?tag='.$tag->id, $tag->name).'</li>';
+				if($tag->frequency != 0){
+					echo '<li class="helperResult">'.HTML::link('tag?tag='.$tag->id, $tag->name).'</li>';
+				}
 			}
 			echo '</ul>';
 			echo '</div>';
@@ -124,6 +126,64 @@ Route::post('userstable', function() {
 
 		// Sending JSON
 		echo $user;
+
+	}else{
+
+		// var_dump($searchInput);
+	}
+});
+
+Route::post('addonstable', function() {
+
+	// Checking if it's an ajax request
+	if (Request::ajax()) {
+
+		// Getting user id
+		$addonId = Input::get('id');
+
+		// Getting user from DB
+		$addon = Addon::find($addonId);
+
+		// checking if any changes have occured between input and db
+		if ($addon->name != Input::get('name')) {
+			$addon->name = Input::get('name');
+		}
+		if ($addon->user_id != Input::get('user_id')) {
+			$addon->user_id = Input::get('user_id');
+		}
+		if ($addon->author != Input::get('author')) {
+			$addon->author = Input::get('author');
+		}
+		if ($addon->version != Input::get('version')) {
+			$addon->version = Input::get('version');
+		}
+		if ($addon->rating != Input::get('rating')) {
+			$addon->rating = Input::get('rating');
+		}
+		if ($addon->downloaded != Input::get('downloaded')) {
+			$addon->downloaded = Input::get('downloaded');
+		}
+		if ($addon->category_id != Input::get('category_id')) {
+			$addon->category_id = Input::get('category_id');
+		}
+		if ($addon->selected != Input::get('selected')) {
+			$addon->selected = Input::get('selected');
+		}
+		if ($addon->visible != Input::get('visible')) {
+			$addon->visible = Input::get('visible');
+		}
+
+		// saving addon
+		$addon->save();
+
+		// Getting addon from DB
+		$addon = Addon::find($addonId);
+
+		// Formating addon from object to JSON
+		$addon = eloquent_to_json($addon);
+
+		// Sending JSON
+		echo $addon;
 
 	}else{
 

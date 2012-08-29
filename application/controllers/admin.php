@@ -28,21 +28,21 @@ class Admin_Controller extends Base_Controller{
 
 			// php form validation commented out - now using HTML5 pattern validation
 			$input = array(
-			'username' => $username,
-			'lastname' => $lastname,
-			'firstname' => $firstname,
-			'birthdate' => $birthdate,
-			'role' => $role,
-			'password' => $password
+			'usernameAdd' => $username,
+			'lastnameAdd' => $lastname,
+			'firstnameAdd' => $firstname,
+			'birthdateAdd' => $birthdate,
+			'roleAdd' => $role,
+			'passwordAdd' => $password
 			);
 
 			$rules = array(
-				'username' => 'required|email|unique:users,username',
-				'lastname' => 'required|alpha|max:50',
-				'firstname' => 'required|alpha|max:50',
-				'birthdate' => 'required',
-				'role' => 'between:0,100',
-				'password' => 'required',
+				'usernameAdd' => 'required|email|unique:users,username',
+				'lastnameAdd' => 'required|alpha|max:50',
+				'firstnameAdd' => 'required|alpha|max:50',
+				'birthdateAdd' => 'required',
+				'roleAdd' => 'between:0,100',
+				'passwordAdd' => 'required',
 
 			);
 
@@ -133,153 +133,207 @@ class Admin_Controller extends Base_Controller{
 		}
 	}
 
-		public function action_deleteuser(){
+	public function action_deleteaddon(){
 
-			// Getting id string from URL
-			$idsInput = Input::get('id');
+		// Getting id string from URL
+		$idsInput = Input::get('id');
 
-			if(!empty($idsInput)){
-				// Placing id(s) into an array
-				$idsArray = explode('check_', $idsInput);
+		if(!empty($idsInput)){
+			// Placing id(s) into an array
+			$idsArray = explode('check_', $idsInput);
 
-				// Deleting array empty value
-				foreach ($idsArray as $id) {
-					if ($id != '') {
-						$ids[] = $id;
-					}
-				}
-
-				// For each id present in array
-				foreach ($ids as $id) {
-
-					// Setting up empty variable
-					$addonUpdate = '';
-
-					// Getting user information from DB
-					$user = User::where('id', '=', $id)->first();
-
-					// Getting addons from user
-					$addons = Addon::where('user_id', '=', $id)->get();
-
-					$addonDirectory = 'public/_uploads/addons/'.sha1($user->id);
-					$pictureDirectory = 'public/_uploads/pictures/'.sha1($user->id);
-					$thumbFeatDirectory = 'public/_uploads/thumbsFeat/'.sha1($user->id);
-					$thumbCatDirectory = 'public/_uploads/thumbsCat/'.sha1($user->id);
-
-					// Checking if user has addons
-					if (!empty($addons)) {
-
-						// For each addons
-						foreach($addons as $addon){
-
-							// ADDON
-							// Changing the user ownership to admin
-							$addon->user_id = Auth::user()->id;
-
-							// Getting old file location from DB
-							$oldFileLoc = $addon->location;
-
-							// Placing directory into an array
-							$addonLocArray = explode('/', $oldFileLoc);
-
-							// Constructing back old Directory
-							$addonOldDir = $addonLocArray['0'].'/'.$addonLocArray['1'].'/'.$addonLocArray['2'].'/'.$addonLocArray['3'];
-
-							// Getting file name from directory array
-							$fileName = $addonLocArray['4'];
-
-							// Setting up new directory for file
-							$newFileLoc = 'public/_uploads/addons/'.sha1(Auth::user()->id);
-
-							// Moving file to new directory
-							$fileMoveSuccess = File::move($oldFileLoc, $newFileLoc.'/'.$fileName);
-
-							// PICTURES
-							// Getting addon's picture from DB
-							$picture = Picture::where('addon_id', '=', $addon->id)->first();
-
-							// Getting pictures location
-							$picOldLoc = $picture->location;
-							$featOldLoc = $picture->thumbfeat;
-							$catOldLoc = $picture->thumbcat;
-
-							// Placing pictures dir into an array
-							$picLocArray = explode('/', $picOldLoc);
-							$featLocArray = explode('/', $featOldLoc);
-							$catLocArray = explode('/', $catOldLoc);
-
-							// Setting up new directory for pictures
-							$picNewLocDB = '_uploads/pictures/'.sha1(Auth::user()->id);
-							$featNewLocDB = '_uploads/thumbsFeat/'.sha1(Auth::user()->id);
-							$catNewLocDB = '_uploads/thumbsCat/'.sha1(Auth::user()->id);
-
-							// Getting pictures file names
-							$picFileName = $picLocArray['3'];
-							$featFileName = $featLocArray['3'];
-							$catFileName = $catLocArray['3'];
-
-							// Setting up new picutre URL for DB
-							$picNewLocDir = 'public/_uploads/pictures/'.sha1(Auth::user()->id);
-							$featNewLocDir = 'public/_uploads/thumbsFeat/'.sha1(Auth::user()->id);
-							$catNewLocDir = 'public/_uploads/thumbsCat/'.sha1(Auth::user()->id);
-
-							// Moving pictures from old to new dir
-							$picMoveSuccess = File::move('public/'.$picOldLoc, $picNewLocDir.'/'.$picFileName);
-							$featMoveSuccess = File::move('public/'.$featOldLoc, $featNewLocDir.'/'.$featFileName);
-							$catMoveSuccess = File::move('public/'.$catOldLoc, $catNewLocDir.'/'.$catFileName);
-
-							// If moves are successful
-							if ($fileMoveSuccess && $picMoveSuccess && $featMoveSuccess && $catMoveSuccess) {
-
-							 	// Setting new location of file
-							 	$addon->location = $newFileLoc.'/'.$fileName;
-
-							 	// Setting new pictures location for DB
-							 	$picture->location = $picNewLocDB.'/'.$picFileName;
-							 	$picture->thumbfeat = $featNewLocDB.'/'.$featFileName;
-							 	$picture->thumbcat = $catNewLocDB.'/'.$catFileName;
-
-							 	// Updating DB
-							 	$addonUpdate = $addon->save();
-							 	$pictureUpdate = $picture->save();
-							}
-
-						}
-
-
-					}
-
-					// Removing user directory
-					File::rmdir($addonDirectory);
-					File::rmdir($pictureDirectory);
-					File::rmdir($thumbFeatDirectory);
-					File::rmdir($thumbCatDirectory);
-
-					// Deleting user from DB
-					$userDeleteSuccess =$user->delete();
-				}
-
-				// if updates and delete succesfull redirect
-				if($userDeleteSuccess && $addonUpdate && $pictureUpdate){
-
-					Session::flash('deleteUserSuccess', 'Deleted the user(s)!');
-
-				}else{
-					Session::flash('deleteUserFail', 'User(s) delete failed - please try again.');
-
+			// Deleting array empty value
+			foreach ($idsArray as $id) {
+				if ($id != '') {
+					$ids[] = $id;
 				}
 			}
 
-			$usersData = User::get();
+			// For each id present in array
+			foreach ($ids as $id) {
 
-			$users = array_map(function($usersData){
-				return $usersData->to_array();
-			}, $usersData);
+				// Getting user information from DB
+				$addon = Addon::where('id', '=', $id)->first();
+				$picture = Picture::where('addon_id', '=', $addon->id )->first();
 
-			Session::put('users', $users);
+				$addonDeleteSuccess = File::delete($addon->location);
+				$pictureDeleteSuccess = File::delete('public/'.$picture->location);
 
-			return View::make('admin.users');
-			// var_dump($ids);
+				if($addonDeleteSuccess && $pictureDeleteSuccess){
+
+					$picture->delete();
+					$addon->delete();
+				}
+			}
+
+
+		$addonsData = Addon::get();
+
+		$addons = array_map(function($addonsData){
+			return $addonsData->to_array();
+		}, $addonsData);
+
+		foreach ($addons as $addon) {
+				unset($addon['description']);
+				unset($addon['location']);
+				$addonsDisplay[] = $addon;
+			}
+
+		Session::put('addonsDisplay', $addonsDisplay);
+
+		return View::make('admin.addons');
+		// var_dump($ids);
+	}
+}
+
+
+	public function action_deleteuser(){
+
+		// Getting id string from URL
+		$idsInput = Input::get('id');
+
+		if(!empty($idsInput)){
+			// Placing id(s) into an array
+			$idsArray = explode('check_', $idsInput);
+
+			// Deleting array empty value
+			foreach ($idsArray as $id) {
+				if ($id != '') {
+					$ids[] = $id;
+				}
+			}
+
+			// For each id present in array
+			foreach ($ids as $id) {
+
+				// Setting up empty variable
+				$addonUpdate = '';
+
+				// Getting user information from DB
+				$user = User::where('id', '=', $id)->first();
+
+				// Getting addons from user
+				$addons = Addon::where('user_id', '=', $id)->get();
+
+				$addonDirectory = 'public/_uploads/addons/'.sha1($user->id);
+				$pictureDirectory = 'public/_uploads/pictures/'.sha1($user->id);
+				$thumbFeatDirectory = 'public/_uploads/thumbsFeat/'.sha1($user->id);
+				$thumbCatDirectory = 'public/_uploads/thumbsCat/'.sha1($user->id);
+
+				// Checking if user has addons
+				if (!empty($addons)) {
+
+					// For each addons
+					foreach($addons as $addon){
+
+						// ADDON
+						// Changing the user ownership to admin
+						$addon->user_id = Auth::user()->id;
+
+						// Getting old file location from DB
+						$oldFileLoc = $addon->location;
+
+						// Placing directory into an array
+						$addonLocArray = explode('/', $oldFileLoc);
+
+						// Constructing back old Directory
+						$addonOldDir = $addonLocArray['0'].'/'.$addonLocArray['1'].'/'.$addonLocArray['2'].'/'.$addonLocArray['3'];
+
+						// Getting file name from directory array
+						$fileName = $addonLocArray['4'];
+
+						// Setting up new directory for file
+						$newFileLoc = 'public/_uploads/addons/'.sha1(Auth::user()->id);
+
+						// Moving file to new directory
+						$fileMoveSuccess = File::move($oldFileLoc, $newFileLoc.'/'.$fileName);
+
+						// PICTURES
+						// Getting addon's picture from DB
+						$picture = Picture::where('addon_id', '=', $addon->id)->first();
+
+						// Getting pictures location
+						$picOldLoc = $picture->location;
+						$featOldLoc = $picture->thumbfeat;
+						$catOldLoc = $picture->thumbcat;
+
+						// Placing pictures dir into an array
+						$picLocArray = explode('/', $picOldLoc);
+						$featLocArray = explode('/', $featOldLoc);
+						$catLocArray = explode('/', $catOldLoc);
+
+						// Setting up new directory for pictures
+						$picNewLocDB = '_uploads/pictures/'.sha1(Auth::user()->id);
+						$featNewLocDB = '_uploads/thumbsFeat/'.sha1(Auth::user()->id);
+						$catNewLocDB = '_uploads/thumbsCat/'.sha1(Auth::user()->id);
+
+						// Getting pictures file names
+						$picFileName = $picLocArray['3'];
+						$featFileName = $featLocArray['3'];
+						$catFileName = $catLocArray['3'];
+
+						// Setting up new picutre URL for DB
+						$picNewLocDir = 'public/_uploads/pictures/'.sha1(Auth::user()->id);
+						$featNewLocDir = 'public/_uploads/thumbsFeat/'.sha1(Auth::user()->id);
+						$catNewLocDir = 'public/_uploads/thumbsCat/'.sha1(Auth::user()->id);
+
+						// Moving pictures from old to new dir
+						$picMoveSuccess = File::move('public/'.$picOldLoc, $picNewLocDir.'/'.$picFileName);
+						$featMoveSuccess = File::move('public/'.$featOldLoc, $featNewLocDir.'/'.$featFileName);
+						$catMoveSuccess = File::move('public/'.$catOldLoc, $catNewLocDir.'/'.$catFileName);
+
+						// If moves are successful
+						if ($fileMoveSuccess && $picMoveSuccess && $featMoveSuccess && $catMoveSuccess) {
+
+						 	// Setting new location of file
+						 	$addon->location = $newFileLoc.'/'.$fileName;
+
+						 	// Setting new pictures location for DB
+						 	$picture->location = $picNewLocDB.'/'.$picFileName;
+						 	$picture->thumbfeat = $featNewLocDB.'/'.$featFileName;
+						 	$picture->thumbcat = $catNewLocDB.'/'.$catFileName;
+
+						 	// Updating DB
+						 	$addonUpdate = $addon->save();
+						 	$pictureUpdate = $picture->save();
+						}
+
+					}
+
+
+				}
+
+				// Removing user directory
+				File::rmdir($addonDirectory);
+				File::rmdir($pictureDirectory);
+				File::rmdir($thumbFeatDirectory);
+				File::rmdir($thumbCatDirectory);
+
+				// Deleting user from DB
+				$userDeleteSuccess =$user->delete();
+			}
+
+			// if updates and delete succesfull redirect
+			if($userDeleteSuccess && $addonUpdate && $pictureUpdate){
+
+				Session::flash('deleteUserSuccess', 'Deleted the user(s)!');
+
+			}else{
+				Session::flash('deleteUserFail', 'User(s) delete failed - please try again.');
+
+			}
+		}
+
+		$usersData = User::get();
+
+		$users = array_map(function($usersData){
+			return $usersData->to_array();
+		}, $usersData);
+
+		Session::put('users', $users);
+
+		return View::make('admin.users');
+		// var_dump($ids);
 	}
 
 

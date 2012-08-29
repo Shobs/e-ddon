@@ -39,11 +39,7 @@ $tags = Tag::get();
     <div class="twelve columns">
       <h2 class="mainTitle">addon by <span class="colorWord">category</span></h2>
     </div>
-    @if ($errors)
-    <?php $message = $errors->all();
-    var_dump($message);?>
-    @endif
-    <!-- Dynamic generation of categories -->
+        <!-- Dynamic generation of categories -->
     @foreach($categories as $category)
     <div class="category four columns">
       <a href={{URL::to('category?cat='.$category->id);}} title="View addon list in {{Str::lower($category->name); $category->name}}">

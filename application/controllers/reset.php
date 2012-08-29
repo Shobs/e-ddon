@@ -11,6 +11,22 @@ class Reset_Controller extends Base_Controller{
 		$email = Input::get('resetEmail');
 		$user = User::where('username', '=', $email)->first();
 
+		$input = array(
+			'usernameReset' => $email,
+		);
+
+		$rules = array(
+			'usernameReset' => 'required|email|unique:users,username',
+		);
+
+		$validation = Validator::make($input, $rules);
+
+		if ($validation->fails()) {
+
+			return Redirect::to('home')->with_errors($validation)->with_input();
+
+		}
+
 		if (!empty($user)){
 
 			// Reformating text for proper display

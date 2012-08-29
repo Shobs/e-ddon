@@ -13,12 +13,12 @@ $cat =  Input::get('cat');
       <h1 class="mainTitle">addon's type <span class="colorWord">{{$category->name}}</span></h1>
     </div>
     <div class="two columns">
+      @if($cat <= 6)
       <ul id="sortButton" class="clearfix">
-        <?php if ($cat != 7 || $cat != 8) {?>
-          <li><p>order by:</p></li>
+           <li><p>order by:</p></li>
           @include('includes.order')
-       <?php }?>
-      </ul>
+       </ul>
+      @endif
     </div>
   </div>
 </header>

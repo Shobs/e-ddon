@@ -24,7 +24,7 @@ class Auth_Controller extends Base_Controller{
 
 			// php form validation
 			$input = array(
-			'username' => $username,
+			'usernameReg' => $username,
 			'lastname' => $lastname,
 			'firstname' => $firstname,
 			'birthdate' => $birthdate,
@@ -32,7 +32,7 @@ class Auth_Controller extends Base_Controller{
 			);
 
 			$rules = array(
-				'username' => 'required|email|unique:users,username',
+				'usernameReg' => 'required|email|unique:users,username',
 				'lastname' => 'required|alpha|max:50',
 				'firstname' => 'required|alpha|max:50',
 				'birthdate' => 'required',
@@ -44,7 +44,7 @@ class Auth_Controller extends Base_Controller{
 
 			if ($validation->fails()) {
 
-				return Redirect::to('home')->with_input()->with_errors($validation);
+				return Redirect::back()->with_errors($validation)->with_input();
 
 			}
 
@@ -94,6 +94,25 @@ class Auth_Controller extends Base_Controller{
 				return Redirect::to('home')->with_input();
 			}
 		}else{
+
+			$input = array(
+			'username' => $username,
+			'password' => $password
+			);
+
+			$rules = array(
+				'username' => 'required|email',
+				'password' => 'required',
+
+			);
+
+			$validation = Validator::make($input, $rules);
+
+			if ($validation->fails()) {
+
+				return Redirect::back()->with_errors($validation)->with_input();
+
+			}
 
 			// Adding user data
 			$credentials = array(

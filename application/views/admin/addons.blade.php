@@ -15,10 +15,19 @@ $addons = Session::get('addons');
 		</div>
 		<div class="twelve columns">
 			<h3 class="sectionTitle"><span>Addons information</span></h3>
-      <table id="addonsTable" class="dataTable tablesorter">
-        @include('includes.dataTable')
-      </table>
-
+			<div>
+			{{HTML::link('#', 'Add', array('class' => 'small radius nice blue button', 'id' => 'addRow', 'data-reveal-id'=>'uploadModal'));}}
+			{{HTML::link('#', 'Delete', array('class' => 'small radius nice blue button', 'id' => 'deleteRow', 'data-reveal-id'=>'deleteAddonModal'));}}
+			</div>
+			<table id="facebox" class="dataTable tablesorter">
+		       @include('includes.dataTable')
+	      </table>
+	      <div id="result" class="ten column"></div>
+	      <div class="two columns">
+	      	{{Form::button('Update', array('class' => 'small radius nice blue button btright', 'id' => 'addonsUpdate'))}}
+	      	<br>
+			<br>
+	      </div>
 		</div>
 		<div class="twelve column">
 			<h3 class="sectionTitle"><span>Modify addon :</span></h3>
